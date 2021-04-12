@@ -1,11 +1,16 @@
 import config
-import login2
+import login, admit_patient
 
 #Open Chrome and navigate to realtime workflow
 config.driver.maximize_window()
 config.driver.get("https://qado.medisource.com/login")
 
-login2.login("superagent@unitest", "Tester2021!")
+#login function
+login.login("superagent@unitest", "Tester2021!")
+
+#admission patient
+admit_patient.admission()
+
 
 
 

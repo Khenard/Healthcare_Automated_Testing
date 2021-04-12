@@ -1,5 +1,4 @@
 import config, time
-
 def login(un, up):
     #Set Variables
     user_name = un
@@ -12,8 +11,8 @@ def login(un, up):
     element.send_keys(user_name)
     element = config.driver.find_element_by_id("loginpassword")
     element.send_keys(password)
-    time.sleep(5)
+    time.sleep(1)
     submitbtn.click()
-    time.sleep(5)
+    time.sleep(1)
 
 
