@@ -13,10 +13,10 @@ driver = webdriver.Chrome(chromedriver)
 
 #Open Chrome and navigate to realtime workflow
 driver.maximize_window()
-driver.get("https://qado.medisource.com/login")
+driver.get("https://app.medisource.com/login")
 
 #Set Variables
-user_name = "superagent@unitest"
+user_name = "superagent@realtime"
 password = "Tester2021!"
 submitbtn = driver.find_element_by_xpath("//*[@id='mhLP-ln']/div[2]/form/div[6]/button")
 
