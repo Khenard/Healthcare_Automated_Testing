@@ -1,5 +1,11 @@
 import config, time
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+
+from selenium.webdriver.support.select import Select
+from select import select
 
 def admission(
         refdate,
@@ -55,10 +61,15 @@ def admission(
     mcs = config.driver.find_element_by_id("main_street").send_keys(majorcstreet)
     cityadd = config.driver.find_element_by_id("main_city").send_keys(city)
     
-    option = config.driver.find_element_by_css_selector("main_state").click() #click the select
-    time.sleep(5)
-    state = config.driver.find_element_by_xpath("//*[@id='main_state_chosen']/div/div/input").send_keys(stateadd, Keys.ENTER) #search the value
-    time.sleep(5)
+    #option = config.driver.find_element_by_css_selector("main_state").click() #click the select
+    #time.sleep(5)
+    #state = config.driver.find_element_by_xpath("//*[@id='main_state_chosen']/div/div/input").send_keys(stateadd, Keys.ENTER) #search the value
+    #time.sleep(5)
+    
+    wait = WebDriverWait(config.driver, 10)
+    dropDown = wait.until(EC.visibility_of_element_located((By.ID, 'main_state')))
+    select = Select(dropDown)
+    select.select_by_value('MS')
     
     zipcode = config.driver.find_element_by_id("main_zipcode").send_keys(zipcodeadd)
     
