@@ -130,10 +130,12 @@ def admission(
     referral_source = config.driver.find_element_by_css_selector("#referral_source_id_chosen > .chosen-single").click()
     rs_result = config.driver.find_element_by_css_selector("#referral_source_id_chosen .active-result:nth-child(2)").click()
     
+    time.sleep(2)
     #Hospitalization Information
     hospital = config.driver.find_element_by_css_selector("#hospital_id_chosen > .chosen-single").click()
     h_result = config.driver.find_element_by_css_selector("#hospital_id_chosen .active-result").click()
     
+    time.sleep(2)
     h_admitdate = config.driver.find_element_by_id("admit_date").send_keys(hadmit)
     h_discharge = config.driver.find_element_by_id("discharge_date").send_keys(hdc)
     

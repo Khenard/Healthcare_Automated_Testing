@@ -1,5 +1,10 @@
 import config
 import login, admit_patient
+import random
+
+#random number for SSN 
+ssn = random.randint(0, 9999999999)
+
 
 #Open Chrome and navigate to realtime workflow
 config.driver.maximize_window()
@@ -13,7 +18,7 @@ admit_patient.admission(
     "01/01/2021",
     "1200",
     "01/01/2021",
-    "Automated",
+    "00 - Automated",
     "Patient",
     "M",
     "Jr.",
@@ -22,7 +27,7 @@ admit_patient.admission(
     "Single",
     "American", 
     "english",
-    "500000000",
+    ssn,
     "17 Peachtree St, Charleston, MS, 38921",
     "Blue Building",
     "17 Peachtree St",
