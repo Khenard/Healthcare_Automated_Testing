@@ -20,14 +20,23 @@ admit_patient.admission(
     "02/07/1997",
     "Single",
     "American",
-    "English",
+    "english",
     "500000000",
     "17 Peachtree St, Charleston, MS, 38921",
     "Blue Building",
     "17 Peachtree St",
     "Charleston",
     "MS",
-    "38921"
+    "38921",
+    "8593603818",
+    "6626472513",
+    "automatedpatient@mailinator.com",
+    "Ken Figuracion",
+    "8593603818",
+    "Catherine Balanag",
+    "Wife",
+    "8593603818",
+    "6626472513"
     )
 
 
