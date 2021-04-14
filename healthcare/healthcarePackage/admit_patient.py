@@ -11,6 +11,7 @@ def admission(
         mi,
         sfx,
         bdate,
+        sex,
         mstatus,
         ethn,
         langspoken,
@@ -29,7 +30,12 @@ def admission(
         ecname,
         ecrel,
         ecp1,
-        ecp2
+        ecp2,
+        hadmit,
+        hdc,
+        dsur,
+        dallergies,
+        moeigthy
         ):
     
     #Navigate to Add patient page
@@ -49,7 +55,14 @@ def admission(
     middle_initial = config.driver.find_element_by_id("mi").send_keys(mi)
     suffix = config.driver.find_element_by_id("suffix").send_keys(sfx)
     birthdate = config.driver.find_element_by_id("birthdate").send_keys(bdate)
-    gender = config.driver.find_element_by_xpath("//*[@id='content']/data/div[2]/div/ng-form/fieldset/table/tbody/tr[10]/td[2]/div/label[1]/input").click() #male
+    
+    #conditional formatting
+    gender = ""
+    if sex == "Male":
+        gender = config.driver.find_element_by_xpath("//*[@id='content']/data/div[2]/div/ng-form/fieldset/table/tbody/tr[10]/td[2]/div/label[1]/input")
+    elif sex == "Female":
+        gender = config.driver.find_element_by_xpath("//*[@id='content']/data/div[2]/div/ng-form/fieldset/table/tbody/tr[10]/td[2]/div/label[2]/input")
+    gender.click()
     
     #code for choosing select
     option = config.driver.find_element_by_xpath("//*[@id='marital_status_chosen']/a").click() #click the select
@@ -95,40 +108,75 @@ def admission(
     ec_phone = config.driver.find_element_by_id("ec_phone").send_keys(ecp1)
     ec_other_phone = config.driver.find_element_by_id("ec_other_phone").send_keys(ecp2)
     
+    #beyond this part, the automation will automatically select the first entry of each dropdown
+    
     #Physician Information
-    config.driver.find_element(By.CSS_SELECTOR, "#physician_attending_chosen > .chosen-single").click()
-    config.driver.find_element(By.CSS_SELECTOR, ".active-result:nth-child(2)").click()
+    attending_physician = config.driver.find_element_by_css_selector("#physician_attending_chosen > .chosen-single").click()
+    at_result = config.driver.find_element_by_css_selector(".active-result:nth-child(2)").click()
     
-    config.driver.find_element(By.CSS_SELECTOR, "#physician_primary_chosen > .chosen-single").click()
-    config.driver.find_element(By.CSS_SELECTOR, "#physician_primary_chosen .active-result:nth-child(2)").click()
+    primary_insurance = config.driver.find_element_by_css_selector("#primary_insurance_chosen > .chosen-single").click()
+    pi_result = config.driver.find_element_by_css_selector("#primary_insurance_chosen .active-result:nth-child(2)").click()
     
-    config.driver.find_element(By.CSS_SELECTOR, "#primary_insurance_chosen > .chosen-single").click()
-    config.driver.find_element(By.CSS_SELECTOR, "#primary_insurance_chosen .active-result:nth-child(2)").click()
+    admission_type = config.driver.find_element_by_css_selector("#admissiontype_chosen > .chosen-single").click()
+    at_result = config.driver.find_element_by_css_selector("#admissiontype_chosen .active-result:nth-child(1)").click()
     
-    config.driver.find_element(By.CSS_SELECTOR, "#secondary_insurance_chosen > .chosen-single").click()
-    config.driver.find_element(By.CSS_SELECTOR, "tr:nth-child(51) .fg-line").click()
+    pointoforigin = config.driver.find_element_by_css_selector("#point_of_origin_chosen > .chosen-single").click()
+    poo_result = config.driver.find_element_by_css_selector("#point_of_origin_chosen .active-result:nth-child(1)").click()
     
-    config.driver.find_element(By.CSS_SELECTOR, "#admissiontype_chosen > .chosen-single").click()
-    config.driver.find_element(By.CSS_SELECTOR, ".active-result:nth-child(1)").click()
+    time.sleep(2)
+    referral_type = config.driver.find_element_by_css_selector("#referral_type_chosen > .chosen-single").click()
+    rt_result = config.driver.find_element_by_css_selector("#referral_type_chosen .active-result:nth-child(2)").click()
     
-    config.driver.find_element(By.CSS_SELECTOR, "#point_of_origin_chosen > .chosen-single").click()
-    config.driver.find_element(By.CSS_SELECTOR, "#point_of_origin_chosen .active-result:nth-child(1)").click()
+    referral_source = config.driver.find_element_by_css_selector("#referral_source_id_chosen > .chosen-single").click()
+    rs_result = config.driver.find_element_by_css_selector("#referral_source_id_chosen .active-result:nth-child(2)").click()
     
-    config.driver.find_element(By.CSS_SELECTOR, "#referral_type_chosen > .chosen-single").click()
-    config.driver.find_element(By.CSS_SELECTOR, "#referral_type_chosen .active-result:nth-child(1)").click()
+    #Hospitalization Information
+    hospital = config.driver.find_element_by_css_selector("#hospital_id_chosen > .chosen-single").click()
+    h_result = config.driver.find_element_by_css_selector("#hospital_id_chosen .active-result").click()
     
-    config.driver.find_element(By.CSS_SELECTOR, "#referral_type_chosen span").click()
-    config.driver.find_element(By.CSS_SELECTOR, "#referral_type_chosen .active-result:nth-child(2)").click()
+    h_admitdate = config.driver.find_element_by_id("admit_date").send_keys(hadmit)
+    h_discharge = config.driver.find_element_by_id("discharge_date").send_keys(hdc)
     
-    config.driver.find_element(By.CSS_SELECTOR, "#referral_source_id_chosen > .chosen-single").click()
-    config.driver.find_element(By.CSS_SELECTOR, "#referral_source_id_chosen .active-result:nth-child(2)").click()
+    #Diagnosis / Pre-admission Orders
+    dsurgery = config.driver.find_element_by_id("diagnosis_surgery").send_keys(dsur)
+    option = config.driver.find_element_by_xpath("//*[@id='diagnosis_allergies']/div/div/input").click()
+    dallergies = config.driver.find_element_by_xpath("//*[@id='diagnosis_allergies']/div/div/input").send_keys(dallergies, Keys.ENTER)
     
-    config.driver.find_element(By.CSS_SELECTOR, "#hospital_id_chosen > .chosen-single").click()
-    config.driver.find_element(By.CSS_SELECTOR, "#hospital_id_chosen .active-result").click()
+    #M0080
+    #we will create conditions here depending on the passed arguments. Create an empty variable for the M0800, mo
+    mo = ""
     
+    if moeigthy == "RN":
+        mo = config.driver.find_element_by_xpath("//*[@id='content']/data/div[2]/div/ng-form/fieldset/table/tbody/tr[68]/td/div/label[1]/input")
+        config.driver.find_element(By.CSS_SELECTOR, "#cs_rn_chosen > .chosen-single").click()
+        config.driver.find_element(By.CSS_SELECTOR, "#cs_rn_chosen .active-result:nth-child(1)").click()
+        
+    elif moeigthy == "PT":
+        mo = config.driver.find_element_by_xpath("//*[@id='content']/data/div[2]/div/ng-form/fieldset/table/tbody/tr[68]/td/div/label[2]/input")
+        config.driver.find_element(By.CSS_SELECTOR, "#cs_pt_chosen > .chosen-single").click()
+        config.driver.find_element(By.CSS_SELECTOR, "#cs_pt_chosen .active-result:nth-child(1)").click()
+        
+    elif moeigthy == "SLP":
+        mo = config.driver.find_element_by_xpath("//*[@id='content']/data/div[2]/div/ng-form/fieldset/table/tbody/tr[68]/td/div/label[3]/input")
+        config.driver.find_element(By.CSS_SELECTOR, "#cs_st_chosen > .chosen-single").click()
+        config.driver.find_element(By.CSS_SELECTOR, "#cs_st_chosen .active-result").click()
+        
+    elif moeigthy == "OT":
+        mo = config.driver.find_element_by_xpath("//*[@id='content']/data/div[2]/div/ng-form/fieldset/table/tbody/tr[68]/td/div/label[4]/input")
+        config.driver.find_element(By.CSS_SELECTOR, "#cs_ot_chosen > .chosen-single").click()
+        config.driver.find_element(By.CSS_SELECTOR, "#cs_ot_chosen .active-result:nth-child(1)").click()
     
+    mo.click()
+   
+    #choose the first CM
+    case_manager = config.driver.find_element_by_css_selector("#cs_cm_chosen > .chosen-single").click()
+    cm_result = config.driver.find_element_by_css_selector("#cs_cm_chosen .active-result:nth-child(1)").click()
     
-    
-    
-    
+    # SAVE button
+    save = config.driver.find_element_by_xpath("//*[@id='titleNoteBar']/div/div/div/div/div[1]/button[2]").click()
+       
+   
     time.sleep(5)
+    
+    config.driver.close()
+    

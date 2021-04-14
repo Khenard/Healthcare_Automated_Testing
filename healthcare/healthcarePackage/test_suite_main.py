@@ -18,8 +18,9 @@ admit_patient.admission(
     "M",
     "Jr.",
     "02/07/1997",
+    "Male",
     "Single",
-    "American",
+    "American", 
     "english",
     "500000000",
     "17 Peachtree St, Charleston, MS, 38921",
@@ -36,7 +37,12 @@ admit_patient.admission(
     "Catherine Balanag",
     "Wife",
     "8593603818",
-    "6626472513"
+    "6626472513",
+    "01/01/2018",
+    "02/01/2018",
+    "Colon and Rectal Surgery",
+    "Peanut",
+    "RN"
     )
 
 
