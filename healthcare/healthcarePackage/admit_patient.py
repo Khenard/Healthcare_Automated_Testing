@@ -1,6 +1,7 @@
 import config, time
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
+from selenium import webdriver
 
 def admission(
         refdate,
@@ -123,10 +124,11 @@ def admission(
     pointoforigin = config.driver.find_element_by_css_selector("#point_of_origin_chosen > .chosen-single").click()
     poo_result = config.driver.find_element_by_css_selector("#point_of_origin_chosen .active-result:nth-child(1)").click()
     
-    time.sleep(2)
+    time.sleep(5)
     referral_type = config.driver.find_element_by_css_selector("#referral_type_chosen > .chosen-single").click()
     rt_result = config.driver.find_element_by_css_selector("#referral_type_chosen .active-result:nth-child(2)").click()
     
+    time.sleep(5)
     referral_source = config.driver.find_element_by_css_selector("#referral_source_id_chosen > .chosen-single").click()
     rs_result = config.driver.find_element_by_css_selector("#referral_source_id_chosen .active-result:nth-child(2)").click()
     
@@ -177,8 +179,21 @@ def admission(
     # SAVE button
     save = config.driver.find_element_by_xpath("//*[@id='titleNoteBar']/div/div/div/div/div[1]/button[2]").click()
        
-   
     time.sleep(5)
+    
+    #This function is to get the current browser url to get the link of the current patient dashboard
+    #config.driver.execute_script("alert('Fetching current link URL...please wait')")
+    time.sleep(5)
+    
+    patientdb_link = str(config.driver.current_url)
+    
+    time.sleep(5)
+    #redirect to the url address
+    #config.driver.get(patientdb_link)
+
+    return patientdb_link
+
+    
     
     config.driver.close()
     
