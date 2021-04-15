@@ -1,9 +1,15 @@
 import config
 import login, admit_patient
 import random
+from datetime import date
 
-#random number for SSN 
+today = date.today()
+todaynow = today.strftime("%m/%d/%Y")
+
+#random number for patient name and SSN 
+pn = random.randint(0, 999)
 ssn = random.randint(0, 9999999999)
+
 
 
 #Open Chrome and navigate to realtime workflow
@@ -15,12 +21,12 @@ login.login("superagent@unitest", "Tester2021!")
 
 #admission patient
 admit_patient.admission(
-    "01/01/2021",
+    todaynow,
     "1200",
-    "01/01/2021",
-    "00 - Automated",
-    "Patient",
-    "M",
+    todaynow,
+    pn,
+    "Automated Patient",
+    "X",
     "Jr.",
     "02/07/1997",
     "Male",

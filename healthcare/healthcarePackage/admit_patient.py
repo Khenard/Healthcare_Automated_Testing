@@ -130,7 +130,7 @@ def admission(
     referral_source = config.driver.find_element_by_css_selector("#referral_source_id_chosen > .chosen-single").click()
     rs_result = config.driver.find_element_by_css_selector("#referral_source_id_chosen .active-result:nth-child(2)").click()
     
-    time.sleep(2)
+    time.sleep(5)
     #Hospitalization Information
     hospital = config.driver.find_element_by_css_selector("#hospital_id_chosen > .chosen-single").click()
     h_result = config.driver.find_element_by_css_selector("#hospital_id_chosen .active-result").click()
@@ -138,7 +138,7 @@ def admission(
     time.sleep(2)
     h_admitdate = config.driver.find_element_by_id("admit_date").send_keys(hadmit)
     h_discharge = config.driver.find_element_by_id("discharge_date").send_keys(hdc)
-    
+    11
     #Diagnosis / Pre-admission Orders
     dsurgery = config.driver.find_element_by_id("diagnosis_surgery").send_keys(dsur)
     option = config.driver.find_element_by_xpath("//*[@id='diagnosis_allergies']/div/div/input").click()
