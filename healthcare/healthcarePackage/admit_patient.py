@@ -44,7 +44,6 @@ def admission(
     time.sleep(5)
     #get element and assign variables
     skip_eligibility = config.driver.find_element_by_link_text("Skip").click() #skip button
-    
 
     #Patient Information
     referral_date = config.driver.find_element_by_id("refDate").send_keys(refdate)
@@ -115,6 +114,7 @@ def admission(
     attending_physician = config.driver.find_element_by_css_selector("#physician_attending_chosen > .chosen-single").click()
     at_result = config.driver.find_element_by_css_selector(".active-result:nth-child(2)").click()
     
+    time.sleep(5)
     primary_insurance = config.driver.find_element_by_css_selector("#primary_insurance_chosen > .chosen-single").click()
     pi_result = config.driver.find_element_by_css_selector("#primary_insurance_chosen .active-result:nth-child(2)").click()
     
@@ -126,21 +126,24 @@ def admission(
     
     time.sleep(5)
     referral_type = config.driver.find_element_by_css_selector("#referral_type_chosen > .chosen-single").click()
+    time.sleep(3)
     rt_result = config.driver.find_element_by_css_selector("#referral_type_chosen .active-result:nth-child(2)").click()
     
     time.sleep(5)
     referral_source = config.driver.find_element_by_css_selector("#referral_source_id_chosen > .chosen-single").click()
+    time.sleep(3)
     rs_result = config.driver.find_element_by_css_selector("#referral_source_id_chosen .active-result:nth-child(2)").click()
     
-    time.sleep(5)
+    #time.sleep(5)
+    
     #Hospitalization Information
     hospital = config.driver.find_element_by_css_selector("#hospital_id_chosen > .chosen-single").click()
-    h_result = config.driver.find_element_by_css_selector("#hospital_id_chosen .active-result").click()
+    time.sleep(5)
+    h_result = config.driver.find_element_by_css_selector("#hospital_id_chosen .active-result:nth-child(2)").click()
     
     time.sleep(2)
     h_admitdate = config.driver.find_element_by_id("admit_date").send_keys(hadmit)
     h_discharge = config.driver.find_element_by_id("discharge_date").send_keys(hdc)
-    11
     #Diagnosis / Pre-admission Orders
     dsurgery = config.driver.find_element_by_id("diagnosis_surgery").send_keys(dsur)
     option = config.driver.find_element_by_xpath("//*[@id='diagnosis_allergies']/div/div/input").click()
@@ -181,19 +184,6 @@ def admission(
        
     time.sleep(5)
     
-    #This function is to get the current browser url to get the link of the current patient dashboard
-    #config.driver.execute_script("alert('Fetching current link URL...please wait')")
-    time.sleep(5)
     
-    patientdb_link = str(config.driver.current_url)
-    
-    time.sleep(5)
-    #redirect to the url address
-    #config.driver.get(patientdb_link)
-
-    return patientdb_link
-
-    
-    
-    config.driver.close()
+    #config.driver.close()
     

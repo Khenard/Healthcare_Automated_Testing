@@ -1,6 +1,6 @@
 import config
-import login, admit_patient
-import random
+import login, admit_patient, completing_oasis
+import random, time
 from datetime import date
 
 today = date.today()
@@ -24,8 +24,8 @@ admit_patient.admission(
     todaynow,
     "1200",
     todaynow,
-    pn,
-    "Automated Patient",
+    "Patient " + str(pn),
+    "Automated",
     "X",
     "Jr.",
     "02/07/1997",
@@ -56,8 +56,12 @@ admit_patient.admission(
     "RN"
     )
 
+#This function is to get the current browser url to get the link of the current patient dashboard
+config.driver.get(config.driver.current_url)
 
-
+time.sleep(5)
+#clickoasis = config.driver.find_element_by_xpath("//*[@id='parent']/div/div[1]/div/div[5]/div[1]/table/tbody/tr[2]/td[2]/a").click()
+   
 
 
 
