@@ -6,9 +6,13 @@ from datetime import date
 today = date.today()
 todaynow = today.strftime("%m/%d/%Y")
 
+name_random = ["Leonel", "Juana", "Deandra", "Jazmin", "Keila", "Claudine", "Kathleen", "Sandra", "Yael", "Frieda", "Emile", "Dane", "Carmella", "Rosalva", "Denita", "Marvis", "Vilma", "Lucila", "Coral", "James", "Jerald", "Buford", "Vennie"  
+               "Cathy", "Melody", "Siobhan", "Annmarie", "Tanna", "Liliana", "Keshia", "Irwin", "Jacqualine", "Leigh", "Sulema", "Marty", "Mike", "Shonta", "Lane", "Eldora", "Adah", "Leland", "Teresia", "Chloe", "Cordie", "Hal", "Sherryl", "Reggie", "Chery", "Columbus", "Edith"]
+pn = random.choice(name_random)
 #random number for patient name and SSN 
-pn = random.randint(0, 999)
+#pn = random.randint(0, 999)
 ssn = random.randint(0, 9999999999)
+
 
 
 
@@ -24,9 +28,9 @@ admit_patient.admission(
     todaynow,
     "1200",
     todaynow,
-    "Patient " + str(pn),
+    str(pn),
     "Automated",
-    "X",
+    str(pn),
     "Jr.",
     "02/07/1997",
     "Male",
