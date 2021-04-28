@@ -62,6 +62,7 @@ def admission(
         gender = config.driver.find_element_by_xpath("//*[@id='content']/data/div[2]/div/ng-form/fieldset/table/tbody/tr[10]/td[2]/div/label[1]/input")
     elif sex == "Female":
         gender = config.driver.find_element_by_xpath("//*[@id='content']/data/div[2]/div/ng-form/fieldset/table/tbody/tr[10]/td[2]/div/label[2]/input")
+    time.sleep(1)
     gender.click()
     
     #code for choosing select
@@ -109,7 +110,7 @@ def admission(
     ec_other_phone = config.driver.find_element_by_id("ec_other_phone").send_keys(ecp2)
     
     #beyond this part, the automation will automatically select the first entry of each dropdown
-    
+    time.sleep(5)
     #Physician Information
     attending_physician = config.driver.find_element_by_css_selector("#physician_attending_chosen > .chosen-single").click()
     at_result = config.driver.find_element_by_css_selector(".active-result:nth-child(2)").click()

@@ -50,7 +50,10 @@ def oasissoc_diagnosesmedhis(
         sdx2,
         sdx3,
         sdx4,
-        sdx5
+        sdx5,
+        m0133_items,
+        mheight,
+        mweight
         ):
     time.sleep(5)
     
@@ -60,7 +63,7 @@ def oasissoc_diagnosesmedhis(
     time.sleep(1)
     config.driver.switch_to_active_element()
     pd.send_keys(Keys.ARROW_DOWN)
-    time.sleep(1)
+    time.sleep(2)
     pd.send_keys(Keys.ENTER)
     pdr = config.driver.find_element_by_xpath("//*[@id='icdSeverityIdCode$index']/label[4]/input").click()
     
@@ -71,7 +74,7 @@ def oasissoc_diagnosesmedhis(
     time.sleep(1)
     config.driver.switch_to_active_element()
     sd1.send_keys(Keys.ARROW_DOWN)
-    time.sleep(1)
+    time.sleep(2)
     sd1.send_keys(Keys.ENTER)
     sd1r = config.driver.find_element_by_xpath("//*[@id='tooltip_b']/table/tbody/tr/td[3]/fieldset/div/label[3]/input").click() #Value is 3
     
@@ -101,22 +104,37 @@ def oasissoc_diagnosesmedhis(
     time.sleep(1)
     config.driver.switch_to_active_element()
     sd4.send_keys(Keys.ARROW_DOWN)
-    time.sleep(1)
+    time.sleep(2)
     sd4.send_keys(Keys.ENTER)
     sd4r = config.driver.find_element_by_xpath("//*[@id='tooltip_e']/table/tbody/tr/td[3]/fieldset/div/label[3]/input").click() #Value is 3
 
     #5th Secondary Diagnosis
     sd5 = config.driver.find_element_by_xpath("//*[@id='tooltip_f']/table/tbody/tr[1]/td[2]/icd-opt/div/div[1]/input")
     sd5.send_keys(sdx5)
-    time.sleep(1)
+    time.sleep(2)
     config.driver.switch_to_active_element()
     sd5.send_keys(Keys.ARROW_DOWN)
-    time.sleep(1)
+    time.sleep(2)
     sd5.send_keys(Keys.ENTER)
     sd5r = config.driver.find_element_by_xpath("//*[@id='tooltip_f']/table/tbody/tr/td[3]/fieldset/div/label[3]/input").click() #Value is 3
 
+    m1028 = config.driver.find_element_by_name("M1028_ACTV_DIAG_NOA").click() #Value is None
+    time.sleep(1)
+    m1030 = config.driver.find_element_by_name("M1030_THH_NONE_ABOVE").click() #Value is None of the above
+    
+    #m0133_items
+    m0133_items_selected = ""
+    for x in m0133_items:
+        print(x)
+        
+        #if x == 1:
+        #    m0133_items_selected = config.driver.find_element_by_name("M1033_HOSP_RISK_HSTRY_FALLS")
+        #elif x == 2:
+        #    m0133_items_selected = config.driver.find_element_by_name("M1033_HOSP_RISK_WEIGHT_LOSS")
+    
+    m1060_height = config.driver.find_element_by_name("M1060_HEIGHT_A").send_keys(mheight)
+    m1060_weight = config.driver.find_element_by_name("M1060_WEIGHT_B").send_keys(mweight)
 
-
-    time.sleep(5)
+    
     #config.driver.close()
     

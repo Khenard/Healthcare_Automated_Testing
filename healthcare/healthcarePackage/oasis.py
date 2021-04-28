@@ -57,12 +57,22 @@ completing_oasis.oasissoc_timeinout("1200", "1600")
 
 diagnosesmedhis.click()
 
+#This declares the value for m0133 with multiple items
+m0133 = [1,2,3,4,5,6,7,8,10]
+
 completing_oasis.oasissoc_diagnosesmedhis(
     "U07.1",
     "N39.0",
     "B96.5",
     "N13.9",
     "N13.39",
-    "I48.91"
+    "I48.91",
+    m0133,
+    "59",
+    "153"
     )
 
+savebtn.click()
+
+time.sleep(8)
+config.driver.close()
