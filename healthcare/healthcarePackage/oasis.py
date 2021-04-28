@@ -53,13 +53,16 @@ careman = config.driver.find_element_by_xpath('//*[@id="careManagement"]')
 completing_oasis.oasissoc_timeinout("1200", "1600")
 
 #demographics
-completing_oasis.oasissoc_demographics(savebtn, todaynow, "Early")
+#completing_oasis.oasissoc_demographics(savebtn, todaynow, "Early")
 
 diagnosesmedhis.click()
 
 completing_oasis.oasissoc_diagnosesmedhis(
-    "COVID-19",
-    "Pseudomonas (aeruginosa)",
-    "Obstructive and reflux uropathy, unspecified"
+    "U07.1",
+    "N39.0",
+    "B96.5",
+    "N13.9",
+    "N13.39",
+    "I48.91"
     )
 
