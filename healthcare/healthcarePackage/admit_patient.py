@@ -38,10 +38,10 @@ def admission(
         dallergies,
         moeigthy
         ):
-    
-    #Navigate to Add patient page
-    config.driver.get("https://qado.medisource.com/patient")
     time.sleep(5)
+    #Navigate to Add patient page
+    config.driver.get("https://app.medisource.com/patient")
+    time.sleep(8)
     #get element and assign variables
     skip_eligibility = config.driver.find_element_by_link_text("Skip").click() #skip button
 
@@ -136,6 +136,8 @@ def admission(
     rs_result = config.driver.find_element_by_css_selector("#referral_source_id_chosen .active-result:nth-child(2)").click()
     
     #time.sleep(5)
+
+    scrolldown = config.driver.execute_script("window.scrollTo(0,6500)")
     
     #Hospitalization Information
     hospital = config.driver.find_element_by_css_selector("#hospital_id_chosen > .chosen-single").click()

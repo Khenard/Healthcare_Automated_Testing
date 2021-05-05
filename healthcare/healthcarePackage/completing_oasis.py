@@ -4,15 +4,17 @@ from selenium.webdriver.common.by import By
 from selenium import webdriver
 from _ast import Div
 
-ssn = random.randint(0, 9999999999)
 # ------------- Time In and Time Out -----------------------------------------------------------------------------------
 def oasissoc_timeinout(ti, to):
     timein = config.driver.find_element_by_name("timeIn").send_keys(ti)
     timeout = config.driver.find_element_by_name("timeOut").send_keys(to)
 
 # ------------- Demographics -----------------------------------------------------------------------------------
-def oasissoc_demographics(todaynow, episodetiming):
-    m0063 = config.driver.find_element_by_id("M0063_MEDICARE_NUM").send_keys(ssn)
+def oasissoc_demographics(todaynow, episodetiming, ssn):
+    #time.sleep(3)
+    #m0063_na = config.driver.find_elements_by_xpath('//*[@id="oasisForm"]/fieldset/table[1]/tbody/tr[12]/td[3]/table/tbody/tr/td[2]/div/label/input').click()
+    time.sleep(3)
+    m0063 = config.driver.find_element_by_name('M0063_MEDICARE_NUM').send_keys(ssn)
     m0090 = config.driver.find_element_by_id("m0090_info_completed_dt").send_keys(todaynow)
     time.sleep(3)
     m0102_checkbox = config.driver.find_element_by_name("M0102_PHYSN_ORDRD_SOCROC_DT_NA").click()
@@ -36,7 +38,8 @@ def oasissoc_demographics(todaynow, episodetiming):
     #m0150_private_insurance = config.driver.find_element_by_xpath("//*[@id='M0150_CPAY_PRIV_INS']/input").click()
     m1000_skilled_nursing_facility = config.driver.find_element_by_name("M1000_DC_SNF_14_DA").click()
     m1005_unknown = config.driver.find_element_by_name("M1005_INP_DSCHG_UNKNOWN").click()
-    
+    time.sleep(5)
+
 # ------------- Diagnosis ----------------------------------------------------------------------------------- 
 def oasissoc_diagnosesmedhis(
         pdx,
@@ -251,6 +254,10 @@ def oasissoc_neurobehav():
     
 # ------------- ADL / IADL / Musculoskeletal -----------------------------------------------------------------------------------
 def oasissoc_adlmusco():
+    
+    gg0100_3 = "3"
+    gg_6 = "6"
+    
     time.sleep(5)
     musstat_wnl = config.driver.find_element_by_xpath('//*[@id="adlForm"]/fieldset/div[1]/table[1]/tbody/tr[1]/td/table/tbody/tr/td/div[2]/label/input').click()
     m1800_0 = config.driver.find_element_by_xpath('//*[@id="adlForm"]/fieldset/div[1]/table[6]/tbody/tr[2]/td[2]/table[2]/tbody/tr/td/div[1]/label/input').click()
@@ -263,27 +270,110 @@ def oasissoc_adlmusco():
     m1860_0 = config.driver.find_element_by_xpath('//*[@id="adlForm"]/fieldset/div[1]/table[13]/tbody/tr[2]/td[2]/table[2]/tbody/tr/td/div[1]/label/input').click()
     m1870_0 = config.driver.find_element_by_xpath('//*[@id="adlForm"]/fieldset/div[1]/table[14]/tbody/tr[2]/td[2]/table[2]/tbody/tr/td/div[1]/label/input').click()
     m1910_0 = config.driver.find_element_by_xpath('//*[@id="adlForm"]/fieldset/div[1]/table[15]/tbody/tr[2]/td[2]/table[2]/tbody/tr/td/div[1]/label/input').click()
+ 
+    time.sleep(2)
+    
+    scrolldown = config.driver.execute_script("window.scrollTo(0,6500)")
+    
+# To be continued on this part ------------------------------------------------    
+""" gg0100_a = config.driver.find_element_by_css_selector('#GG0100A_chosen > a').send_keys(Keys.DELETE) #click the select
+    gg0100_a_text = config.driver.find_element_by_xpath('//*[@id="GG0100A_chosen"]/div/div/input').send_keys(Keys.DELETE) #search the value
+   
+    time.sleep(2)
+    gg0100_a_text = config.driver.find_element_by_xpath('//*[@id="GG0100A_chosen"]/div/div/input').send_keys(gg0100_3, Keys.ENTER) #search the value
     
     time.sleep(2)
-    gg0100_a = config.driver.find_element_by_xpath('//div[@id="GG0100A_chosen"]/a/div/b').send_keys(Keys.ENTER)
+    gg0100_b = config.driver.find_element_by_xpath('//*[@id="GG0100B_chosen"]/a').click() #click the select
     time.sleep(2)
-    gg0100_b = config.driver.find_element_by_xpath('//div[@id="GG0100B_chosen"]/a/div/b').send_keys(Keys.ENTER)
+    gg0100_b_text = config.driver.find_element_by_xpath('//*[@id="GG0100B_chosen"]/div/div/input').send_keys(gg0100_3, Keys.ENTER) #search the value
+    
     time.sleep(2)
-    gg0100_c = config.driver.find_element_by_xpath('//div[@id="GG0100C_chosen"]/a/div/b').send_keys(Keys.ENTER)
+    gg0100_c = config.driver.find_element_by_xpath('//*[@id="GG0100C_chosen"]/a').click() #click the select
+    time.sleep(2)
+    gg0100_c_text = config.driver.find_element_by_xpath('//*[@id="GG0100C_chosen"]/div/div/input').send_keys(gg0100_3, Keys.ENTER) #search the value
+   
+    time.sleep(2)
+    gg0100_d = config.driver.find_element_by_xpath('//*[@id="GG0100D_chosen"]/a').click() #click the select
+    time.sleep(2)
+    gg0100_d_text = config.driver.find_element_by_xpath('//*[@id="GG0100D_chosen"]/div/div/input').send_keys(gg0100_3, Keys.ENTER) #search the value
+    
+    time.sleep(2)
+    gg0110_none = config.driver.find_element_by_xpath('//*[@id="adlForm"]/fieldset/div[1]/table[18]/tbody/tr[2]/td/table/tbody/tr[4]/td[3]/label/input').click()
+    
+    scrolldown = config.driver.execute_script("window.scrollTo(0,4300)")
+    
+    #GG0130. Self-Care
+    time.sleep(2)
+    gg0130_a1_1 = config.driver.find_element_by_xpath('//tr[5]/td[1]/div/mhc-gg0130/div/div/a').click()
+    gg0130_a1_2 = config.driver.find_element_by_xpath('//tr[5]/td[1]/div/mhc-gg0130/div/div/div/div/input').send_keys(gg_6, Keys.ENTER)
+    time.sleep(2)
+    gg0130_a2_1 = config.driver.find_element_by_xpath('//*[@id="GG0130A2"]//div[@id="____name_____chosen"]/a').click()
+    gg0130_a2_2 = config.driver.find_element_by_xpath('//*[@id="GG0130A2"]//div[@id="____name_____chosen"]/div/div/input').send_keys(gg_6, Keys.ENTER)
+    
+    time.sleep(2)
+    gg0130_b1_1 = config.driver.find_element_by_xpath('//*[@id="GG0130B1"]//div[@id="____name_____chosen"]/a').click()
+    gg0130_b1_2 = config.driver.find_element_by_xpath('//*[@id="GG0130B1"]//div[@id="____name_____chosen"]/div/div/input').send_keys(gg_6, Keys.ENTER)
+    time.sleep(2)
+    gg0130_b2_1 = config.driver.find_element_by_xpath('//*[@id="GG0130B2"]//div[@id="____name_____chosen"]/a').click()
+    gg0130_b2_2 = config.driver.find_element_by_xpath('//*[@id="GG0130B2"]//div[@id="____name_____chosen"]/div/div/input').send_keys(gg_6, Keys.ENTER)
 
-       
-    #musstat_wnl = config.driver.find_element_by_xpath('').click()
-    #musstat_wnl = config.driver.find_element_by_xpath('').click()
+    time.sleep(2)
+    gg0130_c1_1 = config.driver.find_element_by_xpath('//*[@id="GG0130C1"]//div[@id="____name_____chosen"]/a').click()
+    gg0130_c1_2 = config.driver.find_element_by_xpath('//*[@id="GG0130C1"]//div[@id="____name_____chosen"]/div/div/input').send_keys(gg_6, Keys.ENTER)
+    time.sleep(2)
+    gg0130_c2_1 = config.driver.find_element_by_xpath('//*[@id="GG0130C1"]//div[@id="____name_____chosen"]/a').click()
+    gg0130_c2_2 = config.driver.find_element_by_xpath('//*[@id="GG0130C1"]//div[@id="____name_____chosen"]/div/div/input').send_keys(gg_6, Keys.ENTER)
 
+    time.sleep(2)
+    gg0130_e1_1 = config.driver.find_element_by_xpath('//*[@id="GG0130E1"]//div[@id="____name_____chosen"]/a').click()
+    gg0130_e1_2 = config.driver.find_element_by_xpath('//*[@id="GG0130E1"]//div[@id="____name_____chosen"]/div/div/input').send_keys(gg_6, Keys.ENTER)
+    time.sleep(2)
+    gg0130_e2_1 = config.driver.find_element_by_xpath('//*[@id="GG0130E1"]//div[@id="____name_____chosen"]/a').click()
+    gg0130_e2_2 = config.driver.find_element_by_xpath('//*[@id="GG0130E1"]//div[@id="____name_____chosen"]/div/div/input').send_keys(gg_6, Keys.ENTER)
 
+    time.sleep(2)
+    gg0130_f1_1 = config.driver.find_element_by_xpath('//*[@id="GG0130F1"]//div[@id="____name_____chosen"]/a').click()
+    gg0130_f1_2 = config.driver.find_element_by_xpath('//*[@id="GG0130F1"]//div[@id="____name_____chosen"]/div/div/input').send_keys(gg_6, Keys.ENTER)
+    time.sleep(2)
+    gg0130_f2_1 = config.driver.find_element_by_xpath('//*[@id="GG0130F1"]//div[@id="____name_____chosen"]/a').click()
+    gg0130_f2_2 = config.driver.find_element_by_xpath('//*[@id="GG0130F1"]//div[@id="____name_____chosen"]/div/div/input').send_keys(gg_6, Keys.ENTER)
+
+    time.sleep(2)
+    gg0130_g1_1 = config.driver.find_element_by_xpath('//*[@id="GG0130G1"]//div[@id="____name_____chosen"]/a').click()
+    gg0130_g1_2 = config.driver.find_element_by_xpath('//*[@id="GG0130G1"]//div[@id="____name_____chosen"]/div/div/input').send_keys(gg_6, Keys.ENTER)
+    time.sleep(2)
+    gg0130_g2_1 = config.driver.find_element_by_xpath('//*[@id="GG0130G1"]//div[@id="____name_____chosen"]/a').click()
+    gg0130_g2_2 = config.driver.find_element_by_xpath('//*[@id="GG0130G1"]//div[@id="____name_____chosen"]/div/div/input').send_keys(gg_6, Keys.ENTER)
+
+    time.sleep(2)
+    gg0130_h1_1 = config.driver.find_element_by_xpath('//*[@id="GG0130H1"]//div[@id="____name_____chosen"]/a').click()
+    gg0130_h1_2 = config.driver.find_element_by_xpath('//*[@id="GG0130H1"]//div[@id="____name_____chosen"]/div/div/input').send_keys(gg_6, Keys.ENTER)
+    time.sleep(2)
+    gg0130_h2_1 = config.driver.find_element_by_xpath('//*[@id="GG0130H1"]//div[@id="____name_____chosen"]/a').click()
+    gg0130_h2_2 = config.driver.find_element_by_xpath('//*[@id="GG0130H1"]//div[@id="____name_____chosen"]/div/div/input').send_keys(gg_6, Keys.ENTER)
+"""
 
 # ------------- Medication -----------------------------------------------------------------------------------
-
+def oasissoc_medication():
+    time.sleep(5)
+    highrisk_none = config.driver.find_element_by_xpath('//*[@id="medicationForm"]/fieldset/div[1]/table[1]/tbody/tr[1]/td/label/input').click()
+    m2001_0 = config.driver.find_element_by_xpath('//*[@id="medicationForm"]/fieldset/div[1]/table[3]/tbody/tr[2]/td[2]/table[2]/tbody/tr/td/div[1]/label/input').click()
+    m2010_na = config.driver.find_element_by_xpath('//*[@id="medicationForm"]/fieldset/div[1]/table[5]/tbody/tr[2]/td[2]/fieldset/table/tbody/tr/td/div[3]/label/input').click()
+    m2020_1 = config.driver.find_element_by_xpath('//*[@id="medicationForm"]/fieldset/div[1]/table[6]/tbody/tr[2]/td[2]/fieldset/table/tbody/tr/td/div[2]/label/input').click()
+    m2030_0 = config.driver.find_element_by_xpath('//*[@id="medicationForm"]/fieldset/div[1]/table[7]/tbody/tr[2]/td[2]/fieldset/table/tbody/tr/td/div[1]/label/input').click()
+    
 # ------------- Care Management -----------------------------------------------------------------------------------
+def oasissoc_careman():
+    time.sleep(5)
+    m1100_7 = config.driver.find_element_by_xpath('//*[@id="careForm"]/fieldset/div[1]/table[2]/tbody/tr[2]/td/table/tbody/tr[4]/td[4]/div/label/input').click()
+    m2102_1 = config.driver.find_element_by_xpath('//*[@id="M2102_CARE_TYPE_SRC_SPRVSN"]').click()
+    m2200_000 = config.driver.find_element_by_xpath('//*[@id="careForm"]/fieldset/div[1]/table[4]/tbody/tr[2]/td[2]/table/tbody/tr/td/label/input').send_keys("000")
+    dme_none = config.driver.find_element_by_xpath('//*[@id="tooltip_wr8"]/div[2]/div/label/input').click()
+  
 
 
 
-
+    #musstat_wnl = config.driver.find_element_by_xpath('').click()
     #config.driver.close()
     
     

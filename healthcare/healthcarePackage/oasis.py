@@ -13,7 +13,7 @@ config.driver.maximize_window()
 config.driver.get("https://qado.medisource.com/login")
 
 #login function
-login.login("superagent@unitest", "Tester2021!")
+login.login("superagent@unitest", "Tester2021@")
 config.driver.get("https://qado.medisource.com/patients/admitted")
 time.sleep(5)
 
@@ -23,6 +23,13 @@ search_patient.send_keys("Automated")
 time.sleep(5)
 patientresult = config.driver.find_element_by_xpath("//*[@id='content']/data/div/div[2]/div/table/tbody/tr[2]").click()
 time.sleep(5)
+
+
+# ------------------------------------------------------------------------------------------------
+#  MAIN OASIS CODE
+# ------------------------------------------------------------------------------------------------
+
+
 
 #Open the OASIS 
 clickoasis = config.driver.find_element_by_xpath("//*[@id='parent']/div/div[1]/div/div[5]/div[1]/table/tbody/tr[2]/td[2]/a").click()
@@ -58,7 +65,7 @@ completing_oasis.oasissoc_timeinout("1200", "1600")
 completing_oasis.oasissoc_demographics(todaynow, "Early", ssn)
 
 # ------------- Diagnosis -----------------------------------------------------------------------------------
-diagnosesmedhis.click()
+#diagnosesmedhis.click()
 #This declares the value for m0s with multiple items
 m1028 = [3] #values 1,2,3
 m0133 = [1,2,3,4,5,6,7,8,10]
@@ -105,15 +112,16 @@ neurobehav.click()
 completing_oasis.oasissoc_neurobehav()
 
 # ------------- ADL / IADL / Musculoskeletal -----------------------------------------------------------------------------------
-#adlmusco.click()
-#completing_oasis.oasissoc_adlmusco()
+adlmusco.click()
+completing_oasis.oasissoc_adlmusco()
 
 # ------------- Medication -----------------------------------------------------------------------------------
-
-
+medication.click()
+completing_oasis.oasissoc_medication()
 
 # ------------- Care Management -----------------------------------------------------------------------------------
-
+careman.click()
+completing_oasis.oasissoc_careman()
 
 savebtn.click()
 
