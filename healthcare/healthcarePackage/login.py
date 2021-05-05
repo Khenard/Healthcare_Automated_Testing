@@ -1,5 +1,8 @@
 import config, time
 
+# ------------------------------------------------------------------------------------------------
+#  LOGIN
+# ------------------------------------------------------------------------------------------------
 def login(un, up):
     #Get element and applied set variables
     usern = config.driver.find_element_by_id("loginemail").send_keys(un)

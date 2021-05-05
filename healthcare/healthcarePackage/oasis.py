@@ -5,19 +5,24 @@ from datetime import date
 
 today = date.today()
 todaynow = today.strftime("%m/%d/%Y")
-
 ssn = random.randint(0, 9999999999)
 
-#Open Chrome and navigate to realtime workflow
+# ------------------------------------------------------------------------------------------------
+#  REDIRECTION
+# ------------------------------------------------------------------------------------------------
 config.driver.maximize_window()
 config.driver.get("https://qado.medisource.com/login")
 
-#login function
+# ------------------------------------------------------------------------------------------------
+#  LOGIN
+# ------------------------------------------------------------------------------------------------
 login.login("superagent@unitest", "Tester2021@")
 config.driver.get("https://qado.medisource.com/patients/admitted")
 time.sleep(5)
 
-#search Automated Patient and click the top/first result
+# ------------------------------------------------------------------------------------------------
+#  search Automated Patient and click the top/first result
+# ------------------------------------------------------------------------------------------------
 search_patient = config.driver.find_element_by_xpath("//*[@id='searchbar__wrapper']/div/input")
 search_patient.send_keys("Automated")
 time.sleep(5)
@@ -29,24 +34,25 @@ time.sleep(5)
 #  MAIN OASIS CODE
 # ------------------------------------------------------------------------------------------------
 
-
-
 #Open the OASIS 
 clickoasis = config.driver.find_element_by_xpath("//*[@id='parent']/div/div[1]/div/div[5]/div[1]/table/tbody/tr[2]/td[2]/a").click()
 time.sleep(5)
+
 #click the OASIS edit button
 oasisedit = config.driver.find_element_by_xpath("//*[@id='titleNoteBar']/div[4]/div[2]/button").click()
 
 # ------------------------------------------------------------------------------------------------
-#Functions for completing OASIS per tab
+# FUNCTIONS FOR COMPLETING OASIS PER TAB 
+# ------------------------------------------------------------------------------------------------
+
 time.sleep(5)
 
-#declare the tabs, save button, and previous next button 
+# Declare the tabs, save button, and previous next button 
 savebtn = config.driver.find_element_by_css_selector("#titleNoteBar > div.col-sm-12.p-0.title__section.m-b-10.oasis_actionBtnTab > div:nth-child(2) > button.btn__success.m-l-10.waves-effect.ng-scope")
 previousbtn = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div/div/fieldset/div[2]/div/div[4]/button[1]')
 nextbtn = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div/div/fieldset/div[2]/div/div[4]/button[2]')
  
-#OASIS button
+#OASIS Buttons
 democrecord = config.driver.find_element_by_xpath('//*[@id="clinical"]')
 diagnosesmedhis = config.driver.find_element_by_xpath('//*[@id="diagnosis"]')
 vssensory = config.driver.find_element_by_xpath('//*[@id="sensory"]')
@@ -58,14 +64,21 @@ adlmusco = config.driver.find_element_by_xpath('//*[@id="adl"]')
 medication = config.driver.find_element_by_xpath('//*[@id="medication"]')
 careman = config.driver.find_element_by_xpath('//*[@id="careManagement"]')
 
-# ------------- Time In and Time Out -----------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------------------------
+#  TIME IN AND TIME OUT
+# ------------------------------------------------------------------------------------------------
 completing_oasis.oasissoc_timeinout("1200", "1600")
 
-# ------------- Demographics -----------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------------------------
+#  DEMOGRAPHICS
+# ------------------------------------------------------------------------------------------------
 completing_oasis.oasissoc_demographics(todaynow, "Early", ssn)
 
-# ------------- Diagnosis -----------------------------------------------------------------------------------
-#diagnosesmedhis.click()
+# ------------------------------------------------------------------------------------------------
+#  DIAGNOSIS
+# ------------------------------------------------------------------------------------------------
+diagnosesmedhis.click()
+
 #This declares the value for m0s with multiple items
 m1028 = [3] #values 1,2,3
 m0133 = [1,2,3,4,5,6,7,8,10]
@@ -81,7 +94,10 @@ completing_oasis.oasissoc_diagnosesmedhis(
     "59",
     "153"
     )
-# ------------- Vital Signs / Sensory -----------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------------------------
+#  VITAL SIGNS / SENSORY
+# ------------------------------------------------------------------------------------------------
 vssensory.click()
 completing_oasis.oasissoc_vssensory(
     "97.4",
@@ -94,36 +110,55 @@ completing_oasis.oasissoc_vssensory(
     "2",
     "128"
     )
-    
-# ------------- Integumentary / Endocrine -----------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------------------------
+#  INTEGUMENTARY / ENDOCRINE
+# ------------------------------------------------------------------------------------------------
 integendo.click()
 completing_oasis.oasissoc_integendo()
 
-# ------------- Cardiopulmonary -----------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------------------------
+#  CARDIOPULMONARY
+# ------------------------------------------------------------------------------------------------
 cardio.click()
 completing_oasis.oasissoc_cardio()
 
-# ------------- Nutrition / Elimination -----------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------------------------
+#  NUTRITION / ELIMINATION
+# ------------------------------------------------------------------------------------------------
 nutrielim.click()
 completing_oasis.oasissoc_nutrielim()
 
-# ------------- Neurologic / Behavioral -----------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------------------------
+#  NEUROLOGIC / BEHAVIORAL
+# ------------------------------------------------------------------------------------------------
 neurobehav.click()
 completing_oasis.oasissoc_neurobehav()
 
-# ------------- ADL / IADL / Musculoskeletal -----------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------------------------
+#  ADL / IADL / MUSCULOSKELETAL
+# ------------------------------------------------------------------------------------------------
 adlmusco.click()
 completing_oasis.oasissoc_adlmusco()
 
-# ------------- Medication -----------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------------------------
+#  MEDICATION
+# ------------------------------------------------------------------------------------------------
 medication.click()
 completing_oasis.oasissoc_medication()
 
-# ------------- Care Management -----------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------------------------
+#  CARE MANAGEMENT
+# ------------------------------------------------------------------------------------------------
 careman.click()
 completing_oasis.oasissoc_careman()
 
+
+# ------------------------------------------------------------------------------------------------
+#  SAVE 
+# ------------------------------------------------------------------------------------------------
 savebtn.click()
 
 time.sleep(8)
+
 config.driver.close()

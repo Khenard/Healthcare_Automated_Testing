@@ -6,27 +6,23 @@ from datetime import date
 today = date.today()
 todaynow = today.strftime("%m/%d/%Y")
 
+#random number for patient name and SSN 
 name_random = ["Leonel", "Juana", "Deandra", "Jazmin", "Keila", "Claudine", "Kathleen", "Sandra", "Yael", "Frieda", "Emile", "Dane", "Carmella", "Rosalva", "Denita", "Marvis", "Vilma", "Lucila", "Coral", "James", "Jerald", "Buford", "Vennie"  
                "Cathy", "Melody", "Siobhan", "Annmarie", "Tanna", "Liliana", "Keshia", "Irwin", "Jacqualine", "Leigh", "Sulema", "Marty", "Mike", "Shonta", "Lane", "Eldora", "Adah", "Leland", "Teresia", "Chloe", "Cordie", "Hal", "Sherryl", "Reggie", "Chery", "Columbus", "Edith"]
 pn = random.choice(name_random)
-#random number for patient name and SSN 
-#pn = random.randint(0, 999)
 ssn = random.randint(0, 9999999999)
 
-
-
-#Open Chrome and navigate to realtime workflow
+# ------------------------------------------------------------------------------------------------
+#  REDIRECTION
+# ------------------------------------------------------------------------------------------------
 config.driver.maximize_window()
 config.driver.get("https://app.medisource.com/login")
 
 # ------------------------------------------------------------------------------------------------
 #  LOGIN
 # ------------------------------------------------------------------------------------------------
-
-#login function
 login.login("superagent@realtime", "Tester2021!")
 time.sleep(5)
-
 
 # ------------------------------------------------------------------------------------------------
 #  PATIENT ADMISSION

@@ -39,11 +39,17 @@ def admission(
         moeigthy
         ):
     time.sleep(5)
+    
     #Navigate to Add patient page
     config.driver.get("https://app.medisource.com/patient")
     time.sleep(8)
+    
     #get element and assign variables
     skip_eligibility = config.driver.find_element_by_link_text("Skip").click() #skip button
+
+# ------------------------------------------------------------------------------------------------
+#  MAIN PATIENT ADMISSION CODE
+# ------------------------------------------------------------------------------------------------
 
     #Patient Information
     referral_date = config.driver.find_element_by_id("refDate").send_keys(refdate)
@@ -109,35 +115,40 @@ def admission(
     ec_phone = config.driver.find_element_by_id("ec_phone").send_keys(ecp1)
     ec_other_phone = config.driver.find_element_by_id("ec_other_phone").send_keys(ecp2)
     
-    #beyond this part, the automation will automatically select the first entry of each dropdown
-    time.sleep(5)
+# ------------------------------------------------------------------------------------------------
+#  beyond this part, the automation will automatically select the first entry of each dropdown
+# ------------------------------------------------------------------------------------------------
+    time.sleep(2)
+    
     #Physician Information
     attending_physician = config.driver.find_element_by_css_selector("#physician_attending_chosen > .chosen-single").click()
     at_result = config.driver.find_element_by_css_selector(".active-result:nth-child(2)").click()
     
-    time.sleep(5)
+    time.sleep(2)
+    
+    #Primary Insurance Information
     primary_insurance = config.driver.find_element_by_css_selector("#primary_insurance_chosen > .chosen-single").click()
     pi_result = config.driver.find_element_by_css_selector("#primary_insurance_chosen .active-result:nth-child(2)").click()
     
+    #Scrolldown
+    scrolldown = config.driver.execute_script("window.scrollTo(0,6500)")
+    
+    #Admission type
     admission_type = config.driver.find_element_by_css_selector("#admissiontype_chosen > .chosen-single").click()
     at_result = config.driver.find_element_by_css_selector("#admissiontype_chosen .active-result:nth-child(1)").click()
     
     pointoforigin = config.driver.find_element_by_css_selector("#point_of_origin_chosen > .chosen-single").click()
     poo_result = config.driver.find_element_by_css_selector("#point_of_origin_chosen .active-result:nth-child(1)").click()
     
-    time.sleep(5)
+    time.sleep(2)
     referral_type = config.driver.find_element_by_css_selector("#referral_type_chosen > .chosen-single").click()
-    time.sleep(3)
+    time.sleep(2)
     rt_result = config.driver.find_element_by_css_selector("#referral_type_chosen .active-result:nth-child(2)").click()
     
-    time.sleep(5)
+    time.sleep(2)
     referral_source = config.driver.find_element_by_css_selector("#referral_source_id_chosen > .chosen-single").click()
-    time.sleep(3)
+    time.sleep(2)
     rs_result = config.driver.find_element_by_css_selector("#referral_source_id_chosen .active-result:nth-child(2)").click()
-    
-    #time.sleep(5)
-
-    scrolldown = config.driver.execute_script("window.scrollTo(0,6500)")
     
     #Hospitalization Information
     hospital = config.driver.find_element_by_css_selector("#hospital_id_chosen > .chosen-single").click()
@@ -147,13 +158,13 @@ def admission(
     time.sleep(2)
     h_admitdate = config.driver.find_element_by_id("admit_date").send_keys(hadmit)
     h_discharge = config.driver.find_element_by_id("discharge_date").send_keys(hdc)
+    
     #Diagnosis / Pre-admission Orders
     dsurgery = config.driver.find_element_by_id("diagnosis_surgery").send_keys(dsur)
     option = config.driver.find_element_by_xpath("//*[@id='diagnosis_allergies']/div/div/input").click()
     dallergies = config.driver.find_element_by_xpath("//*[@id='diagnosis_allergies']/div/div/input").send_keys(dallergies, Keys.ENTER)
-    
+
     #M0080
-    #we will create conditions here depending on the passed arguments. Create an empty variable for the M0800, mo
     mo = ""
     
     if moeigthy == "RN":

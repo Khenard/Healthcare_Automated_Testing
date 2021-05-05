@@ -4,15 +4,17 @@ from selenium.webdriver.common.by import By
 from selenium import webdriver
 from _ast import Div
 
-# ------------- Time In and Time Out -----------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------------------------
+#  TIME IN AND TIME OUT
+# ------------------------------------------------------------------------------------------------
 def oasissoc_timeinout(ti, to):
     timein = config.driver.find_element_by_name("timeIn").send_keys(ti)
     timeout = config.driver.find_element_by_name("timeOut").send_keys(to)
 
-# ------------- Demographics -----------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------------------------
+#  DEMOGRAPHICS
+# ------------------------------------------------------------------------------------------------
 def oasissoc_demographics(todaynow, episodetiming, ssn):
-    #time.sleep(3)
-    #m0063_na = config.driver.find_elements_by_xpath('//*[@id="oasisForm"]/fieldset/table[1]/tbody/tr[12]/td[3]/table/tbody/tr/td[2]/div/label/input').click()
     time.sleep(3)
     m0063 = config.driver.find_element_by_name('M0063_MEDICARE_NUM').send_keys(ssn)
     m0090 = config.driver.find_element_by_id("m0090_info_completed_dt").send_keys(todaynow)
@@ -23,6 +25,7 @@ def oasissoc_demographics(todaynow, episodetiming, ssn):
     
     #For Episode Timing
     etiming = ""
+    
     if episodetiming == "Early":
         etiming = config.driver.find_element_by_xpath("//*[@id='oasisForm']/fieldset/table[1]/tbody/tr[28]/td[2]/table/tbody/tr/td/div/div/div[1]/div[1]/label/input")
     elif episodetiming == "Later":
@@ -31,16 +34,19 @@ def oasissoc_demographics(todaynow, episodetiming, ssn):
         etiming = config.driver.find_element_by_xpath("//*[@id='oasisForm']/fieldset/table[1]/tbody/tr[28]/td[2]/table/tbody/tr/td/div/div/div[2]/div[1]/label/input")
     elif episodetiming == "NA":
         etiming = config.driver.find_element_by_xpath("//*[@id='oasisForm']/fieldset/table[1]/tbody/tr[28]/td[2]/table/tbody/tr/td/div/div/div[2]/div[2]/label/input")
+    
     etiming.click()
     
     m0140_asian = config.driver.find_element_by_xpath("//*[@id='M0140_ETHNIC_ASIAN']/input").click()
     m0150_medicare_trad = config.driver.find_element_by_xpath("//*[@id='M0150_CPAY_MCARE_FFS']/input").click()
-    #m0150_private_insurance = config.driver.find_element_by_xpath("//*[@id='M0150_CPAY_PRIV_INS']/input").click()
     m1000_skilled_nursing_facility = config.driver.find_element_by_name("M1000_DC_SNF_14_DA").click()
     m1005_unknown = config.driver.find_element_by_name("M1005_INP_DSCHG_UNKNOWN").click()
+    
     time.sleep(5)
 
-# ------------- Diagnosis ----------------------------------------------------------------------------------- 
+# ------------------------------------------------------------------------------------------------
+#  DIAGNOSIS
+# ------------------------------------------------------------------------------------------------
 def oasissoc_diagnosesmedhis(
         pdx,
         sdx1,
@@ -123,7 +129,7 @@ def oasissoc_diagnosesmedhis(
         m1028_items_selected = config.driver.find_element_by_xpath("//*[@class='m-0']/label["+str(x)+"]/input")
         m1028_items_selected.click()
     time.sleep(2)
-    
+
     m1030 = config.driver.find_element_by_xpath("//*[@id='M1030_THH_NONE_ABOVE']/input").click() #Value is None of the above
     
     #m0133_items
@@ -150,7 +156,9 @@ def oasissoc_diagnosesmedhis(
     pmh_oh_nh = config.driver.find_element_by_name("SOOMEDICAL0146").click()
     pmh_s_nh = config.driver.find_element_by_name("SOOMEDICAL0147").click()
 
-# ------------- Vital Signs / Sensory -----------------------------------------------------------------------------------  
+# ------------------------------------------------------------------------------------------------
+#  VITAL SIGNS / SENSORY
+# ------------------------------------------------------------------------------------------------
 def oasissoc_vssensory(
         vstemp,
         vspulse,
@@ -196,8 +204,10 @@ def oasissoc_vssensory(
     ss_throat_wnl = config.driver.find_element_by_name("SOOSENSORY0063").click() 
     ss_speech_wnl = config.driver.find_element_by_name("SOOSENSORY0067").click() 
     ss_touch_wnl = config.driver.find_element_by_name("SOOSENSORY0070").click() 
-    
-# ------------- Integumentary / Endocrine -----------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------------------------
+#  INTEGUMENTARY / ENDOCRINE
+# ------------------------------------------------------------------------------------------------
 def oasissoc_integendo():
     time.sleep(5)
     is_wnl = config.driver.find_element_by_xpath("//*[@id='integForm']/fieldset/div[1]/table[1]/tbody/tr[1]/td/table/tbody/tr/td[2]/div/label/input").click()
@@ -216,14 +226,18 @@ def oasissoc_integendo():
     
     endosys_wnl = config.driver.find_element_by_xpath("//*[@id='integForm']/fieldset/div[3]/table[1]/tbody/tr[1]/td/table/tbody/tr/td[2]/div/label/input").click()
 
-# ------------- Cardiopulmonary -----------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------------------------
+#  CARDIOPULMONARY
+# ------------------------------------------------------------------------------------------------
 def oasissoc_cardio():
     time.sleep(5)
     m1400_0 = config.driver.find_element_by_xpath('//*[@id="M1400_WHEN_DYSPNEIC"]/div[1]/label/input').click()
     resps_wnl = config.driver.find_element_by_xpath('//*[@id="cardioForm"]/div/fieldset/div[1]/table[2]/tbody/tr[1]/td/table/tbody/tr/td[2]/div/label/input').click()
     cardio_wnl = config.driver.find_element_by_xpath('//*[@id="cardioForm"]/div/fieldset/div[1]/table[10]/tbody/tr[1]/td/table/tbody/tr/td[2]/div/label/input').click()
     
-# ------------- Nutrition / Elimination -----------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------------------------
+#  NUTRITION / ELIMINATION
+# ------------------------------------------------------------------------------------------------
 def oasissoc_nutrielim():
     time.sleep(5)
     uppergistat_wnl = config.driver.find_element_by_xpath('//*[@id="elimForm"]/fieldset/div[1]/table[1]/tbody/tr[1]/td/table/tbody/tr/td[2]/div/label/input').click()
@@ -235,8 +249,10 @@ def oasissoc_nutrielim():
     lowergistat_wnl = config.driver.find_element_by_xpath('//*[@id="elimForm"]/fieldset/div[1]/table[20]/tbody/tr[1]/td[2]/label[1]/input').click()
     m1620_na = config.driver.find_element_by_xpath('//*[@id="elimForm"]/fieldset/div[1]/table[22]/tbody/tr[2]/td[2]/table[2]/tbody/tr/td/div/div[7]/label').click()
     m1630_0 = config.driver.find_element_by_xpath('//*[@id="elimForm"]/fieldset/div[1]/table[23]/tbody/tr[2]/td[2]/table[2]/tbody/tr/td/div/label[1]/input').click()
-    
-# ------------- Neurologic / Behavioral -----------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------------------------
+#  NEUROLOGIC / BEHAVIORAL
+# ------------------------------------------------------------------------------------------------
 def oasissoc_neurobehav():
     time.sleep(5)
     neurostat_wnl = config.driver.find_element_by_xpath('//*[@id="neuroForm"]/div/fieldset/div[1]/table[1]/tbody/tr[1]/td/table/tbody/tr/td[2]/div/label/input').click()
@@ -252,7 +268,9 @@ def oasissoc_neurobehav():
     soabuse = config.driver.find_element_by_xpath('//*[@id="neuroForm"]/div/fieldset/div[1]/table[10]/tbody/tr[6]/td[2]/table/tbody/tr/td/label/input').click()
     spiritual_no = config.driver.find_element_by_xpath('//*[@id="neuroForm"]/div/fieldset/div[1]/table[10]/tbody/tr[8]/td[2]/table/tbody/tr/td/label/input').click()
     
-# ------------- ADL / IADL / Musculoskeletal -----------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------------------------
+#  ADL / IADL / MUSCULOSKELETAL
+# ------------------------------------------------------------------------------------------------
 def oasissoc_adlmusco():
     
     gg0100_3 = "3"
@@ -353,7 +371,9 @@ def oasissoc_adlmusco():
     gg0130_h2_2 = config.driver.find_element_by_xpath('//*[@id="GG0130H1"]//div[@id="____name_____chosen"]/div/div/input').send_keys(gg_6, Keys.ENTER)
 """
 
-# ------------- Medication -----------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------------------------
+#  MEDICATION
+# ------------------------------------------------------------------------------------------------
 def oasissoc_medication():
     time.sleep(5)
     highrisk_none = config.driver.find_element_by_xpath('//*[@id="medicationForm"]/fieldset/div[1]/table[1]/tbody/tr[1]/td/label/input').click()
@@ -362,7 +382,9 @@ def oasissoc_medication():
     m2020_1 = config.driver.find_element_by_xpath('//*[@id="medicationForm"]/fieldset/div[1]/table[6]/tbody/tr[2]/td[2]/fieldset/table/tbody/tr/td/div[2]/label/input').click()
     m2030_0 = config.driver.find_element_by_xpath('//*[@id="medicationForm"]/fieldset/div[1]/table[7]/tbody/tr[2]/td[2]/fieldset/table/tbody/tr/td/div[1]/label/input').click()
     
-# ------------- Care Management -----------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------------------------
+#  CARE MANAGEMENT
+# ------------------------------------------------------------------------------------------------
 def oasissoc_careman():
     time.sleep(5)
     m1100_7 = config.driver.find_element_by_xpath('//*[@id="careForm"]/fieldset/div[1]/table[2]/tbody/tr[2]/td/table/tbody/tr[4]/td[4]/div/label/input').click()
@@ -370,10 +392,3 @@ def oasissoc_careman():
     m2200_000 = config.driver.find_element_by_xpath('//*[@id="careForm"]/fieldset/div[1]/table[4]/tbody/tr[2]/td[2]/table/tbody/tr/td/label/input').send_keys("000")
     dme_none = config.driver.find_element_by_xpath('//*[@id="tooltip_wr8"]/div[2]/div/label/input').click()
   
-
-
-
-    #musstat_wnl = config.driver.find_element_by_xpath('').click()
-    #config.driver.close()
-    
-    
