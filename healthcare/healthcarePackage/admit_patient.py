@@ -38,10 +38,11 @@ def admission(
         dallergies,
         moeigthy
         ):
+    
     time.sleep(5)
     
     #Navigate to Add patient page
-    config.driver.get("https://app.medisource.com/patient")
+    config.driver.get("https://qado.medisource.com/patient")
     time.sleep(8)
     
     #get element and assign variables
@@ -198,6 +199,7 @@ def admission(
        
     time.sleep(5)
     
-    
+   
     #config.driver.close()
+
     

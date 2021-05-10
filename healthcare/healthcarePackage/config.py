@@ -9,6 +9,7 @@ from selenium.webdriver.support import expected_conditions
 import os
 import time
 
+
 #Configure web driver
 chromedriver = os.path.abspath("chromedriver.exe")
 driver = webdriver.Chrome(chromedriver)

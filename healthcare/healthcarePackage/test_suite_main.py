@@ -16,12 +16,12 @@ ssn = random.randint(0, 9999999999)
 #  REDIRECTION
 # ------------------------------------------------------------------------------------------------
 config.driver.maximize_window()
-config.driver.get("https://app.medisource.com/login")
+config.driver.get("https://qado.medisource.com/login")
 
 # ------------------------------------------------------------------------------------------------
 #  LOGIN
 # ------------------------------------------------------------------------------------------------
-login.login("superagent@realtime", "Tester2021!")
+login.login("superagent@unitest", "Tester2021@")
 time.sleep(5)
 
 # ------------------------------------------------------------------------------------------------
@@ -65,9 +65,9 @@ admit_patient.admission(
     "RN"
     )
 
-#This function is to get the current browser url to get the link of the current patient dashboard
-config.driver.get(config.driver.current_url)
 
+#This function is to get the current browser url to get the link of the current patient dashboard
+getlastpatient = config.driver.get(config.driver.current_url)
 
 # ------------------------------------------------------------------------------------------------
 #  MAIN OASIS CODE
@@ -87,8 +87,8 @@ time.sleep(5)
 
 #declare the tabs, save button, and previous next button 
 savebtn = config.driver.find_element_by_css_selector("#titleNoteBar > div.col-sm-12.p-0.title__section.m-b-10.oasis_actionBtnTab > div:nth-child(2) > button.btn__success.m-l-10.waves-effect.ng-scope")
-previousbtn = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div/div/fieldset/div[2]/div/div[4]/button[1]')
-nextbtn = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div/div/fieldset/div[2]/div/div[4]/button[2]')
+#previousbtn = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div/div/fieldset/div[2]/div/div[4]/button[1]')
+#nextbtn = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div/div/fieldset/div[2]/div/div[4]/button[2]')
  
 #OASIS button
 democrecord = config.driver.find_element_by_xpath('//*[@id="clinical"]')
