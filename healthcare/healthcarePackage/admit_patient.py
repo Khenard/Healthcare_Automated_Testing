@@ -125,12 +125,13 @@ def admission(
     attending_physician = config.driver.find_element_by_css_selector("#physician_attending_chosen > .chosen-single").click()
     at_result = config.driver.find_element_by_css_selector(".active-result:nth-child(2)").click()
     
-    time.sleep(2)
+    time.sleep(5)
     
     #Primary Insurance Information
     primary_insurance = config.driver.find_element_by_css_selector("#primary_insurance_chosen > .chosen-single").click()
     pi_result = config.driver.find_element_by_css_selector("#primary_insurance_chosen .active-result:nth-child(2)").click()
     
+    time.sleep(2)
     #Scrolldown
     scrolldown = config.driver.execute_script("window.scrollTo(0,6500)")
     
