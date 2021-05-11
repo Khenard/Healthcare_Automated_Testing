@@ -1,5 +1,5 @@
 import config
-import login, admit_patient, completing_oasis
+import admit_patient, completing_oasis, servers
 import random, time
 from datetime import date
 
@@ -12,21 +12,28 @@ name_random = ["Leonel", "Juana", "Deandra", "Jazmin", "Keila", "Claudine", "Kat
 pn = random.choice(name_random)
 ssn = random.randint(0, 9999999999)
 
-# ------------------------------------------------------------------------------------------------
-#  REDIRECTION
-# ------------------------------------------------------------------------------------------------
-config.driver.maximize_window()
-config.driver.get("https://qado.medisource.com/login")
 
+#--------------------------------------------------------------------------------------------
+#  SELECT SERVER FOR TEST
 # ------------------------------------------------------------------------------------------------
-#  LOGIN
-# ------------------------------------------------------------------------------------------------
-login.login("superagent@unitest", "Tester2021@")
-time.sleep(5)
+
+#QA server
+#servers.qaserver()
+#Navigate to Add patient page
+#config.driver.get("https://qado.medisource.com/patient")
+
+
+#Live server
+servers.liveserver()
+#Navigate to Add patient page
+config.driver.get("https://app.medisource.com/patient")
+
 
 # ------------------------------------------------------------------------------------------------
 #  PATIENT ADMISSION
 # ------------------------------------------------------------------------------------------------
+
+time.sleep(5)
 
 #admission patient
 admit_patient.admission(

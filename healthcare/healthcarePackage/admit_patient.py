@@ -41,10 +41,6 @@ def admission(
     
     time.sleep(5)
     
-    #Navigate to Add patient page
-    config.driver.get("https://qado.medisource.com/patient")
-    time.sleep(8)
-    
     #get element and assign variables
     skip_eligibility = config.driver.find_element_by_link_text("Skip").click() #skip button
 
