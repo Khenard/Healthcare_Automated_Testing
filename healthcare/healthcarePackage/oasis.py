@@ -6,10 +6,12 @@ today = date.today()
 todaynow = today.strftime("%m/%d/%Y")
 ssn = random.randint(0, 9999999999)
 
-def oasis():
-
-    #config.driver.get("https://qado.medisource.com/patients/admitted") #QA
-    config.driver.get("https://app.medisource.com/patients/admitted") #LIVE
+def oasis(test_server):
+    
+    if test_server == "qa":
+        config.driver.get("https://qado.medisource.com/patients/admitted") #QA
+    elif test_server == "live":
+        config.driver.get("https://app.medisource.com/patients/admitted") #LIVE
 
     time.sleep(5)
     
