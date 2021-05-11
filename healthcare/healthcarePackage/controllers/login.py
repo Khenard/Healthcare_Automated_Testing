@@ -1,8 +1,6 @@
-import config, time
+from controllers import config
+import time
 
-# ------------------------------------------------------------------------------------------------
-#  LOGIN
-# ------------------------------------------------------------------------------------------------
 def login(un, up):
     #Get element and applied set variables
     usern = config.driver.find_element_by_id("loginemail").send_keys(un)
@@ -10,5 +8,3 @@ def login(un, up):
     time.sleep(1)
     submitbtn = config.driver.find_element_by_xpath("//*[@id='mhLP-ln']/div[2]/form/div[6]/button").click()
     time.sleep(1)
-
-

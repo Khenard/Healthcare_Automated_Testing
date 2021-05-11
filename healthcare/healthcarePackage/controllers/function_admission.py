@@ -1,4 +1,5 @@
-import config, time
+from controllers import config, login, servers
+import time
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium import webdriver
@@ -41,7 +42,6 @@ def admission(
     
     time.sleep(5)
     
-    #get element and assign variables
     skip_eligibility = config.driver.find_element_by_link_text("Skip").click() #skip button
 
 # ------------------------------------------------------------------------------------------------
