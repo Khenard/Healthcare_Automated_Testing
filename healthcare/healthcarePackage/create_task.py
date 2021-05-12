@@ -57,22 +57,23 @@ def create_task(test_server, continuous_test):
     #  FILL UP TASK MANAGER MODAL
     # ------------------------------------------------------------------------------------------------
     time.sleep(3)
-    
+        
     #task date
     taskdate = config.driver.find_element_by_xpath('//*[@id="selecteddate"]')
     taskdate.send_keys(finaltaskdate)
-    
+        
     #select task name - RN - Skilled Visit
     task = config.driver.find_element_by_xpath('//*[@id="tooltip_err7"]/div/div/div/a').click()
     task_name = config.driver.find_element_by_xpath('//*[@id="tooltip_err7"]/div/div/div/div/div/input').send_keys('RN - Skilled Visit', Keys.ENTER)
-    
+        
     #Uncheck the MDO
-    uncheck_mdo = config.driver.find_element_by_xpath('/html/body/div[1]/div/div/div/div/div[2]/div[1]/div/div/ng-form/div[3]/div[2]/div/label/input').click()
+    uncheck_mdo = config.driver.find_element_by_xpath('/html/body/div[11]/div/div/div/div/div[2]/div[1]/div/div/ng-form/div[3]/div[2]/div/label').click()
     
+    time.sleep(3) 
     #Create button
-    createbtn = config.driver.find_element_by_xpath('/html/body/div[1]/div/div/div/div/div[2]/div[2]/div/button[2]').click()
-    
-    
+    createbtn = config.driver.find_element_by_xpath('/html/body/div[11]/div/div/div/div/div[2]/div[2]/div/button[2]').click()
+        
+        
 
 
 

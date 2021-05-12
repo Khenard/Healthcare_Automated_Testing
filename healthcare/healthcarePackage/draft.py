@@ -59,9 +59,10 @@ task_name = config.driver.find_element_by_xpath('//*[@id="tooltip_err7"]/div/div
     
 #Uncheck the MDO
 uncheck_mdo = config.driver.find_element_by_xpath('/html/body/div[11]/div/div/div/div/div[2]/div[1]/div/div/ng-form/div[3]/div[2]/div/label').click()
-    
+
+time.sleep(3) 
 #Create button
-createbtn = config.driver.find_element_by_xpath('/html/body/div[1]/div/div/div/div/div[2]/div[2]/div/button[2]').click()
+createbtn = config.driver.find_element_by_xpath('/html/body/div[11]/div/div/div/div/div[2]/div[2]/div/button[2]').click()
     
     
 

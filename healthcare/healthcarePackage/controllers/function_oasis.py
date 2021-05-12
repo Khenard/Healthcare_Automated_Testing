@@ -308,6 +308,8 @@ def oasissoc_adlmusco():
     
     scrolldown = config.driver.execute_script("window.scrollTo(0,6500)")
     
+    
+    
 # To be continued on this part ------------------------------------------------    
 """ gg0100_a = config.driver.find_element_by_css_selector('#GG0100A_chosen > a').send_keys(Keys.DELETE) #click the select
     gg0100_a_text = config.driver.find_element_by_xpath('//*[@id="GG0100A_chosen"]/div/div/input').send_keys(Keys.DELETE) #search the value
