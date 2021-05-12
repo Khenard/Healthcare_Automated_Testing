@@ -5,11 +5,6 @@ from selenium.webdriver.common.by import By
 from selenium import webdriver
 from datetime import datetime, timedelta
 
-def getcurrentpatientlink(getlastpatientlink):
-    config.driver.get(getlastpatientlink)
-    time.sleep(5)
-    tasktab = config.driver.find_element_by_xpath('//*[@id="profile-main-header"]/div/ul/li[2]/a').click()
-    time.sleep(7)
 
 def create_task(test_server, continuous_test):
     
@@ -21,9 +16,7 @@ def create_task(test_server, continuous_test):
             config.driver.get("https://app.medisource.com/patientcare/4077AC97-7908-47DB-B101-2521331EF371/A0FECB17-89E0-46E6-95D7-06805592BA80/overview") #LIVE
     elif continuous_test == "yes":
         time.sleep(5)
-        #getcurrentpatientlink()
-
-        
+ 
     # ------------------------------------------------------------------------------------------------
     #  MAIN CREATE TASK FUNCTIONS
     # ------------------------------------------------------------------------------------------------

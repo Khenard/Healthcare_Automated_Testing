@@ -2,7 +2,6 @@ from controllers import config, login, function_admission, function_oasis, serve
 import random, time
 from datetime import date
 from re import search
-import create_task
 
 today = date.today()
 todaynow = today.strftime("%m/%d/%Y")
@@ -30,11 +29,8 @@ def oasis(test_server, continuous_test):
             searchpatient()
     elif continuous_test == "yes":
         time.sleep(2)
-        # This is to get the current link for the patient and pass to create_task.py
-        #getlastpatient = config.driver.current_url
-        #create_task.getcurrentpatientlink(getlastpatient)
     
-        
+  
     # ------------------------------------------------------------------------------------------------
     #  MAIN OASIS CODE
     # ------------------------------------------------------------------------------------------------
