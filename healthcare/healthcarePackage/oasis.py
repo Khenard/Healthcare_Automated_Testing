@@ -1,31 +1,40 @@
 from controllers import config, login, function_admission, function_oasis, servers
 import random, time
 from datetime import date
+from re import search
+import create_task
 
 today = date.today()
 todaynow = today.strftime("%m/%d/%Y")
 ssn = random.randint(0, 9999999999)
 
-def oasis(test_server):
-    
-    if test_server == "qa":
-        config.driver.get("https://qado.medisource.com/patients/admitted") #QA
-    elif test_server == "live":
-        config.driver.get("https://app.medisource.com/patients/admitted") #LIVE
-
+# ------------------------------------------------------------------------------------------------
+#  search Automated Patient and click the top/first result
+# ------------------------------------------------------------------------------------------------
+def searchpatient():
     time.sleep(5)
-    
-    # ------------------------------------------------------------------------------------------------
-    #  search Automated Patient and click the top/first result
-    # ------------------------------------------------------------------------------------------------
-    
     search_patient = config.driver.find_element_by_xpath("//*[@id='searchbar__wrapper']/div/input")
     search_patient.send_keys("Automated")
     time.sleep(5)
     patientresult = config.driver.find_element_by_xpath("//*[@id='content']/data/div/div[2]/div/table/tbody/tr[2]").click()
     time.sleep(5)
+
+def oasis(test_server, continuous_test):
     
+    if continuous_test == "no":
+        if test_server == "qa":
+            config.driver.get("https://qado.medisource.com/patients/admitted") #QA
+            searchpatient()
+        elif test_server == "live":
+            config.driver.get("https://app.medisource.com/patients/admitted") #LIVE
+            searchpatient()
+    elif continuous_test == "yes":
+        time.sleep(2)
+        # This is to get the current link for the patient and pass to create_task.py
+        #getlastpatient = config.driver.current_url
+        #create_task.getcurrentpatientlink(getlastpatient)
     
+        
     # ------------------------------------------------------------------------------------------------
     #  MAIN OASIS CODE
     # ------------------------------------------------------------------------------------------------
@@ -45,8 +54,8 @@ def oasis(test_server):
     
     # Declare the tabs, save button, and previous next button 
     savebtn = config.driver.find_element_by_css_selector("#titleNoteBar > div.col-sm-12.p-0.title__section.m-b-10.oasis_actionBtnTab > div:nth-child(2) > button.btn__success.m-l-10.waves-effect.ng-scope")
-    previousbtn = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div/div/fieldset/div[2]/div/div[4]/button[1]')
-    nextbtn = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div/div/fieldset/div[2]/div/div[4]/button[2]')
+    #previousbtn = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div/div/fieldset/div[2]/div/div[4]/button[1]')
+    #nextbtn = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div/div/fieldset/div[2]/div/div[4]/button[2]')
      
     #OASIS Buttons
     democrecord = config.driver.find_element_by_xpath('//*[@id="clinical"]')
@@ -74,10 +83,11 @@ def oasis(test_server):
     #  DIAGNOSIS
     # ------------------------------------------------------------------------------------------------
     diagnosesmedhis.click()
+    time.sleep(5)
     
     #This declares the value for m0s with multiple items
     m1028 = [3] #values 1,2,3
-    m0133 = [1,2,3,4,5,6,7,8,10]
+    m0133 = [1,2,3,4,5,6,7,8]
     function_oasis.oasissoc_diagnosesmedhis(
         "U07.1",
         "N39.0",
@@ -95,6 +105,7 @@ def oasis(test_server):
     #  VITAL SIGNS / SENSORY
     # ------------------------------------------------------------------------------------------------
     vssensory.click()
+    time.sleep(5)
     function_oasis.oasissoc_vssensory(
         "97.4",
         "85",
@@ -111,48 +122,60 @@ def oasis(test_server):
     #  INTEGUMENTARY / ENDOCRINE
     # ------------------------------------------------------------------------------------------------
     integendo.click()
+    time.sleep(5)
     function_oasis.oasissoc_integendo()
     
     # ------------------------------------------------------------------------------------------------
     #  CARDIOPULMONARY
     # ------------------------------------------------------------------------------------------------
     cardio.click()
+    time.sleep(5)
     function_oasis.oasissoc_cardio()
     
     # ------------------------------------------------------------------------------------------------
     #  NUTRITION / ELIMINATION
     # ------------------------------------------------------------------------------------------------
     nutrielim.click()
+    time.sleep(5)
     function_oasis.oasissoc_nutrielim()
     
     # ------------------------------------------------------------------------------------------------
     #  NEUROLOGIC / BEHAVIORAL
     # ------------------------------------------------------------------------------------------------
     neurobehav.click()
+    time.sleep(5)
     function_oasis.oasissoc_neurobehav()
     
     # ------------------------------------------------------------------------------------------------
     #  ADL / IADL / MUSCULOSKELETAL
     # ------------------------------------------------------------------------------------------------
     adlmusco.click()
+    time.sleep(5)
     function_oasis.oasissoc_adlmusco()
     
     # ------------------------------------------------------------------------------------------------
     #  MEDICATION
     # ------------------------------------------------------------------------------------------------
     medication.click()
+    time.sleep(5)
     function_oasis.oasissoc_medication()
     
     # ------------------------------------------------------------------------------------------------
     #  CARE MANAGEMENT
     # ------------------------------------------------------------------------------------------------
     careman.click()
+    time.sleep(5)
     function_oasis.oasissoc_careman()
     
     
     # ------------------------------------------------------------------------------------------------
     #  SAVE 
     # ------------------------------------------------------------------------------------------------
+    time.sleep(5)
     savebtn.click()
     
-    time.sleep(5)
+    time.sleep(3)
+    
+  
+    
+    

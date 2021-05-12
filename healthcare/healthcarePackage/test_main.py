@@ -3,9 +3,9 @@ import random, time
 from datetime import date
 import admission, oasis, create_task
 
-# ------------- Change the value to qa or live ------------- #
 
-test_server = "live"
+test_server = "live" # Change the value to qa or live
+continuous_test = "yes" # Change the value to yes or no Yes - admitted patient will continue to oasis, no means search existing patients
 
 if test_server == "qa":
     servers.qaserver()
@@ -17,9 +17,9 @@ elif test_server == "live":
 
 admission.admission(test_server)
 
-oasis.oasis(test_server)
+oasis.oasis(test_server, continuous_test)
 
-#create_task.create_task(test_server)
+create_task.create_task(test_server, continuous_test)
 
 
 

@@ -5,15 +5,25 @@ from selenium.webdriver.common.by import By
 from selenium import webdriver
 from datetime import datetime, timedelta
 
-def create_task(test_server):
-    
-    if test_server == "qa":
-        config.driver.get("https://qado.medisource.com/patientcare/6AC5254A-5F58-4162-8A64-4B7B749BCA3E/190ABC8F-75B0-49F7-BAC2-06A43EC9ACCF/overview") #QA
-    elif test_server == "live":
-        config.driver.get("https://app.medisource.com/patientcare/9962299C-1274-4944-9246-FB35680ED6F6/F7180EC0-F8AC-4C07-ADF5-6C33D01C0DEC/overview") #LIVE
-
+def getcurrentpatientlink(getlastpatientlink):
+    config.driver.get(getlastpatientlink)
     time.sleep(5)
- 
+    tasktab = config.driver.find_element_by_xpath('//*[@id="profile-main-header"]/div/ul/li[2]/a').click()
+    time.sleep(7)
+
+def create_task(test_server, continuous_test):
+    
+        
+    if continuous_test == "no":
+        if test_server == "qa":
+            config.driver.get("https://qado.medisource.com/patientcare/6AC5254A-5F58-4162-8A64-4B7B749BCA3E/190ABC8F-75B0-49F7-BAC2-06A43EC9ACCF/overview") #QA
+        elif test_server == "live":
+            config.driver.get("https://app.medisource.com/patientcare/4077AC97-7908-47DB-B101-2521331EF371/A0FECB17-89E0-46E6-95D7-06805592BA80/overview") #LIVE
+    elif continuous_test == "yes":
+        time.sleep(5)
+        #getcurrentpatientlink()
+
+        
     # ------------------------------------------------------------------------------------------------
     #  MAIN CREATE TASK FUNCTIONS
     # ------------------------------------------------------------------------------------------------

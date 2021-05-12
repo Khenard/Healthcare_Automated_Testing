@@ -1,15 +1,16 @@
 from controllers import config, function_admission, function_oasis
 import random, time
 from datetime import date
+import oasis
 
 def admission(test_server):
     
     if test_server == "qa":
         config.driver.get("https://qado.medisource.com/patient") #QA
-        time.sleep(5)
+        time.sleep(2)
     elif test_server == "live":
         config.driver.get("https://app.medisource.com/patient") #LIVE
-        time.sleep(5)
+        time.sleep(2)
     
     today = date.today()
     todaynow = today.strftime("%m/%d/%Y")
@@ -17,16 +18,14 @@ def admission(test_server):
     #random number for patient name and SSN 
     name_random = ["Leonel", "Juana", "Deandra", "Jazmin", "Keila", "Claudine", "Kathleen", "Sandra", "Yael", "Frieda", "Emile", "Dane", "Carmella", "Rosalva", "Denita", "Marvis", "Vilma", "Lucila", "Coral", "James", "Jerald", "Buford", "Vennie"  
                    "Cathy", "Melody", "Siobhan", "Annmarie", "Tanna", "Liliana", "Keshia", "Irwin", "Jacqualine", "Leigh", "Sulema", "Marty", "Mike", "Shonta", "Lane", "Eldora", "Adah", "Leland", "Teresia", "Chloe", "Cordie", "Hal", "Sherryl", "Reggie", "Chery", "Columbus", "Edith"]
+    
     pn = random.choice(name_random)
     ssn = random.randint(0, 9999999999)
-    
     
     # ------------------------------------------------------------------------------------------------
     #  PATIENT ADMISSION
     # ------------------------------------------------------------------------------------------------
-    
-    time.sleep(5)
-    
+
     #admission patient
     function_admission.admission(
         todaynow,
@@ -65,7 +64,10 @@ def admission(test_server):
         )
     
     #This function is to get the current browser url to get the link of the current patient dashboard
-    getlastpatient = config.driver.get(config.driver.current_url)
+    #getlastpatient = config.driver.get(config.driver.current_url)
+    getlastpatient = config.driver.current_url
+    
+    #oasis.getpatientlink(getlastpatient)
     
     time.sleep(5)
    

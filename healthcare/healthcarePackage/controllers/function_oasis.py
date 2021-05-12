@@ -36,6 +36,7 @@ def oasissoc_demographics(todaynow, episodetiming, ssn):
     elif episodetiming == "NA":
         etiming = config.driver.find_element_by_xpath("//*[@id='oasisForm']/fieldset/table[1]/tbody/tr[28]/td[2]/table/tbody/tr/td/div/div/div[2]/div[2]/label/input")
     
+    time.sleep(3)
     etiming.click()
     
     m0140_asian = config.driver.find_element_by_xpath("//*[@id='M0140_ETHNIC_ASIAN']/input").click()
@@ -60,59 +61,70 @@ def oasissoc_diagnosesmedhis(
         mheight,
         mweight
         ):
+    
     time.sleep(5)
     
     #Primary Diagnosis
     pd = config.driver.find_element_by_xpath("//*[@id='tooltip_a']/table/tbody/tr/td[2]/icd-opt/div/div[1]/input")
     pd.send_keys(pdx)
-    time.sleep(1)
+    time.sleep(2)
     config.driver.switch_to_active_element()
     pd.send_keys(Keys.ARROW_DOWN)
     time.sleep(2)
     pd.send_keys(Keys.ENTER)
     pdr = config.driver.find_element_by_xpath("//*[@id='icdSeverityIdCode$index']/label[4]/input").click()
     
+    time.sleep(2)
+    
     #Secondary Diagnosis
     #1st Secondary Diagnosis
     sd1 = config.driver.find_element_by_xpath("//*[@id='tooltip_b']/table/tbody/tr[1]/td[2]/icd-opt/div/div[1]/input")
     sd1.send_keys(sdx1)
-    time.sleep(1)
+    time.sleep(2)
     config.driver.switch_to_active_element()
     sd1.send_keys(Keys.ARROW_DOWN)
     time.sleep(2)
     sd1.send_keys(Keys.ENTER)
     sd1r = config.driver.find_element_by_xpath("//*[@id='tooltip_b']/table/tbody/tr/td[3]/fieldset/div/label[3]/input").click() #Value is 3
+      
+    time.sleep(2)
     
     #2nd Secondary Diagnosis
     sd2 = config.driver.find_element_by_xpath("//*[@id='tooltip_c']/table/tbody/tr[1]/td[2]/icd-opt/div/div[1]/input")
     sd2.send_keys(sdx2)
-    time.sleep(1)
+    time.sleep(2)
     config.driver.switch_to_active_element()
     sd2.send_keys(Keys.ARROW_DOWN)
-    time.sleep(1)
+    time.sleep(2)
     sd2.send_keys(Keys.ENTER)
     sd2r = config.driver.find_element_by_xpath("//*[@id='tooltip_c']/table/tbody/tr/td[3]/fieldset/div/label[3]/input").click() #Value is 3
-
+  
+    time.sleep(2)
+    
     #3rd Secondary Diagnosis
     sd3 = config.driver.find_element_by_xpath("//*[@id='tooltip_d']/table/tbody/tr[1]/td[2]/icd-opt/div/div[1]/input")
     sd3.send_keys(sdx3)
-    time.sleep(1)
+    time.sleep(2)
     config.driver.switch_to_active_element()
     sd3.send_keys(Keys.ARROW_DOWN)
-    time.sleep(1)
+    time.sleep(2)
     sd3.send_keys(Keys.ENTER)
     sd3r = config.driver.find_element_by_xpath("//*[@id='tooltip_d']/table/tbody/tr/td[3]/fieldset/div/label[3]/input").click() #Value is 3
-
+  
+    time.sleep(2)
+    
     #4th Secondary Diagnosis
     sd4 = config.driver.find_element_by_xpath("//*[@id='tooltip_e']/table/tbody/tr[1]/td[2]/icd-opt/div/div[1]/input")
     sd4.send_keys(sdx4)
-    time.sleep(1)
+    time.sleep(2)
     config.driver.switch_to_active_element()
     sd4.send_keys(Keys.ARROW_DOWN)
     time.sleep(2)
     sd4.send_keys(Keys.ENTER)
     sd4r = config.driver.find_element_by_xpath("//*[@id='tooltip_e']/table/tbody/tr/td[3]/fieldset/div/label[3]/input").click() #Value is 3
-
+  
+    time.sleep(2)
+    
     #5th Secondary Diagnosis
     sd5 = config.driver.find_element_by_xpath("//*[@id='tooltip_f']/table/tbody/tr[1]/td[2]/icd-opt/div/div[1]/input")
     sd5.send_keys(sdx5)
@@ -122,7 +134,9 @@ def oasissoc_diagnosesmedhis(
     time.sleep(2)
     sd5.send_keys(Keys.ENTER)
     sd5r = config.driver.find_element_by_xpath("//*[@id='tooltip_f']/table/tbody/tr/td[3]/fieldset/div/label[3]/input").click() #Value is 3
-
+  
+    time.sleep(2)
+    
     #m0128_items
     m1028_items_selected = ""
     for x in m1028_items:
@@ -248,7 +262,7 @@ def oasissoc_nutrielim():
     m1600_0 = config.driver.find_element_by_xpath('//*[@id="M1600_UTI"]/div[1]/label/input').click()
     m1610_0 = config.driver.find_element_by_xpath('//*[@id="M1610_UR_INCONT"]/div[1]/label/input').click()
     lowergistat_wnl = config.driver.find_element_by_xpath('//*[@id="elimForm"]/fieldset/div[1]/table[20]/tbody/tr[1]/td[2]/label[1]/input').click()
-    m1620_na = config.driver.find_element_by_xpath('//*[@id="elimForm"]/fieldset/div[1]/table[22]/tbody/tr[2]/td[2]/table[2]/tbody/tr/td/div/div[7]/label').click()
+    m1620_na = config.driver.find_element_by_xpath('//*[@id="elimForm"]/fieldset/div[1]/table[22]/tbody/tr[2]/td[2]/table[2]/tbody/tr/td/div/div[1]/label/input').click()
     m1630_0 = config.driver.find_element_by_xpath('//*[@id="elimForm"]/fieldset/div[1]/table[23]/tbody/tr[2]/td[2]/table[2]/tbody/tr/td/div/label[1]/input').click()
 
 # ------------------------------------------------------------------------------------------------
