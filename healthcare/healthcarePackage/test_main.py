@@ -3,7 +3,9 @@ import random, time
 from datetime import date
 import admission, oasis, create_task
 
-test_server = "qa"
+# ------------- Change the value to qa or live ------------- #
+
+test_server = "live"
 
 if test_server == "qa":
     servers.qaserver()
@@ -11,10 +13,14 @@ if test_server == "qa":
 elif test_server == "live":
     servers.liveserver()
     config.driver.get("https://app.medisource.com/patient") #Navigate to Add patient page
-    
-admission.admission()
+
+
+admission.admission(test_server)
 
 oasis.oasis(test_server)
+
+#create_task.create_task(test_server)
+
 
 
 config.driver.close()

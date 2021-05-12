@@ -18,6 +18,7 @@ def oasis(test_server):
     # ------------------------------------------------------------------------------------------------
     #  search Automated Patient and click the top/first result
     # ------------------------------------------------------------------------------------------------
+    
     search_patient = config.driver.find_element_by_xpath("//*[@id='searchbar__wrapper']/div/input")
     search_patient.send_keys("Automated")
     time.sleep(5)
@@ -154,6 +155,4 @@ def oasis(test_server):
     # ------------------------------------------------------------------------------------------------
     savebtn.click()
     
-    time.sleep(8)
-    
-    config.driver.close()
+    time.sleep(5)
