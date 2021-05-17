@@ -1,4 +1,4 @@
-from controllers import config, login, function_admission, function_oasis, servers
+from controllers import config, login, function_admission, function_oasis, servers, function_snv
 import time
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
@@ -9,65 +9,53 @@ from datetime import datetime, timedelta
 #QA
 servers.qaserver()
 config.driver.get("https://qado.medisource.com/patientcare/6AC5254A-5F58-4162-8A64-4B7B749BCA3E/190ABC8F-75B0-49F7-BAC2-06A43EC9ACCF/overview") #QA
+time.sleep(3)
 
-#Live
-#servers.liveserver()
-#config.driver.get("https://app.medisource.com/patientcare/4077AC97-7908-47DB-B101-2521331EF371/A0FECB17-89E0-46E6-95D7-06805592BA80/overview") #LIVE
-   
-        
 # ------------------------------------------------------------------------------------------------
-#  MAIN CREATE TASK FUNCTIONS
+#  CREATE SNV FUNCTIONS
 # ------------------------------------------------------------------------------------------------
-    
+
+#open 1st task
+current_scheduledtask = config.driver.find_element_by_link_text('RN - Skilled Visit').click()
+time.sleep(3)
+
+#editbtn = config.driver.find_element_by_xpath('//*[@id="titleNoteBar"]/div[3]/div[2]/div/button').click() #edit button
+time.sleep(3)
+
+function_snv.timeinout("1200", "1600")
+
+#Tab button
+vssensoryintegendo = config.driver.find_element_by_xpath('//*[@id="oasis-tabs"]/label[1]')
+cardionutrielim = config.driver.find_element_by_xpath('//*[@id="oasis-tabs"]/label[2]')
+neuromusculo = config.driver.find_element_by_xpath('//*[@id="oasis-tabs"]/label[3]')
+caremaninterv = config.driver.find_element_by_xpath('//*[@id="oasis-tabs"]/label[4]')
+
 time.sleep(5)
     
-#Get the the add new task button 
-addnewtask_btn = config.driver.find_element_by_xpath('//*[@id="save"]/li/button').click()
-    
-# ------------------------------------------------------------------------------------------------
-#  GETTING THE OASIS DATE AND ADD x DAYS FOR THE TASKS DATE
-# ------------------------------------------------------------------------------------------------
-    
-#1. Get the current date of the OASIS and add days for the task date
-oasisdate = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[5]/div[1]/table/tbody/tr[2]/td[6]').text
-#2. Convert to date string
-taskdateconvert = datetime.strptime(oasisdate, '%m/%d/%Y')
-#3. Add days to the date
-addeddaystodate = timedelta(days=5)
-#4. add total
-datetotal = taskdateconvert + addeddaystodate
-#5. convert again to date string for final date
-finaltaskdate = datetime.strftime(datetotal, '%m/%d/%Y')
-    
-#Test ouput date
-print(oasisdate)
-print(datetotal)
-print(finaltaskdate)
-    
-# ------------------------------------------------------------------------------------------------
-#  FILL UP TASK MANAGER MODAL
-# ------------------------------------------------------------------------------------------------
-time.sleep(3)
-    
-#task date
-taskdate = config.driver.find_element_by_xpath('//*[@id="selecteddate"]')
-taskdate.send_keys(finaltaskdate)
-    
-#select task name - RN - Skilled Visit
-task = config.driver.find_element_by_xpath('//*[@id="tooltip_err7"]/div/div/div/a').click()
-task_name = config.driver.find_element_by_xpath('//*[@id="tooltip_err7"]/div/div/div/div/div/input').send_keys('RN - Skilled Visit', Keys.ENTER)
-    
-#Uncheck the MDO
-uncheck_mdo = config.driver.find_element_by_xpath('/html/body/div[11]/div/div/div/div/div[2]/div[1]/div/div/ng-form/div[3]/div[2]/div/label').click()
+function_snv.vssensoryintegendo(
+    "97.4",
+    "85",
+    "28",
+    "117",
+    "70",
+    "88",
+    "92",
+    "2",
+    "128"
+    )
+time.sleep(5)
 
-time.sleep(3) 
-#Create button
-createbtn = config.driver.find_element_by_xpath('/html/body/div[11]/div/div/div/div/div[2]/div[2]/div/button[2]').click()
-    
-    
+cardionutrielim.click()        
+function_snv.cardionutrielim()
+
+neuromusculo.click()        
+function_snv.neuromusculo()
+
+caremaninterv.click()        
+function_snv.caremaninterv()
 
 
-
+time.sleep(5)
 
 
 
