@@ -77,7 +77,7 @@ def create_task(test_server, continuous_test):
     
     #Open newly created 
     current_scheduledtask = config.driver.find_element_by_link_text('RN - Skilled Visit').click()
-           
+         
     
     
     

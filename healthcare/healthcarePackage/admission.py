@@ -69,5 +69,7 @@ def admission(test_server):
     
     #oasis.getpatientlink(getlastpatient)
     
+    servers.webpagetest()
+    
     time.sleep(5)
    

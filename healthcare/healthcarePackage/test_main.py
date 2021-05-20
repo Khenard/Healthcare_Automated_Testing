@@ -10,9 +10,11 @@ continuous_test = "yes" # Change the value to yes or no Yes - admitted patient w
 if test_server == "qa":
     servers.qaserver()
     config.driver.get("https://qado.medisource.com/patient") #Navigate to Add patient page
+    servers.webpagetest()
 elif test_server == "live":
     servers.liveserver()
     config.driver.get("https://app.medisource.com/patient") #Navigate to Add patient page
+    servers.webpagetest()
 
 admission.admission(test_server)
 
@@ -23,5 +25,7 @@ create_task.create_task(test_server, continuous_test)
 snv.snv(test_server, continuous_test)
 
 time.sleep(5)
-    
+
+config.driver.execute_script('alert("Test Success!");')
+
 config.driver.close()

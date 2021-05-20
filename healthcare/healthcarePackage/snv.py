@@ -60,9 +60,10 @@ def snv(test_server, continuous_test):
     caremaninterv.click()        
     function_snv.caremaninterv()
     
+    servers.webpagetest()
     
     time.sleep(5)
-
+    
 
 
 
