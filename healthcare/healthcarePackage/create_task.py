@@ -22,6 +22,8 @@ def create_task(test_server, continuous_test):
    
     time.sleep(8)
     
+    #Scrolldown
+    scrolldown = config.driver.execute_script("window.scrollTo(0,0)")
     #go back to task
     tasktab = config.driver.find_element_by_xpath('//*[@id="profile-main-header"]/div/ul/li[2]/a').click()
     time.sleep(8)

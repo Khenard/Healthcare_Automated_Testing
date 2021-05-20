@@ -11,9 +11,15 @@ def snv(test_server, continuous_test):
     # ------------------------------------------------------------------------------------------------
     #  CREATE SNV FUNCTIONS
     # ------------------------------------------------------------------------------------------------
-    time.sleep(5)
+    time.sleep(5)  
+    
+    #check the task if it's in progress on scheduled 
+    taskstatus = config.driver.find_element_by_link_text('Scheduled').click()
+    print(taskstatus)
+    time.sleep(3)
+    
     #open 1st task
-    current_scheduledtask = config.driver.find_element_by_link_text('RN - Skilled Visit').click()
+    #current_scheduledtask = config.driver.find_element_by_link_text('RN - Skilled Visit').click()
     time.sleep(3)
     
     #editbtn = config.driver.find_element_by_xpath('//*[@id="titleNoteBar"]/div[3]/div[2]/div/button').click() #edit button
