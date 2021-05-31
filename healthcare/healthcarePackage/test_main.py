@@ -26,6 +26,6 @@ snv.snv(test_server, continuous_test)
 
 time.sleep(5)
 
-config.driver.execute_script('alert("Test Success!");')
+config.driver.execute_script('alert("Test Successul!");')
 
 config.driver.close()
