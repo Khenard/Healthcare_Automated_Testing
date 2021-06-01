@@ -5,7 +5,7 @@ from selenium.webdriver.common.by import By
 from selenium import webdriver
 
 def gettab(pdtab):
-
+    
     tab = ""
     
     if pdtab == "chart":
@@ -42,6 +42,44 @@ def gettab(pdtab):
         tab = config.driver.find_element_by_xpath('//*[@id="profile-main-header"]/div/ul/li[11]/a')
         
     tab.click()
+
+def create_mdo(mdotask):
     
+    newbtn = config.driver.find_element_by_xpath('//*[@id="data-table-command-header"]/div[3]/button').click()
+    listmdo = config.driver.find_element_by_xpath('//*[@id="data-table-command-header"]/div[3]/ul').text
+    newmdo = ""
+    
+    if mdotask == "Physician Order":
+        newmdo = config.driver.find_element_by_xpath('//*[@id="data-table-command-header"]/div[3]/ul/li[6]/a')
+         
+    elif mdotask == "Recertification Order": 
+        newmdo = config.driver.find_element_by_xpath('//*[@id="data-table-command-header"]/div[3]/ul/li[2]/a')
+       
+    elif mdotask == "Discharge Order": 
+        newmdo = config.driver.find_element_by_xpath('//*[@id="data-table-command-header"]/div[3]/ul/li[3]/a')
+          
+    elif mdotask == "Discharge (Death at Home)": 
+        newmdo = config.driver.find_element_by_xpath('//*[@id="data-table-command-header"]/div[3]/ul/li[4]/a')
+         
+    elif mdotask == "Transfer Order": 
+        newmdo = config.driver.find_element_by_xpath('//*[@id="data-table-command-header"]/div[3]/ul/li[5]/a')
+     
+    time.sleep(5)   
+    newmdo.click()
+        
+       
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
         
         

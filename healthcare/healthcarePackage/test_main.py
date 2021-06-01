@@ -1,4 +1,4 @@
-from controllers import config, login, function_admission, function_oasis, servers
+from controllers import config, login, function_admission, function_oasis, servers, patient_dashboard
 import random, time
 from datetime import date
 import admission, oasis, create_task, snv
@@ -26,6 +26,6 @@ snv.snv(test_server, continuous_test)
 
 time.sleep(5)
 
-config.driver.execute_script('alert("Test Successul!");')
+config.driver.execute_script('alert("Test Successful!");')
 
 config.driver.close()

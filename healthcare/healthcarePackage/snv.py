@@ -1,4 +1,4 @@
-from controllers import config, login, function_admission, function_oasis, servers, function_snv
+from controllers import config, login, function_admission, function_oasis, servers, function_snv, patient_dashboard
 import time
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By

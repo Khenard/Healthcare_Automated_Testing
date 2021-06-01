@@ -1,4 +1,4 @@
-from controllers import config, login, function_admission, function_oasis, servers
+from controllers import config, login, function_admission, function_oasis, servers, patient_dashboard
 import random, time
 from datetime import date
 from re import search
