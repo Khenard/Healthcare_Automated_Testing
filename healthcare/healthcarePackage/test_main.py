@@ -1,7 +1,7 @@
 from controllers import config, login, function_admission, function_oasis, servers, patient_dashboard
 import random, time
 from datetime import date
-import admission, oasis, create_task, snv
+import admission, oasis, create_task, snv, create_mdo
 
 
 test_server = "live" # Change the value to qa or live
@@ -23,6 +23,8 @@ oasis.oasis(test_server, continuous_test)
 create_task.create_task(test_server, continuous_test)
 
 snv.snv(test_server, continuous_test)
+
+create_mdo.createmdo(test_server, continuous_test)
 
 time.sleep(5)
 

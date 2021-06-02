@@ -3,8 +3,10 @@ import random, time
 from datetime import date
 from re import search
 
-today = date.today()
-todaynow = today.strftime("%m/%d/%Y")
+todaytime = config.timenow()
+todaydate = config.datenow()
+plustime = (datetime.now() + timedelta(hours=5)).strftime("%H:%M")
+ 
 ssn = random.randint(0, 9999999999)
 
 # ------------------------------------------------------------------------------------------------
@@ -68,12 +70,12 @@ def oasis(test_server, continuous_test):
     # ------------------------------------------------------------------------------------------------
     #  TIME IN AND TIME OUT
     # ------------------------------------------------------------------------------------------------
-    function_oasis.oasissoc_timeinout("1200", "1600")
+    function_oasis.oasissoc_timeinout(todaytime, plustime)
     
     # ------------------------------------------------------------------------------------------------
     #  DEMOGRAPHICS
     # ------------------------------------------------------------------------------------------------
-    function_oasis.oasissoc_demographics(todaynow, "Early", ssn)
+    function_oasis.oasissoc_demographics(todaydate, "Early", ssn)
     
     # ------------------------------------------------------------------------------------------------
     #  DIAGNOSIS
