@@ -55,6 +55,18 @@ def vssensoryintegendo(
     ss_speech_wnl = config.driver.find_element_by_name("SENSORY0067").click() 
     ss_touch_wnl = config.driver.find_element_by_name("SENSORY0070").click() 
     
+    integstat = config.driver.find_element_by_xpath('//*[@id="integumentary_status_temp"]/tbody/tr/th[2]/div[1]/div/label/input').click()
+    scrolldown = config.driver.execute_script("window.scrollTo(0,6500)")
+    time.sleep(3)
+    items = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div/form/fieldset/fieldset/div/div/table/tbody/tr[5]/td/fieldset/table/tbody').text
+    endosystem = items.split('\n')
+    removeitem = {"Other"}
+    endosystem = [ele for ele in endosystem if ele not in removeitem]
+    for x in endosystem:
+        finditem = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div/form/fieldset/fieldset/div/div/table/tbody/tr[5]/td/fieldset/table/tbody//label[contains(string(), "'+ x +'")]')
+        finditem.click()
+
+    
 # CADRIOPULMONARY/NUTRITION/ELIMINATION
 def cardionutrielim(): 
     time.sleep(5)
@@ -73,9 +85,26 @@ def neuromusculo():
     neurostat_wnl = config.driver.find_element_by_xpath('//*[@id="neurological_status_temp"]/tbody/tr/th[2]/div/div/label/input').click()
     thought_wnl = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div/form/fieldset/fieldset/div/div/table/tbody/tr/td/table[4]/tbody/tr/th[2]/div[1]/div/label/input').click()
     musculo_wnl = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div/form/fieldset/fieldset/div/div/table/tbody/tr/td/table[5]/tbody/tr/th[2]/div[1]/div/label/input').click()
-
+    scrolldown = config.driver.execute_script("window.scrollTo(0,6500)")
+    
+    items = config.driver.find_element_by_xpath('//*[@id="activities permitted"]').text
+    activitiespermitted = items.split('\n')
+    removeitem = {"Other:  "}
+    activitiespermitted = [ele for ele in activitiespermitted if ele not in removeitem]
+    for x in activitiespermitted:
+        finditem = config.driver.find_element_by_xpath('//*[@id="activities permitted"]//label[contains(string(), "'+ x +'")]')
+        finditem.click()
+    
 # CARE MANAGMENT/INTERVENTIONS
 def caremaninterv():
-    time.sleep(5)
-    config.driver.close()
+    time.sleep(3)
+    items = config.driver.find_element_by_xpath('//*[@id="home_medication"]').text
+    homemed = items.split('\n')
+    removeitem = {"Medication discrepancy noted during this visit", "Oral medications (tablets/capsules) prepared in a pill box", "Use of medication schedule in taking medications"}
+    homemed = [ele for ele in homemed if ele not in removeitem]
+    for x in homemed:
+        finditem = config.driver.find_element_by_xpath('//*[@id="home_medication"]//label[contains(string(), "'+ x +'")]')
+        finditem.click()
 
+    time.sleep(5)
+ 

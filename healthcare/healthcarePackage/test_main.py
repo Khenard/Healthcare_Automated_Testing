@@ -3,31 +3,24 @@ import random, time
 from datetime import date
 import admission, oasis, create_task, snv, create_mdo
 
-
-test_server = "live" # Change the value to qa or live
+test_server = "qa" # Change the value to qa or live
 continuous_test = "yes" # Change the value to yes or no Yes - admitted patient will continue to oasis, no means search existing patients
 
-if test_server == "qa":
-    servers.qaserver()
-    config.driver.get("https://qado.medisource.com/patient") #Navigate to Add patient page
-    servers.webpagetest()
-elif test_server == "live":
-    servers.liveserver()
-    config.driver.get("https://app.medisource.com/patient") #Navigate to Add patient page
-    servers.webpagetest()
-
+# PATIENT ADMISSION
 admission.admission(test_server)
 
+# COMPLETE OASIS SOC
 oasis.oasis(test_server, continuous_test)
 
+# CREATE SNV TASK
 create_task.create_task(test_server, continuous_test)
 
-snv.snv(test_server, continuous_test)
+# COMPLETE SNV TASK
+snv.snv()
 
-create_mdo.createmdo(test_server, continuous_test)
+# CREATE MDO - PHYSICIAN ORDER
+create_mdo.createmdo()
 
-time.sleep(5)
-
+# END TEST
 config.driver.execute_script('alert("Test Successful!");')
-
 config.driver.close()

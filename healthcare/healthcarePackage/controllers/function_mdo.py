@@ -42,7 +42,7 @@ def complete_physician_order(
         
     time.sleep(3)
     savebtn = config.driver.find_element_by_xpath('//*[@id="tdTitleAction"]/button[2]').click()
-    time.sleep(3)
+    time.sleep(5)
     
 
 def new_mdo(mdo):

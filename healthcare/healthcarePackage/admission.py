@@ -1,14 +1,21 @@
 from controllers import config, function_admission, function_oasis, servers
 import random, time
 from datetime import date
+from datetime import datetime, timedelta
 import oasis
 
+todaytime = config.timenow()
+todaydate = config.datenow()
+plustime = (datetime.now() + timedelta(hours=5)).strftime("%H:%M")
+    
 def admission(test_server):
     
     if test_server == "qa":
+        servers.qaserver()
         config.driver.get("https://qado.medisource.com/patient") #QA
         time.sleep(2)
     elif test_server == "live":
+        servers.liveserver()
         config.driver.get("https://app.medisource.com/patient") #LIVE
         time.sleep(2)
     
@@ -29,12 +36,11 @@ def admission(test_server):
     #admission patient
     function_admission.admission(
         todaynow,
-        "1200",
+        todaytime,
         todaynow,
         str(pn),
         "Automated",
         str(pn),
-        "Jr.",
         "02/07/1997",
         "Male",
         "Single",

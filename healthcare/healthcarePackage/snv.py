@@ -5,8 +5,12 @@ from selenium.webdriver.common.by import By
 from selenium import webdriver
 from datetime import datetime, timedelta
 
+todaytime = config.timenow()
+todaydate = config.datenow()
+plustime = (datetime.now() + timedelta(hours=5)).strftime("%H:%M")
+    
 
-def snv(test_server, continuous_test):
+def snv():
     
     # ------------------------------------------------------------------------------------------------
     #  CREATE SNV FUNCTIONS
@@ -28,7 +32,7 @@ def snv(test_server, continuous_test):
         task.click()
         time.sleep(3)
     
-    function_snv.timeinout("1200", "1600")
+    function_snv.timeinout(todaytime, plustime)
     
     #Tab button
     vssensoryintegendo = config.driver.find_element_by_xpath('//*[@id="oasis-tabs"]/label[1]')
@@ -60,12 +64,14 @@ def snv(test_server, continuous_test):
     caremaninterv.click()        
     function_snv.caremaninterv()
     
-    
     time.sleep(5)
     
+    patient_dashboard.gettab("task")
+    
 
 
 
     
     
     
+

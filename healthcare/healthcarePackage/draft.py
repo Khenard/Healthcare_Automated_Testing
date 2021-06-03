@@ -11,15 +11,29 @@ plustime = (datetime.now() + timedelta(hours=5)).strftime("%H:%M")
 
 #QA - UNITEST
 servers.qaserver()
-config.driver.get("https://qado.medisource.com/patientcare/6AC5254A-5F58-4162-8A64-4B7B749BCA3E/190ABC8F-75B0-49F7-BAC2-06A43EC9ACCF/overview") #QA
+config.driver.get("https://qado.medisource.com/patientcare/743BD670-8915-460B-8CF5-1145A1066879/6960A273-BF39-4FE4-ADE8-277FCC0B9593/snv/v2view/1451") #QA
 time.sleep(5)
 
-function_mdo.new_mdo("physician")
+editbtn = config.driver.find_element_by_xpath('//*[@id="titleNoteBar"]/div[3]/div[2]/div/button').click()
+time.sleep(3)
 
-function_mdo.complete_physician_order(
-    todaytime,
-    "SN reported today that patient's skin and conjunctiva is pale. No gross signs and symptoms of bleeding. MD notified. Ordered CBS",
-    "MSW to evaluate patient's caregiving situation and compliance with patient's medications and treatment."
-    )
+neuro = config.driver.find_element_by_xpath('//*[@id="oasis-tabs"]/label[3]').click()
+time.sleep(5)
 
-patient_dashboard.gettab("mdo")
+
+scrolldown = config.driver.execute_script("window.scrollTo(0,6500)")
+    
+items = config.driver.find_element_by_xpath('//*[@id="activities permitted"]').text
+activitiespermitted = items.split('\n')
+print(activitiespermitted)
+removeitem = {"Other:  "}
+activitiespermitted = [ele for ele in activitiespermitted if ele not in removeitem]
+print(activitiespermitted)
+for x in activitiespermitted:
+    finditem = config.driver.find_element_by_xpath('//*[@id="activities permitted"]//label[contains(string(), "'+ x +'")]')
+    finditem.click()
+    
+    
+    
+    
+    

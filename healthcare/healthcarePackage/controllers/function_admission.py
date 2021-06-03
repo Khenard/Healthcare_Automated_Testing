@@ -11,7 +11,6 @@ def admission(
         lname,
         fname,
         mi,
-        sfx,
         bdate,
         sex,
         mstatus,
@@ -56,7 +55,6 @@ def admission(
     last_name = config.driver.find_element_by_id("last_name").send_keys(lname)
     first_name = config.driver.find_element_by_id("first_name").send_keys(fname)
     middle_initial = config.driver.find_element_by_id("mi").send_keys(mi)
-    suffix = config.driver.find_element_by_id("suffix").send_keys(sfx)
     birthdate = config.driver.find_element_by_id("birthdate").send_keys(bdate)
     
     #conditional formatting
