@@ -123,6 +123,7 @@ def admission(
     
     #Primary Insurance Information
     primary_insurance = config.driver.find_element_by_css_selector("#primary_insurance_chosen > .chosen-single").click()
+    time.sleep(2)
     pi_result = config.driver.find_element_by_css_selector("#primary_insurance_chosen .active-result:nth-child(2)").click()
     
     time.sleep(2)

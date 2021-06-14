@@ -1,4 +1,4 @@
-from controllers import config, login, function_admission, function_oasis, servers, patient_dashboard
+from controllers import config, login, function_admission, function_oasis, servers, patient_dashboard, function_create_task
 import random, time
 from datetime import date
 import admission, oasis, create_task, snv, create_mdo
@@ -10,10 +10,10 @@ continuous_test = "yes" # Change the value to yes or no Yes - admitted patient w
 admission.admission(test_server)
 
 # COMPLETE OASIS SOC
-oasis.oasis(test_server, continuous_test)
+oasis.oasis()
 
 # CREATE SNV TASK
-create_task.create_task(test_server, continuous_test)
+create_task.create_task()
 
 # COMPLETE SNV TASK
 snv.snv()
@@ -22,5 +22,4 @@ snv.snv()
 create_mdo.createmdo()
 
 # END TEST
-config.driver.execute_script('alert("Test Successful!");')
 config.driver.close()

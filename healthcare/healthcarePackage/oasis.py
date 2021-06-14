@@ -21,17 +21,7 @@ def searchpatient():
     patientresult = config.driver.find_element_by_xpath("//*[@id='content']/data/div/div[2]/div/table/tbody/tr[2]").click()
     time.sleep(5)
 
-def oasis(test_server, continuous_test):
-    
-    if continuous_test == "no":
-        if test_server == "qa":
-            config.driver.get("https://qado.medisource.com/patients/admitted") #QA
-            searchpatient()
-        elif test_server == "live":
-            config.driver.get("https://app.medisource.com/patients/admitted") #LIVE
-            searchpatient()
-    elif continuous_test == "yes":
-        time.sleep(2)
+def oasis():
     
   
     # ------------------------------------------------------------------------------------------------
@@ -175,6 +165,5 @@ def oasis(test_server, continuous_test):
     
     time.sleep(3)
     
-  
     
     

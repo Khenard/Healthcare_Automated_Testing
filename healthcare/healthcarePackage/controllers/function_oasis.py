@@ -1,4 +1,4 @@
-from controllers import config
+from controllers import config, patient_dashboard
 import time, random
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
@@ -261,9 +261,10 @@ def oasissoc_nutrielim():
     spx_no = config.driver.find_element_by_xpath('//*[@id="elimForm"]/fieldset/div[1]/table[10]/tbody/tr[7]/td[2]/label[1]/input').click()
     m1600_0 = config.driver.find_element_by_xpath('//*[@id="M1600_UTI"]/div[1]/label/input').click()
     m1610_0 = config.driver.find_element_by_xpath('//*[@id="M1610_UR_INCONT"]/div[1]/label/input').click()
-    lowergistat_wnl = config.driver.find_element_by_xpath('//*[@id="elimForm"]/fieldset/div[1]/table[20]/tbody/tr[1]/td[2]/label[1]/input').click()
-    m1620_na = config.driver.find_element_by_xpath('//*[@id="elimForm"]/fieldset/div[1]/table[22]/tbody/tr[2]/td[2]/table[2]/tbody/tr/td/div/div[1]/label/input').click()
-    m1630_0 = config.driver.find_element_by_xpath('//*[@id="elimForm"]/fieldset/div[1]/table[23]/tbody/tr[2]/td[2]/table[2]/tbody/tr/td/div/label[1]/input').click()
+    time.sleep(5)
+    lowergistat_wnl = config.driver.find_element_by_xpath('//*[@id="elimForm"]/fieldset/div[1]/table[21]/tbody/tr[1]/td[2]/label[1]/input').click()
+    m1620_na = config.driver.find_element_by_xpath('//*[@id="code"]').send_keys('NA')
+    m1630_0 = config.driver.find_element_by_xpath('//*[@id="elimForm"]/fieldset/div[1]/table[24]/tbody/tr[2]/td[2]/table[2]/tbody/tr/td/div/label[1]/input').click()
 
 # ------------------------------------------------------------------------------------------------
 #  NEUROLOGIC / BEHAVIORAL
@@ -467,4 +468,7 @@ def oasissoc_careman():
     m2102_1 = config.driver.find_element_by_xpath('//*[@id="M2102_CARE_TYPE_SRC_SPRVSN"]').click()
     m2200_000 = config.driver.find_element_by_xpath('//*[@id="careForm"]/fieldset/div[1]/table[4]/tbody/tr[2]/td[2]/table/tbody/tr/td/label/input').send_keys("000")
     dme_none = config.driver.find_element_by_xpath('//*[@id="tooltip_wr8"]/div[2]/div/label/input').click()
+   
+  
+    
   

@@ -11,7 +11,10 @@ plustime = (datetime.now() + timedelta(hours=5)).strftime("%H:%M")
     
 
 def snv():
-    
+    time.sleep(5)
+    #go back to task
+    patient_dashboard.gettab("task")
+    time.sleep(5)
     # ------------------------------------------------------------------------------------------------
     #  CREATE SNV FUNCTIONS
     # ------------------------------------------------------------------------------------------------
