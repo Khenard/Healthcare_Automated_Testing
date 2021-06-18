@@ -18,13 +18,18 @@ def create_task(task):
     patient_dashboard.gettab("task")
     time.sleep(5)
     
-    #if (((t == "RN - Skilled Assessment" or t == "RN - OASIS D1 Discharge from Agency") or (t == "RN - OASIS D1 Discharge Non-visit" or t == "RN - OASIS D1 Other Follow-Up")) or (t == "RN - OASIS D1 Transfer (discharged)" or t == "RN - OASIS D1 Transfer (not discharged)")):
+    print(t)
     
-    if t == "RN - Skilled Assessment" or t == "RN - OASIS D1 Discharge from Agency":
-        function_create_task.modal2(t)
-    else:
-        function_create_task.modal1(t)
+    for x in t:
+        print(x)
+        if (((x == "RN - Skilled Assessment" or x == "RN - OASIS D1 Discharge from Agency") or (x == "RN - OASIS D1 Discharge Non-visit" or x == "RN - OASIS D1 Other Follow-Up")) or (x == "RN - OASIS D1 Transfer (discharged)" or x == "RN - OASIS D1 Transfer (not discharged)")):
+            function_create_task.oasis(x)
+        else:
+            function_create_task.snv(x)
+        time.sleep(5)
     
+        
+    time.sleep(2)
     
     
   

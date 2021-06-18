@@ -35,15 +35,13 @@ mswass = "MSW - Assessment"
 mswfollowup = "MSW - Follow-up Visit"
 chhavisit = "CHHA - HHA Visit"
 
-# ------- Select Task to create
-
-addtask1 = rnwoundvisit
-addtask = oasisdcaegency
+#Enter the task variable you want to create
+tasks = [prnskilledvisit, oasistfrnotdc, rnsupvisit]
 
 
 
 
-test_server = "live" # Change the value to qa or live
+test_server = "qa" # Change the value to qa or live
 continuous_test = "yes" # Change the value to yes or no Yes - admitted patient will continue to oasis, no means search existing patients
 
 # PATIENT ADMISSION
@@ -53,13 +51,9 @@ admission.admission(test_server)
 oasis.oasispart()
 
 # CREATE SNV TASK
-create_task.create_task(addtask1)
-#function_create_task.completetask(addtask1)
+create_task.create_task(tasks)
 
 
-# CREATE SNV TASK
-create_task.create_task(addtask)
-#function_create_task.completetask(addtask)
 
 
 

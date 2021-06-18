@@ -1,28 +1,18 @@
-from controllers import config, login, function_admission, function_oasis, servers, patient_dashboard, function_create_task
-import random, time
-from datetime import date
-import admission, oasis, create_task, snv, create_mdo
+from controllers import config, login, function_admission, function_oasis, servers, function_snv, function_create_task, patient_dashboard, function_mdo
+import time
+import os
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+from selenium import webdriver
+from datetime import datetime, timedelta
+import create_task
+from selenium.webdriver.support.ui import WebDriverWait
 
-test_server = "live" # Change the value to qa or live
-continuous_test = "yes" # Change the value to yes or no Yes - admitted patient will continue to oasis, no means search existing patients
 
-# PATIENT ADMISSION
-#admission.admission(test_server)
+
 
 servers.liveserver()
-# COMPLETE OASIS SOC
-#oasis.oasis()
-config.driver.get("https://app.medisource.com/patientcare/72B2B9EA-305C-4C2D-9EEE-B7F8F453E5B9/BC5039E4-EB8E-4C00-879E-2A7F2012352E/overview")
-time.sleep(3)
-
-# CREATE SNV TASK
-create_task.create_task()
-
-# COMPLETE SNV TASK
-snv.snv()
-
-# CREATE MDO - PHYSICIAN ORDER
-create_mdo.createmdo()
+config.driver.get("https://app.medisource.com/patientcare/3B46FBCD-038C-4EF4-8976-09C659819D90/DCA59BDD-F004-4CED-8F73-60F215D333A4/overview")
+   
 
 # END TEST
-config.driver.close()

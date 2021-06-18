@@ -25,37 +25,32 @@ rnjslvn = "RN - Joint Supervisory (LVN)"
 rnskilledvisit = "RN - Skilled Visit"
 rnsupvisit = "RN - Supervisory Visit"
 rnwoundvisit = "RN - Wound Visit"
-
 ptieval = "PT - Initial Eval"
 ptievalsoc = "PT - Initial Eval-SOC"
 ptvisit = "PT - PT Visit"
 ptavisit = "PTA - PTA Visit"
-
 otieval = "OT - Initial Eval"
 otievalsoc = "OT - Initial Eval-SOC"
 otvisit = "OT - OT Visit"
 otavisit = "OTA - OTA Visit"
-
 stieval = "ST - Initial Eval"
 stievalsoc = "ST - Initial Eval-SOC"
 stvisit = "ST - ST Visit"
-
 mswass = "MSW - Assessment"
 mswfollowup = "MSW - Follow-up Visit"
-
 chhavisit = "CHHA - HHA Visit"
 
 
-addtask = oasisdcaegency
+#Enter the task variable you want to create
+tasks = [mswass, rnivvisit, lvnskilledvisit, lvnwoundvisit, rnivvisit, prnskilledvisit, ptieval]
+
 
 servers.qaserver()
-config.driver.get("https://qado.medisource.com/patientcare/D116AF35-6C4C-46E3-AB34-62157A9EBE8D/4E561BED-AFD2-42B7-8873-D0F04DF3752F/overview")
+config.driver.get("https://qado.medisource.com/patientcare/4A69A4F8-11F6-489E-9349-543B714443E4/7EC38970-4B43-4AF6-A456-89870347EDF1/overview")
    
 
 # CREATE SNV TASK
-create_task.create_task(addtask)
-
-function_create_task.completetask(addtask)
+create_task.create_task(tasks)
 
 
 
