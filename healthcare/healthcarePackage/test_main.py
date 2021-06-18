@@ -36,7 +36,7 @@ mswfollowup = "MSW - Follow-up Visit"
 chhavisit = "CHHA - HHA Visit"
 
 #Enter the task variable you want to create
-tasks = [prnskilledvisit, oasistfrnotdc, rnsupvisit]
+tasks = [prnskilledvisit, rnivvisit, rnsupvisit]
 
 
 

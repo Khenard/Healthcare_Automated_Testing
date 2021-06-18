@@ -8,8 +8,9 @@ from datetime import datetime, timedelta
 
 def snv(task):
     
-    sort = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[5]/div[1]/table/thead/tr/th[6]/span/span[2]/i[2]').click()
-    time.sleep(3) 
+    #sortup = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[5]/div[1]/table/thead/tr/th[6]/span/span[2]/i[1]').click()
+    sortdown = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[5]/div[1]/table/thead/tr/th[6]/span/span[2]/i[2]').click()
+    time.sleep(5) 
     
     #1. Get the current date of the OASIS and add days for the task date
     oasisdate = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[5]/div[1]/table/tbody/tr[2]/td[6]').text
@@ -21,6 +22,16 @@ def snv(task):
     datetotal = taskdateconvert + addeddaystodate
     #5. convert again to date string for final date
     finaltaskdate = datetime.strftime(datetotal, '%m/%d/%Y')
+    
+    
+    #Get the last five days of the episode
+    first = timedelta(days=56)
+    firsttotal = taskdateconvert + first
+    firstlastdate = datetime.strftime(datetotal, '%m/%d/%Y')
+    print(firstlastdate)
+    
+    
+    
             
     #Test ouput date
     print(oasisdate)
@@ -62,8 +73,10 @@ def snv(task):
 
 def oasis(task):
     
-    sort = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[5]/div[1]/table/thead/tr/th[6]/span/span[2]/i[2]').click()
-    time.sleep(3) 
+    #sortup = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[5]/div[1]/table/thead/tr/th[6]/span/span[2]/i[1]').click()
+    sortdown = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[5]/div[1]/table/thead/tr/th[6]/span/span[2]/i[2]').click()
+   
+    time.sleep(5) 
     
     #1. Get the current date of the OASIS and add days for the task date
     oasisdate = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[5]/div[1]/table/tbody/tr[2]/td[6]').text
@@ -117,8 +130,6 @@ def oasis(task):
     #current_scheduledtask = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[5]/div[1]/table/tbody/tr[2]/td[2]//a[contains(string(), "'+ task +'")]').click()
 
   
-
-
 
 
 def completetask(task):

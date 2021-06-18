@@ -42,11 +42,11 @@ chhavisit = "CHHA - HHA Visit"
 
 
 #Enter the task variable you want to create
-tasks = [mswass, rnivvisit, lvnskilledvisit, lvnwoundvisit, rnivvisit, prnskilledvisit, ptieval]
+tasks = [mswass, rnivvisit, rnwoundvisit]
 
 
 servers.qaserver()
-config.driver.get("https://qado.medisource.com/patientcare/4A69A4F8-11F6-489E-9349-543B714443E4/7EC38970-4B43-4AF6-A456-89870347EDF1/overview")
+config.driver.get("https://qado.medisource.com/patientcare/1E38E8AD-DDD9-4805-AB0A-DD5B1D51AD69/3421861E-3B10-426C-84E7-0B2F6810C7A8/overview")
    
 
 # CREATE SNV TASK
