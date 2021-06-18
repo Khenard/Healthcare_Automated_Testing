@@ -7,8 +7,8 @@ from selenium import webdriver
 from datetime import datetime, timedelta
 
 
-def create_task():
-
+def create_task(task):
+    t = task
     time.sleep(3)
     
     #Scrolldown
@@ -18,7 +18,13 @@ def create_task():
     patient_dashboard.gettab("task")
     time.sleep(5)
     
-    function_create_task.newtask("RN - Wound Visit")
+    #if (((t == "RN - Skilled Assessment" or t == "RN - OASIS D1 Discharge from Agency") or (t == "RN - OASIS D1 Discharge Non-visit" or t == "RN - OASIS D1 Other Follow-Up")) or (t == "RN - OASIS D1 Transfer (discharged)" or t == "RN - OASIS D1 Transfer (not discharged)")):
+    
+    if t == "RN - Skilled Assessment" or t == "RN - OASIS D1 Discharge from Agency":
+        function_create_task.modal2(t)
+    else:
+        function_create_task.modal1(t)
+    
     
     
   

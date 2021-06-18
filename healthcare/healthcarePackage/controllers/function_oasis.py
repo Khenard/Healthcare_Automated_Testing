@@ -62,7 +62,7 @@ def oasissoc_diagnosesmedhis(
         mweight
         ):
     
-    time.sleep(8)
+    time.sleep(5)
     
     #Primary Diagnosis
     pd = config.driver.find_element_by_xpath("//*[@id='tooltip_a']/table/tbody/tr/td[2]/icd-opt/div/div[1]/input")
@@ -327,9 +327,9 @@ def oasissoc_adlmusco():
     GG0130A26 = config.driver.find_element_by_xpath('//*[@id="GG0130A2"]//div/ul/li[1]').click()
     
     GG0130B1 = config.driver.find_element_by_xpath('//*[@id="GG0130B1"]/div/mhc-gg0130').click()
-    GG0130B16 = config.driver.find_element_by_xpath('//*[@id="GG0130B1"]//div/ul/li[1]').click()
+    GG0130B16 = config.driver.find_element_by_xpath('//*[@id="GG0130B1"]//div/ul/li[3]').click()
     GG0130B2 = config.driver.find_element_by_xpath('//*[@id="GG0130B2"]/div/mhc-gg0130').click()
-    GG0130B26 = config.driver.find_element_by_xpath('//*[@id="GG0130B2"]//div/ul/li[1]').click()
+    GG0130B26 = config.driver.find_element_by_xpath('//*[@id="GG0130B2"]//div/ul/li[3]').click()
     
     GG0130C1 = config.driver.find_element_by_xpath('//*[@id="GG0130C1"]/div/mhc-gg0130').click()
     GG0130C16 = config.driver.find_element_by_xpath('//*[@id="GG0130C1"]//div/ul/li[1]').click()

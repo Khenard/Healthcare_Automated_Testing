@@ -120,7 +120,7 @@ def admission(
     at_result = config.driver.find_element_by_css_selector(".active-result:nth-child(2)").click()
     
     time.sleep(5)
-    
+    scrolldown = config.driver.execute_script("window.scrollTo(0,1000)")
     #Primary Insurance Information
     primary_insurance = config.driver.find_element_by_css_selector("#primary_insurance_chosen > .chosen-single").click()
     time.sleep(2)

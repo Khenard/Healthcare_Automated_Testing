@@ -1,4 +1,4 @@
-from controllers import config, login, function_admission, function_oasis, servers, function_snv, patient_dashboard, function_mdo
+from controllers import config, login, function_admission, function_oasis, servers, function_snv, function_create_task, patient_dashboard, function_mdo
 import time
 import os
 from selenium.webdriver.common.keys import Keys
@@ -6,57 +6,57 @@ from selenium.webdriver.common.by import By
 from selenium import webdriver
 from datetime import datetime, timedelta
 import create_task
-from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC  
-import pyautogui
-import subprocess
-import autoit
 
-"""
+rnskilledassesment = "RN - Skilled Assessment"
+oasisdcaegency = "RN - OASIS D1 Discharge from Agency"
+oasisdcnvisit = "RN - OASIS D1 Discharge Non-visit"
+oasisfollowup = "RN - OASIS D1 Other Follow-Up"
+oasistfrfdc = "RN - OASIS D1 Transfer (discharged)"
+oasistfrnotdc = "RN - OASIS D1 Transfer (not discharged)"
 
-autoit.run("notepad.exe")
-autoit.win_wait_active("[CLASS:Notepad]", 3)
-autoit.control_send("[CLASS:Notepad]", "Edit1", "hello world{!}")
-autoit.win_close("[CLASS:Notepad]")
-autoit.control_click("[Class:#32770]", "Button2")"""
+lvnskilledvisit = "LVN/LPN - Skilled Visit"
+lvnwoundvisit = "LVN/LPN - Wound Visit"
+prnskilledvisit = "PRN - Skilled Visit"
+rneducvisit = "RN - Education Visit"
+rnivvisit = "RN - IV Visit"
+rnjschha = "RN - Joint Supervisory (CHHA)"
+rnjslvn = "RN - Joint Supervisory (LVN)"
+rnskilledvisit = "RN - Skilled Visit"
+rnsupvisit = "RN - Supervisory Visit"
+rnwoundvisit = "RN - Wound Visit"
+
+ptieval = "PT - Initial Eval"
+ptievalsoc = "PT - Initial Eval-SOC"
+ptvisit = "PT - PT Visit"
+ptavisit = "PTA - PTA Visit"
+
+otieval = "OT - Initial Eval"
+otievalsoc = "OT - Initial Eval-SOC"
+otvisit = "OT - OT Visit"
+otavisit = "OTA - OTA Visit"
+
+stieval = "ST - Initial Eval"
+stievalsoc = "ST - Initial Eval-SOC"
+stvisit = "ST - ST Visit"
+
+mswass = "MSW - Assessment"
+mswfollowup = "MSW - Follow-up Visit"
+
+chhavisit = "CHHA - HHA Visit"
 
 
-todaytime = config.timenow()
-todaydate = config.datenow()
-plustime = (datetime.now() + timedelta(hours=5)).strftime("%H:%M")
+addtask = oasisdcaegency
 
-#QA - UNITEST
 servers.qaserver()
-config.driver.get("https://qado.medisource.com/patientcare/92CE527A-86A2-4386-B1F8-2F853FC06E70/AF19611B-378E-4201-A1B0-A85A454A3576/woundcare/analytics/04BA70D1-12EF-41D0-B8B6-607385AECFFC/4") #QA
-time.sleep(5)
-edit = config.driver.find_element_by_xpath('//*[@id="titleNoteBar"]/tbody/tr/td[2]/button').click()
-time.sleep(5)
-scrolldown = config.driver.execute_script("window.scrollTo(0,6500);")
+config.driver.get("https://qado.medisource.com/patientcare/D116AF35-6C4C-46E3-AB34-62157A9EBE8D/4E561BED-AFD2-42B7-8873-D0F04DF3752F/overview")
+   
 
-fileimage = os.path.abspath("wound.png")
+# CREATE SNV TASK
+create_task.create_task(addtask)
 
-
-element_present = EC.presence_of_element_located((By.XPATH, '//*[@id="myImg"]'))  # Example xpath
-WebDriverWait(config.driver, 10).until(element_present).click() # This opens the windows file selector
-
-#subprocess.Popen('explorer "' + fileimage + '"')
-
-
-Runtime.getRuntime().exec("C:\\Users\\khena\\Desktop\\FileUpload.exe")
+function_create_task.completetask(addtask)
 
 
 
-"""pyautogui.write('"' + fileimage + '"') 
-time.sleep(5)
-pyautogui.press('enter')
-"""
-
-
-
-
-"""time.sleep(5)
-imageupload = config.driver.find_element_by_xpath('//*[@id="myImg"]')
-imageupload.send_keys(fileimage)
-"""
-print(fileimage)
+# END TEST

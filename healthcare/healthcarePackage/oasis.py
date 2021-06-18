@@ -74,6 +74,7 @@ def oasis():
     diagnosesmedhis.click()
     time.sleep(5)
     
+    diagnosesmedhis.click()
     #This declares the value for m0s with multiple items
     m1028 = [3] #values 1,2,3
     m0133 = [1,2,3,4,5,6,7,8]
@@ -95,6 +96,7 @@ def oasis():
     # ------------------------------------------------------------------------------------------------
     vssensory.click()
     time.sleep(5)
+    vssensory.click()
     function_oasis.oasissoc_vssensory(
         "97.4",
         "85",
@@ -112,6 +114,7 @@ def oasis():
     # ------------------------------------------------------------------------------------------------
     integendo.click()
     time.sleep(5)
+    integendo.click()
     function_oasis.oasissoc_integendo()
     
     # ------------------------------------------------------------------------------------------------
@@ -119,6 +122,7 @@ def oasis():
     # ------------------------------------------------------------------------------------------------
     cardio.click()
     time.sleep(5)
+    cardio.click()
     function_oasis.oasissoc_cardio()
     
     # ------------------------------------------------------------------------------------------------
@@ -126,6 +130,7 @@ def oasis():
     # ------------------------------------------------------------------------------------------------
     nutrielim.click()
     time.sleep(5)
+    nutrielim.click()
     function_oasis.oasissoc_nutrielim()
     
     # ------------------------------------------------------------------------------------------------
@@ -133,6 +138,7 @@ def oasis():
     # ------------------------------------------------------------------------------------------------
     neurobehav.click()
     time.sleep(5)
+    neurobehav.click()
     function_oasis.oasissoc_neurobehav()
     
     # ------------------------------------------------------------------------------------------------
@@ -140,6 +146,7 @@ def oasis():
     # ------------------------------------------------------------------------------------------------
     adlmusco.click()
     time.sleep(5)
+    adlmusco.click()
     function_oasis.oasissoc_adlmusco()
     
     # ------------------------------------------------------------------------------------------------
@@ -147,6 +154,7 @@ def oasis():
     # ------------------------------------------------------------------------------------------------
     medication.click()
     time.sleep(5)
+    medication.click()
     function_oasis.oasissoc_medication()
     
     # ------------------------------------------------------------------------------------------------
@@ -154,6 +162,7 @@ def oasis():
     # ------------------------------------------------------------------------------------------------
     careman.click()
     time.sleep(5)
+    careman.click()
     function_oasis.oasissoc_careman()
     
     
@@ -164,6 +173,68 @@ def oasis():
     savebtn.click()
     
     time.sleep(3)
+    savebtn.click()
+ 
+ 
+ 
+
+
+def oasispart():
     
+  
+    # ------------------------------------------------------------------------------------------------
+    #  MAIN OASIS CODE
+    # ------------------------------------------------------------------------------------------------
+    
+    #Open the OASIS 
+    clickoasis = config.driver.find_element_by_xpath("//*[@id='parent']/div/div[1]/div/div[5]/div[1]/table/tbody/tr[2]/td[2]/a").click()
+    time.sleep(5)
+    
+    #click the OASIS edit button
+    oasisedit = config.driver.find_element_by_xpath("//*[@id='titleNoteBar']/div[4]/div[2]/button").click()
+    
+    # ------------------------------------------------------------------------------------------------
+    # FUNCTIONS FOR COMPLETING OASIS PER TAB 
+    # ------------------------------------------------------------------------------------------------
+    
+    time.sleep(5)
+    
+    # Declare the tabs, save button, and previous next button 
+    savebtn = config.driver.find_element_by_css_selector("#titleNoteBar > div.col-sm-12.p-0.title__section.m-b-10.oasis_actionBtnTab > div:nth-child(2) > button.btn__success.m-l-10.waves-effect.ng-scope")
+    #previousbtn = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div/div/fieldset/div[2]/div/div[4]/button[1]')
+    #nextbtn = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div/div/fieldset/div[2]/div/div[4]/button[2]')
+     
+    #OASIS Buttons
+    democrecord = config.driver.find_element_by_xpath('//*[@id="clinical"]')
+    diagnosesmedhis = config.driver.find_element_by_xpath('//*[@id="diagnosis"]')
+    vssensory = config.driver.find_element_by_xpath('//*[@id="sensory"]')
+    integendo = config.driver.find_element_by_xpath('//*[@id="integumentary"]')
+    cardio = config.driver.find_element_by_xpath('//*[@id="cardio"]')
+    nutrielim = config.driver.find_element_by_xpath('//*[@id="elimination"]')
+    neurobehav = config.driver.find_element_by_xpath('//*[@id="neuro"]')
+    adlmusco = config.driver.find_element_by_xpath('//*[@id="adl"]')
+    medication = config.driver.find_element_by_xpath('//*[@id="medication"]')
+    careman = config.driver.find_element_by_xpath('//*[@id="careManagement"]')
+    
+    # ------------------------------------------------------------------------------------------------
+    #  TIME IN AND TIME OUT
+    # ------------------------------------------------------------------------------------------------
+    function_oasis.oasissoc_timeinout(todaytime, plustime)
+    
+    # ------------------------------------------------------------------------------------------------
+    #  DEMOGRAPHICS
+    # ------------------------------------------------------------------------------------------------
+    function_oasis.oasissoc_demographics(todaydate, "Early", ssn)
+    
+    # ------------------------------------------------------------------------------------------------
+    #  SAVE 
+    # ------------------------------------------------------------------------------------------------
+    time.sleep(5)
+    savebtn.click()
+    
+    time.sleep(3)
+    savebtn.click()
+    
+       
     
     
