@@ -120,12 +120,16 @@ def skillednursing(
         finditem = config.driver.find_element_by_xpath('//*[@id="home_medication"]//label[contains(string(), "'+ x +'")]')
         finditem.click()
     
-    time.sleep(5)
+    time.sleep(2)
+    
+    #save
+    save = config.driver.find_element_by_xpath('//*[@id="titleNoteBar"]/div[3]/div[2]/div/button[3]').click()
+    
+    
 
-
-def ptvisit():
+def rnjschhalvn():
     time.sleep(3)
-    print('pt visit')
+    print('RN - Joint Supervisory (CHHA/LVN)')
 
 
 

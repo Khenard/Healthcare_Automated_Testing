@@ -59,10 +59,13 @@ def snv():
         vsbs
         )
     
+    #discard changes
+    #discardyes = config.driver.find_element_by_xpath('/html/body/div[13]/div/div/div/div/button[1]').click()
+    
+    time.sleep(2)
+    
     patient_dashboard.gettab("task")
 
-    
-    
 
 
 def completetask(task):
@@ -106,10 +109,14 @@ def completetask(task):
     chhavisit = "CHHA - HHA Visit"
 
     
-    if task == rnwoundvisit or task == rnivvisit:
+    if (((task == rnwoundvisit or task == rnivvisit) or (task == lvnskilledvisit or task == lvnwoundvisit)) or ((task == prnskilledvisit or task == rneducvisit) or (task == rnskilledvisit or task == rnsupvisit))):
         snv()
-    elif task == ptvisit:
-        function_complete_task.ptvisit()
+    elif task == rnjschha or task == rnjslvn:
+        rnjschhalvn()
+        time.sleep(3)
+
+        
+    
 
 
 
