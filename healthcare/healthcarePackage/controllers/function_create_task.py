@@ -1,4 +1,4 @@
-from controllers import config, login, function_admission, function_oasis, servers, patient_dashboard
+from controllers import config, login, function_admission, function_oasis, servers, patient_dashboard, function_complete_task
 import time
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
@@ -9,7 +9,9 @@ from datetime import datetime, timedelta
 def snv(task):
     
     #sortup = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[5]/div[1]/table/thead/tr/th[6]/span/span[2]/i[1]').click()
-    sortdown = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[5]/div[1]/table/thead/tr/th[6]/span/span[2]/i[2]').click()
+    sortdown = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[5]/div[1]/table/thead/tr/th[5]/span/span[2]/i[2]').click()
+    time.sleep(2) 
+    sortdown = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[5]/div[1]/table/thead/tr/th[5]/span/span[2]/i[2]').click()
     time.sleep(5) 
     
     #1. Get the current date of the OASIS and add days for the task date
@@ -17,7 +19,7 @@ def snv(task):
     #2. Convert to date string
     taskdateconvert = datetime.strptime(oasisdate, '%m/%d/%Y')
     #3. Add days to the date
-    addeddaystodate = timedelta(days=6)
+    addeddaystodate = timedelta(days=3)
     #4. add total
     datetotal = taskdateconvert + addeddaystodate
     #5. convert again to date string for final date
@@ -25,14 +27,35 @@ def snv(task):
     
     
     #Get the last five days of the episode
-    first = timedelta(days=56)
+    oasisdate = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[5]/div[1]/table/tbody/tr[2]/td[6]').text
+    taskdateconvert = datetime.strptime(oasisdate, '%m/%d/%Y')
+    
+    first = timedelta(days=55)
     firsttotal = taskdateconvert + first
-    firstlastdate = datetime.strftime(datetotal, '%m/%d/%Y')
+    firstlastdate = datetime.strftime(firsttotal, '%m/%d/%Y')
     print(firstlastdate)
     
+    second = timedelta(days=56)
+    secondtotal = taskdateconvert + second
+    secondlastdate = datetime.strftime(secondtotal, '%m/%d/%Y')
+    print(secondlastdate)
     
+    third = timedelta(days=57)
+    thirdtotal = taskdateconvert + third
+    thirdlastdate = datetime.strftime(thirdtotal, '%m/%d/%Y')
+    print(thirdlastdate)
     
-            
+    fourth = timedelta(days=58)
+    fourthtotal = taskdateconvert + fourth
+    fourthlastdate = datetime.strftime(fourthtotal, '%m/%d/%Y')
+    print(fourthlastdate)
+      
+    fifth = timedelta(days=59)
+    fifthtotal = taskdateconvert + fifth
+    fifthlastdate = datetime.strftime(fifthtotal, '%m/%d/%Y')
+    print(fifthlastdate)
+    
+
     #Test ouput date
     print(oasisdate)
     print(datetotal)
@@ -74,8 +97,10 @@ def snv(task):
 def oasis(task):
     
     #sortup = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[5]/div[1]/table/thead/tr/th[6]/span/span[2]/i[1]').click()
-    sortdown = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[5]/div[1]/table/thead/tr/th[6]/span/span[2]/i[2]').click()
-   
+    sortdown = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[5]/div[1]/table/thead/tr/th[5]/span/span[2]/i[2]').click()
+    time.sleep(2) 
+    sortdown = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[5]/div[1]/table/thead/tr/th[5]/span/span[2]/i[2]').click()
+    time.sleep(5) 
     time.sleep(5) 
     
     #1. Get the current date of the OASIS and add days for the task date
@@ -132,16 +157,7 @@ def oasis(task):
   
 
 
-def completetask(task):
     
-    time.sleep(5)
-    
-    #if task == "RN - Skilled Assessment":
-    #    time.sleep(5)
-    #elif task == "RN - OASIS D1 Discharge from Agency":
-    #    time.sleep(5)
-    
- 
         
     
 

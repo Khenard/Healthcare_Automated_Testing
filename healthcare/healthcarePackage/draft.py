@@ -1,4 +1,4 @@
-from controllers import config, login, function_admission, function_oasis, servers, function_snv, function_create_task, patient_dashboard, function_mdo
+from controllers import config, login, function_admission, function_oasis, servers, function_complete_task, function_create_task, patient_dashboard, function_mdo
 import time
 import os
 from selenium.webdriver.common.keys import Keys
@@ -7,6 +7,7 @@ from selenium import webdriver
 from datetime import datetime, timedelta
 import create_task
 from selenium.webdriver.support.ui import WebDriverWait
+import admission, oasis, create_task, complete_task, create_mdo
 
 rnskilledassesment = "RN - Skilled Assessment"
 oasisdcaegency = "RN - OASIS D1 Discharge from Agency"
@@ -14,7 +15,6 @@ oasisdcnvisit = "RN - OASIS D1 Discharge Non-visit"
 oasisfollowup = "RN - OASIS D1 Other Follow-Up"
 oasistfrfdc = "RN - OASIS D1 Transfer (discharged)"
 oasistfrnotdc = "RN - OASIS D1 Transfer (not discharged)"
-
 lvnskilledvisit = "LVN/LPN - Skilled Visit"
 lvnwoundvisit = "LVN/LPN - Wound Visit"
 prnskilledvisit = "PRN - Skilled Visit"
@@ -41,17 +41,21 @@ mswfollowup = "MSW - Follow-up Visit"
 chhavisit = "CHHA - HHA Visit"
 
 
-#Enter the task variable you want to create
-tasks = [mswass, rnivvisit, rnwoundvisit]
-
+tasks = [rnwoundvisit, rnivvisit] #Enter the task variable you want to create
 
 servers.qaserver()
-config.driver.get("https://qado.medisource.com/patientcare/1E38E8AD-DDD9-4805-AB0A-DD5B1D51AD69/3421861E-3B10-426C-84E7-0B2F6810C7A8/overview")
-   
+config.driver.get("https://qado.medisource.com/patientcare/E2B75EF7-0338-48A6-861A-629BADEB0008/BE8D6183-82BC-4C73-ABC2-3677C533C333/overview")
+time.sleep(2)   
 
-# CREATE SNV TASK
+
 create_task.create_task(tasks)
 
 
 
+
+
+
+
+
 # END TEST
+ 

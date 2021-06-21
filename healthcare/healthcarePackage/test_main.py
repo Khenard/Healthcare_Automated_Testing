@@ -1,8 +1,7 @@
-from controllers import config, login, function_admission, function_oasis, servers, patient_dashboard, function_create_task
+from controllers import config, login, function_admission, function_oasis, servers, patient_dashboard, function_create_task, function_complete_task
 import random, time
 from datetime import date
-import admission, oasis, create_task, snv, create_mdo
-
+import admission, oasis, create_task, complete_task, create_mdo
 
 rnskilledassesment = "RN - Skilled Assessment"
 oasisdcaegency = "RN - OASIS D1 Discharge from Agency"
@@ -35,23 +34,14 @@ mswass = "MSW - Assessment"
 mswfollowup = "MSW - Follow-up Visit"
 chhavisit = "CHHA - HHA Visit"
 
-#Enter the task variable you want to create
-tasks = [prnskilledvisit, rnivvisit, rnsupvisit]
 
-
-
-
+tasks = [rnwoundvisit, rnivvisit] #Enter the task variable you want to create
 test_server = "qa" # Change the value to qa or live
 continuous_test = "yes" # Change the value to yes or no Yes - admitted patient will continue to oasis, no means search existing patients
 
-# PATIENT ADMISSION
-admission.admission(test_server)
-
-# COMPLETE OASIS SOC
-oasis.oasispart()
-
-# CREATE SNV TASK
-create_task.create_task(tasks)
+admission.admission(test_server) #PATIENT ADMISSION
+oasis.oasispart() #COMPLETE OASIS SOC
+create_task.create_task(tasks) #CREATE SNV TASK
 
 
 
@@ -64,4 +54,4 @@ create_task.create_task(tasks)
 #create_mdo.createmdo()
 
 # END TEST
-config.driver.close()
+#config.driver.close()

@@ -1,10 +1,11 @@
-from controllers import config, login, function_admission, function_oasis, servers, patient_dashboard, function_create_task
+from controllers import config, login, function_admission, function_oasis, servers, patient_dashboard, function_create_task, function_complete_task
 import random, time
 import time
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium import webdriver
 from datetime import datetime, timedelta
+import admission, oasis, create_task, complete_task, create_mdo
 
 
 def create_task(task):
@@ -24,8 +25,10 @@ def create_task(task):
         print(x)
         if (((x == "RN - Skilled Assessment" or x == "RN - OASIS D1 Discharge from Agency") or (x == "RN - OASIS D1 Discharge Non-visit" or x == "RN - OASIS D1 Other Follow-Up")) or (x == "RN - OASIS D1 Transfer (discharged)" or x == "RN - OASIS D1 Transfer (not discharged)")):
             function_create_task.oasis(x)
+            complete_task.completetask(x) #enable this to auto-complete the task
         else:
             function_create_task.snv(x)
+            complete_task.completetask(x) #enable this to auto-complete the task
         time.sleep(5)
     
         
