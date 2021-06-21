@@ -125,11 +125,43 @@ def skillednursing(
     #save
     save = config.driver.find_element_by_xpath('//*[@id="titleNoteBar"]/div[3]/div[2]/div/button[3]').click()
     
-    
 
 def rnjschhalvn():
     time.sleep(3)
     print('RN - Joint Supervisory (CHHA/LVN)')
+
+
+def ptieval():
+    time.sleep(3)
+    print('PT - Initial Eval')
+
+def ptvisit():
+    time.sleep(3)
+    print('PT - PT Visit')
+
+def otieval():
+    time.sleep(3)
+    print('OT - Initial Eval')
+
+def otvisit():
+    time.sleep(3)
+    print('OT - OTA Visit')
+
+def stieval():
+    time.sleep(3)
+    print('ST - Initial Eval')
+
+def stvisit():
+    time.sleep(3)
+    print('ST - ST Visit')
+
+def mswass():
+    time.sleep(3)
+    print('MSW - Assessment - MSW - Follow-up Visit')
+
+def chhavisit():
+    time.sleep(3)
+    print('CHHA - HHA Visit')
 
 
 

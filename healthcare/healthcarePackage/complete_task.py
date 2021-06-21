@@ -9,7 +9,9 @@ todaytime = config.timenow()
 todaydate = config.datenow()
 plustime = (datetime.now() + timedelta(hours=5)).strftime("%H:%M")
     
-#lagay ng value and xpath
+# -----------------------------------------------------------------------
+# FUNCTIONS FOR ALL TASKS GOES HERE this includes passing of variables
+# -----------------------------------------------------------------------
 
 
 def snv():
@@ -67,6 +69,79 @@ def snv():
     patient_dashboard.gettab("task")
 
 
+def rnjschhalvn():
+    time.sleep(5)
+    #go back to task
+    patient_dashboard.gettab("task")
+    time.sleep(5)
+    # code goes here -----------------
+
+
+def ptieval():
+    time.sleep(5)
+    #go back to task
+    patient_dashboard.gettab("task")
+    time.sleep(5)
+    # code goes here -----------------
+
+
+def ptvisit():
+    time.sleep(5)
+    #go back to task
+    patient_dashboard.gettab("task")
+    time.sleep(5)
+    # code goes here -----------------
+    
+    
+def otieval():
+    time.sleep(5)
+    #go back to task
+    patient_dashboard.gettab("task")
+    time.sleep(5)    
+    # code goes here -----------------
+    
+    
+def otvisit():
+    time.sleep(5)
+    #go back to task
+    patient_dashboard.gettab("task")
+    time.sleep(5)    
+    # code goes here -----------------
+     
+     
+def stieval():
+    time.sleep(5)
+    #go back to task
+    patient_dashboard.gettab("task")
+    time.sleep(5)    
+    # code goes here -----------------   
+    
+    
+def stvisit():
+    time.sleep(5)
+    #go back to task
+    patient_dashboard.gettab("task")
+    time.sleep(5)    
+    # code goes here ----------------- 
+      
+           
+def mswass():
+    time.sleep(5)
+    #go back to task
+    patient_dashboard.gettab("task")
+    time.sleep(5)    
+    # code goes here -----------------        
+           
+              
+def chhavisit():
+    time.sleep(5)
+    #go back to task
+    patient_dashboard.gettab("task")
+    time.sleep(5)    
+    # code goes here -----------------             
+    
+    
+# MAIN FUNCTION FOR COMPLETE TASK ---------------------------------
 
 def completetask(task):
     
@@ -111,14 +186,35 @@ def completetask(task):
     
     if (((task == rnwoundvisit or task == rnivvisit) or (task == lvnskilledvisit or task == lvnwoundvisit)) or ((task == prnskilledvisit or task == rneducvisit) or (task == rnskilledvisit or task == rnsupvisit))):
         snv()
+        
     elif task == rnjschha or task == rnjslvn:
         rnjschhalvn()
-        time.sleep(3)
-
         
+    elif task == ptieval or task == ptievalsoc:
+        ptieval()
+        
+    elif task == ptvisit or task == ptvisita:
+        ptvisit()
+        
+    elif task == otieval or task == otievalsoc:
+        otieval()
+        
+    elif task == otvisit or task == otavisit:
+        otvisit()
     
-
-
+    elif task == stieval or task == stievalsoc:
+        stieval()
+        
+    elif task == stvisit:
+        stvisit()
+    
+    elif task == mswass or task == mswfollowup:
+        mswass()
+        
+    elif task == chhavisit:
+        chhavisit()
+         
+    
 
     
     

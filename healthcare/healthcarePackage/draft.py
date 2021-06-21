@@ -41,12 +41,11 @@ mswfollowup = "MSW - Follow-up Visit"
 chhavisit = "CHHA - HHA Visit"
 
 
-tasks = [rnwoundvisit, rnivvisit] #Enter the task variable you want to create
+tasks = [rnwoundvisit, rnivvisit, rneducvisit] #Enter the task variable you want to create
 
 servers.qaserver()
 config.driver.get("https://qado.medisource.com/patientcare/E2B75EF7-0338-48A6-861A-629BADEB0008/BE8D6183-82BC-4C73-ABC2-3677C533C333/overview")
 time.sleep(2)   
-
 
 create_task.create_task(tasks)
 
