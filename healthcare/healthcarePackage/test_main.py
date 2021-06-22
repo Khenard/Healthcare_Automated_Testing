@@ -40,7 +40,7 @@ mswfollowup = "MSW - Follow-up Visit"
 chhavisit = "CHHA - HHA Visit"
 
 
-tasks = [rnivvisit, rnskilledassesmentt] #Enter the task variable you want to create
+tasks = [rnivvisit, rnskilledassesment] #Enter the task variable you want to create
 test_server = "qa" # Change the value to qa or live
 continuous_test = "yes" # Change the value to yes or no Yes - admitted patient will continue to oasis, no means search existing patients
 
