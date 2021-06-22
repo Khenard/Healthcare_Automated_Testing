@@ -151,7 +151,7 @@ def rnskilledassesment(oasistask, visitdate):
     if oasistask == "RN - OASIS D1 Discharge from Agency":
         function_mdo.dischargeorder(visitdate)
     elif oasistask == "RN - OASIS D1 Recertification":
-        funcion_mdo.recertorder(visitdate)
+        function_mdo.recertorder(visitdate)
     
     
     

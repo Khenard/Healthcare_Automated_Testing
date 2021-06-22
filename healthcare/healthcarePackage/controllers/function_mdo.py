@@ -87,8 +87,8 @@ def dischargeorder(visitdate):
     time.sleep(5)
     print('discharge')
     timein = config.driver.find_element_by_xpath('//*[@id="orderTime"]').send_keys(todaytime)
-    timein = config.driver.find_element_by_xpath('//*[@id="sentDate"]').send_keys(visitdate)
-    timein = config.driver.find_element_by_xpath('//*[@id="receiveDate"]').send_keys(visitdate)
+    sentdate = config.driver.find_element_by_xpath('//*[@id="sentDate"]').send_keys(visitdate)
+    receivedate = config.driver.find_element_by_xpath('//*[@id="receiveDate"]').send_keys(visitdate)
     
     # Communication type
     items = config.driver.find_element_by_xpath('//*[@id="dischargeOrderForm"]/div[1]/fieldset/table/tbody/tr/td/table[2]/tbody/tr[1]/td[2]').text
@@ -112,15 +112,38 @@ def dischargeorder(visitdate):
     patient_dashboard.gettab("task")
     time.sleep(3)
    
-    
-    
-    
-    
-    
+
     
 def recertorder(visitdate):
     time.sleep(5)
     print('recert')
-        
+    sentdate = config.driver.find_element_by_xpath('//*[@id="sentDate"]').send_keys(visitdate)
+    receivedate = config.driver.find_element_by_xpath('//*[@id="receiveDate"]').send_keys(visitdate)
+   
+    addordertext = "Medication/s reconciled and verbally verified by Physician."
+    
+    addorder = config.driver.find_element_by_xpath('//*[@id="recertOrderForm"]/div[1]/fieldset/div/table[2]/tbody/tr[14]/td/div/textarea').send_keys(addordertext)
+    orderread = config.driver.find_element_by_xpath('//*[@id="recertOrderForm"]/div[1]/fieldset/div/table[2]/tbody/tr[15]/td/label/input').click()
+    
+    time.sleep(3)
+    savebtn = config.driver.find_element_by_xpath('//*[@id="tdTitleAction"]/button[3]').click()
+
+    time.sleep(3)
+    
+     #Scrolldown
+    scroll = config.driver.execute_script("window.scrollTo(0,0)")
+    
+    time.sleep(3)
+    #go back to task
+    patient_dashboard.gettab("task")
+    time.sleep(3)
+    
+    
+   
+    
+    
+    
+    
+    
     
 
