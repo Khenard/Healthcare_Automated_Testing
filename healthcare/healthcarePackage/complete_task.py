@@ -166,7 +166,7 @@ def rnskilledassesment(task, visitdate):
     discharge = "RN - OASIS D1 Discharge from Agency"
     recert = "RN - OASIS D1 Recertification"
     
-    oasistask = recert #Change this option if you want to recert of discharge
+    oasistask = discharge #Change this option if you want to recert of discharge
     
     print(oasistask)
     print(visitdate)
