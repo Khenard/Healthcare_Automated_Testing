@@ -1,8 +1,14 @@
-from controllers import config, login, servers
+from controllers import config, login, servers, function_mdo
 import time
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium import webdriver
+from datetime import datetime, timedelta
+
+todaytime = config.timenow()
+todaydate = config.datenow()
+plustime = (datetime.now() + timedelta(hours=5)).strftime("%H:%M")
+    
 
 #functions based from complete_task
 
@@ -93,7 +99,7 @@ def skillednursing(
     
     # NEUROLOGIC/MUSCULOSKELETAL
     time.sleep(5)
-    neuromusculo.click()   
+    neuromusculo.click()    
     time.sleep(5)
     neurostat_wnl = config.driver.find_element_by_xpath('//*[@id="neurological_status_temp"]/tbody/tr/th[2]/div/div/label/input').click()
     thought_wnl = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div/form/fieldset/fieldset/div/div/table/tbody/tr/td/table[4]/tbody/tr/th[2]/div[1]/div/label/input').click()
@@ -111,7 +117,7 @@ def skillednursing(
     # CARE MANAGMENT/INTERVENTIONS
     time.sleep(5)
     caremaninterv.click()  
-    time.sleep(3)
+    time.sleep(5)
     items = config.driver.find_element_by_xpath('//*[@id="home_medication"]').text
     homemed = items.split('\n')
     removeitem = {"Medication discrepancy noted during this visit", "Oral medications (tablets/capsules) prepared in a pill box", "Use of medication schedule in taking medications"}
@@ -120,12 +126,37 @@ def skillednursing(
         finditem = config.driver.find_element_by_xpath('//*[@id="home_medication"]//label[contains(string(), "'+ x +'")]')
         finditem.click()
     
-    time.sleep(2)
+    time.sleep(3)
     
     #save
     save = config.driver.find_element_by_xpath('//*[@id="titleNoteBar"]/div[3]/div[2]/div/button[3]').click()
     
-
+    
+    
+def rnskilledassesment(oasistask, visitdate):
+    time.sleep(3)
+    sadd = config.driver.find_element_by_xpath('/html/body/div[12]/div/div/div/form/div/div/div[2]/div/fieldset/div/div[1]/div[2]/table/tbody/tr/td/div[2]/div/div/div/a').click()
+    skilledassesmentask = config.driver.find_element_by_xpath('/html/body/div[12]/div/div/div/form/div/div/div[2]/div/fieldset/div/div[1]/div[2]/table/tbody/tr/td/div[2]/div/div/div/div/ul//li[contains(string(), "'+ oasistask +'")]')
+    skilledassesmentask.click()
+    
+    time.sleep(3)
+    visitdateoasis = config.driver.find_element_by_xpath('//*[@id="visitdate"]').send_keys(visitdate)
+    timein = config.driver.find_element_by_xpath('//*[@id="timein"]').send_keys(todaytime)
+    timeout = config.driver.find_element_by_xpath('//*[@id="timeout"]').send_keys(plustime)
+    
+    time.sleep(3)
+    
+    savebtn = config.driver.find_element_by_xpath('/html/body//button[contains(string(), "Save")]').click()
+    
+    if oasistask == "RN - OASIS D1 Discharge from Agency":
+        function_mdo.dischargeorder(visitdate)
+    elif oasistask == "RN - OASIS D1 Recertification":
+        funcion_mdo.recertorder(visitdate)
+    
+    
+    
+    
+    
 def rnjschhalvn():
     time.sleep(3)
     print('RN - Joint Supervisory (CHHA/LVN)')

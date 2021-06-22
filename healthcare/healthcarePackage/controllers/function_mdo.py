@@ -5,6 +5,10 @@ from selenium.webdriver.common.by import By
 from selenium import webdriver
 from datetime import datetime, timedelta
 
+todaytime = config.timenow()
+todaydate = config.datenow()
+plustime = (datetime.now() + timedelta(hours=5)).strftime("%H:%M")
+    
 def complete_physician_order(
         ot,
         commnote,
@@ -77,7 +81,46 @@ def new_mdo(mdo):
         patient_dashboard.create_mdo("Physician Order") 
         time.sleep(5)
 
-    
-    
 
+
+def dischargeorder(visitdate):
+    time.sleep(5)
+    print('discharge')
+    timein = config.driver.find_element_by_xpath('//*[@id="orderTime"]').send_keys(todaytime)
+    timein = config.driver.find_element_by_xpath('//*[@id="sentDate"]').send_keys(visitdate)
+    timein = config.driver.find_element_by_xpath('//*[@id="receiveDate"]').send_keys(visitdate)
+    
+    # Communication type
+    items = config.driver.find_element_by_xpath('//*[@id="dischargeOrderForm"]/div[1]/fieldset/table/tbody/tr/td/table[2]/tbody/tr[1]/td[2]').text
+    commmtype = items.split('\n')
+    for x in commmtype:
+        finditem = config.driver.find_element_by_xpath('//*[@id="dischargeOrderForm"]/div[1]/fieldset/table/tbody/tr/td/table[2]/tbody/tr[1]/td[2]//label[contains(string(), "'+ x +'")]')
+        finditem.click()
+        
+    commtext = "Received order from MD to discharge patient and both patient and caregiver were aware and informed. Patient was discharged from Intermed Home care Services no skilled care needed."
+    commnote = config.driver.find_element_by_xpath('//*[@id="dischargeOrderForm"]/div[1]/fieldset/table/tbody/tr/td/table[2]/tbody/tr[3]/td/div/div/textarea').send_keys(commtext)
+    
+    phyordertext = "Please discharge patient from home health services."
+    phyorder = config.driver.find_element_by_xpath('//*[@id="dischargeOrderForm"]/div[1]/fieldset/table/tbody/tr/td/table[2]/tbody/tr[5]/td/div/div/textarea').send_keys(phyordertext)
+    
+    time.sleep(3)
+    savebtn = config.driver.find_element_by_xpath('//*[@id="tdTitleAction"]/button[3]').click()
+    
+    time.sleep(3)
+    
+    #go back to task
+    patient_dashboard.gettab("task")
+    time.sleep(3)
+   
+    
+    
+    
+    
+    
+    
+def recertorder(visitdate):
+    time.sleep(5)
+    print('recert')
+        
+    
 

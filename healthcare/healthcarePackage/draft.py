@@ -15,6 +15,7 @@ oasisdcnvisit = "RN - OASIS D1 Discharge Non-visit"
 oasisfollowup = "RN - OASIS D1 Other Follow-Up"
 oasistfrfdc = "RN - OASIS D1 Transfer (discharged)"
 oasistfrnotdc = "RN - OASIS D1 Transfer (not discharged)"
+
 lvnskilledvisit = "LVN/LPN - Skilled Visit"
 lvnwoundvisit = "LVN/LPN - Wound Visit"
 prnskilledvisit = "PRN - Skilled Visit"
@@ -25,23 +26,27 @@ rnjslvn = "RN - Joint Supervisory (LVN)"
 rnskilledvisit = "RN - Skilled Visit"
 rnsupvisit = "RN - Supervisory Visit"
 rnwoundvisit = "RN - Wound Visit"
+
 ptieval = "PT - Initial Eval"
 ptievalsoc = "PT - Initial Eval-SOC"
 ptvisit = "PT - PT Visit"
 ptavisit = "PTA - PTA Visit"
+
 otieval = "OT - Initial Eval"
 otievalsoc = "OT - Initial Eval-SOC"
 otvisit = "OT - OT Visit"
 otavisit = "OTA - OTA Visit"
+
 stieval = "ST - Initial Eval"
 stievalsoc = "ST - Initial Eval-SOC"
 stvisit = "ST - ST Visit"
+
 mswass = "MSW - Assessment"
 mswfollowup = "MSW - Follow-up Visit"
 chhavisit = "CHHA - HHA Visit"
 
 
-tasks = [rnwoundvisit, rnivvisit, rneducvisit] #Enter the task variable you want to create
+tasks = [rnivvisit, rnwoundvisit, rnskilledassesment] #Enter the task variable you want to create
 
 servers.qaserver()
 config.driver.get("https://qado.medisource.com/patientcare/E2B75EF7-0338-48A6-861A-629BADEB0008/BE8D6183-82BC-4C73-ABC2-3677C533C333/overview")

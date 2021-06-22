@@ -23,12 +23,15 @@ def create_task(task):
     
     for x in t:
         print(x)
-        if (((x == "RN - Skilled Assessment" or x == "RN - OASIS D1 Discharge from Agency") or (x == "RN - OASIS D1 Discharge Non-visit" or x == "RN - OASIS D1 Other Follow-Up")) or (x == "RN - OASIS D1 Transfer (discharged)" or x == "RN - OASIS D1 Transfer (not discharged)")):
+        if (((x == "RN - OASIS D1 Discharge from Agency" or x == "RN - OASIS D1 Discharge Non-visit") or (x == "RN - OASIS D1 Other Follow-Up" or x == "RN - OASIS D1 Transfer (discharged)")) or x == "RN - OASIS D1 Transfer (not discharged)"):
             function_create_task.oasis(x)
+            #complete_task.completetask(x) #enable this to auto-complete the task
+        elif x == "RN - Skilled Assessment":
+            function_create_task.skilledassessment(x)
             complete_task.completetask(x) #enable this to auto-complete the task
         else:
             function_create_task.snv(x)
-            complete_task.completetask(x) #enable this to auto-complete the task
+            #complete_task.completetask(x) #enable this to auto-complete the task
         time.sleep(5)
     
         

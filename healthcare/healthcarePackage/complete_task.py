@@ -13,7 +13,6 @@ plustime = (datetime.now() + timedelta(hours=5)).strftime("%H:%M")
 # FUNCTIONS FOR ALL TASKS GOES HERE this includes passing of variables
 # -----------------------------------------------------------------------
 
-
 def snv():
     time.sleep(5)
     #go back to task
@@ -46,7 +45,7 @@ def snv():
     vso2lpm = "2"
     vsbs = "128"
     
-
+    
     function_complete_task.skillednursing(
         todaytime,
         plustime,
@@ -74,6 +73,8 @@ def rnjschhalvn():
     #go back to task
     patient_dashboard.gettab("task")
     time.sleep(5)
+    
+    function_complete_task.rnjschhalvn()
     # code goes here -----------------
 
 
@@ -82,6 +83,8 @@ def ptieval():
     #go back to task
     patient_dashboard.gettab("task")
     time.sleep(5)
+    
+    function_complete_task.ptieval()
     # code goes here -----------------
 
 
@@ -90,6 +93,8 @@ def ptvisit():
     #go back to task
     patient_dashboard.gettab("task")
     time.sleep(5)
+    
+    function_complete_task.ptvisit()
     # code goes here -----------------
     
     
@@ -97,7 +102,9 @@ def otieval():
     time.sleep(5)
     #go back to task
     patient_dashboard.gettab("task")
-    time.sleep(5)    
+    time.sleep(5) 
+    
+    function_complete_task.otieval()   
     # code goes here -----------------
     
     
@@ -105,7 +112,9 @@ def otvisit():
     time.sleep(5)
     #go back to task
     patient_dashboard.gettab("task")
-    time.sleep(5)    
+    time.sleep(5)
+    
+    function_complete_task.otvisit()    
     # code goes here -----------------
      
      
@@ -113,7 +122,9 @@ def stieval():
     time.sleep(5)
     #go back to task
     patient_dashboard.gettab("task")
-    time.sleep(5)    
+    time.sleep(5)
+    
+    function_complete_task.stieval()    
     # code goes here -----------------   
     
     
@@ -121,7 +132,9 @@ def stvisit():
     time.sleep(5)
     #go back to task
     patient_dashboard.gettab("task")
-    time.sleep(5)    
+    time.sleep(5)  
+    
+    function_complete_task.stvisit()  
     # code goes here ----------------- 
       
            
@@ -130,6 +143,8 @@ def mswass():
     #go back to task
     patient_dashboard.gettab("task")
     time.sleep(5)    
+    
+    function_complete_task.mswass()
     # code goes here -----------------        
            
               
@@ -138,10 +153,45 @@ def chhavisit():
     #go back to task
     patient_dashboard.gettab("task")
     time.sleep(5)    
+    
+    function_complete_task.chhavisit()
     # code goes here -----------------             
     
+def rnskilledassesment(task, visitdate):
+    time.sleep(5)
     
-# MAIN FUNCTION FOR COMPLETE TASK ---------------------------------
+    #Open newly created 
+    current_scheduledtask = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[5]/div[1]/table/tbody/tr[2]/td[2]//a[contains(string(), "'+ task +'")]').click()
+    
+    discharge = "RN - OASIS D1 Discharge from Agency"
+    recert = "RN - OASIS D1 Recertification"
+    
+    oasistask = discharge #Change this option if you want to recert of discharge
+    
+    print(oasistask)
+    print(visitdate)
+    time.sleep(5)
+    
+    function_complete_task.rnskilledassesment(oasistask, visitdate)  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+# -----------------------------------------------------------------------
+# MAIN FUNCTION FOR COMPLETE TASK
+# -----------------------------------------------------------------------
 
 def completetask(task):
     
@@ -193,7 +243,7 @@ def completetask(task):
     elif task == ptieval or task == ptievalsoc:
         ptieval()
         
-    elif task == ptvisit or task == ptvisita:
+    elif task == ptvisit or task == ptavisit:
         ptvisit()
         
     elif task == otieval or task == otievalsoc:
@@ -213,7 +263,10 @@ def completetask(task):
         
     elif task == chhavisit:
         chhavisit()
-         
+    
+    elif task == rnskilledassesment:
+        rnskilledassesment(task, visitdate)
+           
     
 
     
