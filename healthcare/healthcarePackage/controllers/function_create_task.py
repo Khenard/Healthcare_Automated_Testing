@@ -125,6 +125,12 @@ def oasis(task):
 
   
 def skilledassessment(task):
+    sortup = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[5]/div[1]/table/thead/tr/th[5]/span/span[2]/i[1]').click()
+    #sortdown = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[5]/div[1]/table/thead/tr/th[5]/span/span[2]/i[2]').click()
+    time.sleep(3) 
+    sortup = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[5]/div[1]/table/thead/tr/th[5]/span/span[2]/i[1]').click()
+    #sortdown = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[5]/div[1]/table/thead/tr/th[5]/span/span[2]/i[2]').click()
+    time.sleep(3)
     
     #Get the last five days of the episode
     oasisdate = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[5]/div[1]/table/tbody/tr[2]/td[6]').text
@@ -151,14 +157,8 @@ def skilledassessment(task):
     fifthlastdate = datetime.strftime(fifthtotal, '%m/%d/%Y')
     
     print(" " + str(firstlastdate) + " " + str(secondlastdate) + " " + str(thirdlastdate) + " " + str(fourthlastdate) + " " + str(fifthlastdate) + " ")
-    
-    sortup = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[5]/div[1]/table/thead/tr/th[6]/span/span[2]/i[1]').click()
-    #sortdown = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[5]/div[1]/table/thead/tr/th[5]/span/span[2]/i[2]').click()
-    time.sleep(2) 
-    sortup = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[5]/div[1]/table/thead/tr/th[6]/span/span[2]/i[1]').click()
-    #sortdown = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[5]/div[1]/table/thead/tr/th[5]/span/span[2]/i[2]').click()
-    time.sleep(3)
-    
+
+
     #Get the the add new task button 
     addnewtask_btn = config.driver.find_element_by_xpath('//*[@id="save"]/li/button').click()
     time.sleep(3)
@@ -187,6 +187,13 @@ def skilledassessment(task):
     #go back to task
     #patient_dashboard.gettab("task")
     #time.sleep(3)
+    
+    sortup = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[5]/div[1]/table/thead/tr/th[5]/span/span[2]/i[2]').click()
+    #sortdown = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[5]/div[1]/table/thead/tr/th[5]/span/span[2]/i[2]').click()
+    time.sleep(3) 
+    sortup = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[5]/div[1]/table/thead/tr/th[5]/span/span[2]/i[2]').click()
+    #sortdown = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[5]/div[1]/table/thead/tr/th[5]/span/span[2]/i[2]').click()
+    time.sleep(3)
 
  
     complete_task.rnskilledassesment(task, firstlastdate)

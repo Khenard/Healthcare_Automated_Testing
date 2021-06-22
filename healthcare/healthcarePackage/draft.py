@@ -46,7 +46,7 @@ mswfollowup = "MSW - Follow-up Visit"
 chhavisit = "CHHA - HHA Visit"
 
 
-tasks = [rnivvisit, rnwoundvisit, rnskilledassesment] #Enter the task variable you want to create
+tasks = [rnivvisit, rnskilledassesment] #Enter the task variable you want to create Note: skilledassessment should always the last on the array
 
 servers.qaserver()
 config.driver.get("https://qado.medisource.com/patientcare/E2B75EF7-0338-48A6-861A-629BADEB0008/BE8D6183-82BC-4C73-ABC2-3677C533C333/overview")
