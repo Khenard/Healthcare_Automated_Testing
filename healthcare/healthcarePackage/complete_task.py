@@ -166,7 +166,7 @@ def rnskilledassesment(task, visitdate):
     discharge = "RN - OASIS D1 Discharge from Agency"
     recert = "RN - OASIS D1 Recertification"
     
-    oasistask = discharge #Change this option if you want to recert of discharge
+    oasistask = recert #Change this option if you want to recert of discharge
     
     print(oasistask)
     print(visitdate)
@@ -265,7 +265,7 @@ def completetask(task):
         chhavisit()
     
     elif task == rnskilledassesment:
-        rnskilledassesment(task)
+        rnskilledassesment(task, visitdate)
            
     
 

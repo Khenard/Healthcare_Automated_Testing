@@ -45,11 +45,13 @@ mswass = "MSW - Assessment"
 mswfollowup = "MSW - Follow-up Visit"
 chhavisit = "CHHA - HHA Visit"
 
+workflow = "discharge"
 
-tasks = [rnwoundvisit, rnskilledassesment, rnwoundvisit] #Enter the task variable you want to create Note: skilledassessment should always the last on the array
+
+tasks = [rnwoundvisit, rnskilledassesment] #Enter the task variable you want to create Note: skilledassessment should always the last on the array
 
 servers.qaserver()
-config.driver.get("https://qado.medisource.com/patientcare/E2B75EF7-0338-48A6-861A-629BADEB0008/BE8D6183-82BC-4C73-ABC2-3677C533C333/overview")
+config.driver.get('https://qado.medisource.com/patientcare/9A580452-D5A3-462F-8CF4-DF88C0AD5E05/C20477C0-5337-417B-94FC-3C34518DD398/overview')
 time.sleep(2)   
 
 create_task.create_task(tasks)

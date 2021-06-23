@@ -141,6 +141,7 @@ def rnskilledassesment(oasistask, visitdate):
     
     time.sleep(3)
     visitdateoasis = config.driver.find_element_by_xpath('//*[@id="visitdate"]').send_keys(visitdate)
+    plannteddate = config.driver.find_element_by_xpath('//*[@id="taskdate"]').send_keys(visitdate)
     timein = config.driver.find_element_by_xpath('//*[@id="timein"]').send_keys(todaytime)
     timeout = config.driver.find_element_by_xpath('//*[@id="timeout"]').send_keys(plustime)
     

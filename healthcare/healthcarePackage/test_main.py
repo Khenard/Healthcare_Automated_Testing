@@ -40,7 +40,7 @@ mswfollowup = "MSW - Follow-up Visit"
 chhavisit = "CHHA - HHA Visit"
 
 
-tasks = [rnivvisit, rnskilledassesment, rnwoundvisit] #Enter the task variable you want to create
+tasks = [rnivvisit, rnskilledassesment, rnsupvisit, rnwoundvisit] #Enter the task variable you want to create
 test_server = "qa" # Change the value to qa or live
 continuous_test = "yes" # Change the value to yes or no Yes - admitted patient will continue to oasis, no means search existing patients
 
@@ -48,13 +48,5 @@ admission.admission(test_server) #PATIENT ADMISSION
 oasis.oasispart() #COMPLETE OASIS SOC
 create_task.create_task(tasks) #CREATE SNV TASK
 
-
-
-# COMPLETE SNV TASK
-#snv.snv()
-
-# CREATE MDO - PHYSICIAN ORDER
-#create_mdo.createmdo()
-
 # END TEST
-#config.driver.close()
+config.driver.close()

@@ -19,7 +19,7 @@ def snv(task):
     #2. Convert to date string
     taskdateconvert = datetime.strptime(oasisdate, '%m/%d/%Y')
     #3. Add days to the date
-    addeddaystodate = timedelta(days=3)
+    addeddaystodate = timedelta(days=5)
     #4. add total
     datetotal = taskdateconvert + addeddaystodate
     #5. convert again to date string for final date
@@ -165,7 +165,7 @@ def skilledassessment(task):
     
     #task date
     taskdate = config.driver.find_element_by_xpath('//*[@id="selecteddate"]')
-    taskdate.send_keys(firstlastdate, Keys.ENTER)
+    taskdate.send_keys(fifthlastdate, Keys.ENTER)
             
     taskdd = config.driver.find_element_by_xpath('//*[@id="tooltip_err7"]/div/div/div/a').click() 
         
@@ -196,7 +196,7 @@ def skilledassessment(task):
     time.sleep(3)
 
  
-    complete_task.rnskilledassesment(task, firstlastdate)
+    complete_task.rnskilledassesment(task, fifthlastdate)
     
  
 
