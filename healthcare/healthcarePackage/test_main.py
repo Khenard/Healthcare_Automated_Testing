@@ -9,6 +9,8 @@ oasisdcnvisit = "RN - OASIS D1 Discharge Non-visit"
 oasisfollowup = "RN - OASIS D1 Other Follow-Up"
 oasistfrfdc = "RN - OASIS D1 Transfer (discharged)"
 oasistfrnotdc = "RN - OASIS D1 Transfer (not discharged)"
+oasisdcsummary = "RN - Discharge (Summary Only)"
+oasisroc = "RN - OASIS D1 Resumption of Care"
 
 lvnskilledvisit = "LVN/LPN - Skilled Visit"
 lvnwoundvisit = "LVN/LPN - Wound Visit"

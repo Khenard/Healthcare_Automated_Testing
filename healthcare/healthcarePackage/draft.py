@@ -15,6 +15,8 @@ oasisdcnvisit = "RN - OASIS D1 Discharge Non-visit"
 oasisfollowup = "RN - OASIS D1 Other Follow-Up"
 oasistfrfdc = "RN - OASIS D1 Transfer (discharged)"
 oasistfrnotdc = "RN - OASIS D1 Transfer (not discharged)"
+oasisdcsummary = "RN - Discharge (Summary Only)"
+oasisroc = "RN - OASIS D1 Resumption of Care"
 
 lvnskilledvisit = "LVN/LPN - Skilled Visit"
 lvnwoundvisit = "LVN/LPN - Wound Visit"
@@ -45,13 +47,11 @@ mswass = "MSW - Assessment"
 mswfollowup = "MSW - Follow-up Visit"
 chhavisit = "CHHA - HHA Visit"
 
-workflow = "discharge"
 
-
-tasks = [rnwoundvisit, rnskilledassesment] #Enter the task variable you want to create Note: skilledassessment should always the last on the array
+tasks = [rnwoundvisit, oasistfrnotdc, oasisroc] #Enter the task variable you want to create Note: skilledassessment should always the last on the array
 
 servers.qaserver()
-config.driver.get('https://qado.medisource.com/patientcare/9A580452-D5A3-462F-8CF4-DF88C0AD5E05/C20477C0-5337-417B-94FC-3C34518DD398/overview')
+config.driver.get("https://qado.medisource.com/patientcare/9A580452-D5A3-462F-8CF4-DF88C0AD5E05/9C451349-6168-46A1-A66B-DB92D74BF574/overview")
 time.sleep(2)   
 
 create_task.create_task(tasks)

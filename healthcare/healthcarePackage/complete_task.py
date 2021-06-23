@@ -156,7 +156,20 @@ def chhavisit():
     
     function_complete_task.chhavisit()
     # code goes here -----------------             
-    
+ 
+def oasisdcsummary(task, visitdate):
+    time.sleep(5)
+    function_complete_task.oasisdcsummary(task, visitdate)
+    # code goes here -----------------        
+           
+
+def oasisroc(task, visitdate):
+    time.sleep(5)
+    function_complete_task.oasisroc(task, visitdate)
+    # code goes here -----------------        
+           
+           
+  
 def rnskilledassesment(task, visitdate):
     time.sleep(5)
     
@@ -166,7 +179,7 @@ def rnskilledassesment(task, visitdate):
     discharge = "RN - OASIS D1 Discharge from Agency"
     recert = "RN - OASIS D1 Recertification"
     
-    oasistask = recert #Change this option if you want to recert of discharge
+    oasistask = discharge #Change this option if you want to recert of discharge
     
     print(oasistask)
     print(visitdate)
@@ -203,7 +216,9 @@ def completetask(task):
     oasisfollowup = "RN - OASIS D1 Other Follow-Up"
     oasistfrfdc = "RN - OASIS D1 Transfer (discharged)"
     oasistfrnotdc = "RN - OASIS D1 Transfer (not discharged)"
-    
+    oasisdcsummary = "RN - Discharge (Summary Only)"
+    oasisroc = "RN - OASIS D1 Resumption of Care"
+
     lvnskilledvisit = "LVN/LPN - Skilled Visit"
     lvnwoundvisit = "LVN/LPN - Wound Visit"
     prnskilledvisit = "PRN - Skilled Visit"
@@ -265,9 +280,13 @@ def completetask(task):
         chhavisit()
     
     elif task == rnskilledassesment:
-        rnskilledassesment(task, visitdate)
-           
+        rnskilledassesment(task)
     
+    elif task == oasisdcsummary:
+        oasisdcsummary()  
+        
+    elif task == oasisroc:
+        oasisroc()  
 
     
     

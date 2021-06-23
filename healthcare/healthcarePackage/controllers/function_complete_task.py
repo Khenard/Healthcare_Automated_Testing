@@ -151,10 +151,10 @@ def rnskilledassesment(oasistask, visitdate):
     
     if oasistask == "RN - OASIS D1 Discharge from Agency":
         function_mdo.dischargeorder(visitdate)
+        
     elif oasistask == "RN - OASIS D1 Recertification":
         function_mdo.recertorder(visitdate)
-    
-    
+
     
     
     
@@ -195,9 +195,15 @@ def chhavisit():
     time.sleep(3)
     print('CHHA - HHA Visit')
 
+def oasisdcsummary(oasistask, visitdate):
+    time.sleep(3)
+    print('oasisdcsummary')
+    function_mdo.transferorder(visitdate)
 
-
-
+def oasisroc(oasistask, visitdate):
+    time.sleep(3)
+    print('oasisroc')
+    function_mdo.rocorder(visitdate)
 
 
 

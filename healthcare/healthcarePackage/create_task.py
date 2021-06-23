@@ -23,7 +23,7 @@ def create_task(task):
     
     for x in t:
         print(x)
-        if (((x == "RN - OASIS D1 Discharge from Agency" or x == "RN - OASIS D1 Discharge Non-visit") or (x == "RN - OASIS D1 Other Follow-Up" or x == "RN - OASIS D1 Transfer (discharged)")) or x == "RN - OASIS D1 Transfer (not discharged)"):
+        if (((x == "RN - OASIS D1 Discharge from Agency" or x == "RN - OASIS D1 Discharge Non-visit") or (x == "RN - OASIS D1 Other Follow-Up" or x == "RN - OASIS D1 Transfer (discharged)")) or x == "RN - OASIS D1 Transfer (not discharged)") or (x == "RN - Discharge (Summary Only)" or x == "RN - OASIS D1 Resumption of Care"):
             function_create_task.oasis(x)
             #complete_task.completetask(x) #enable this to auto-complete the task
         elif x == "RN - Skilled Assessment":

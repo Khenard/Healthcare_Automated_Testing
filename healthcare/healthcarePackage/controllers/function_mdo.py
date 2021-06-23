@@ -140,6 +140,60 @@ def recertorder(visitdate):
     
     
    
+def transferorder(visitdate):
+    time.sleep(5)
+    print('transfer')
+    timein = config.driver.find_element_by_xpath('//*[@id="orderTime"]').send_keys(todaytime)
+    sentdate = config.driver.find_element_by_xpath('//*[@id="sentDate"]').send_keys(visitdate)
+    receivedate = config.driver.find_element_by_xpath('//*[@id="receiveDate"]').send_keys(visitdate)
+    
+    # Communication type
+    finditem = config.driver.find_element_by_xpath('//*[@id="transferOrderForm"]/div[1]/fieldset/div/div/div/div/table[2]/tbody/tr[1]/td[2]/table/tbody/tr/td[1]/div/label/input')
+    finditem.click()
+    
+    commtext = "Patient was transferred as requested by the home health facility"  
+    commnote = config.driver.find_element_by_xpath('//*[@id="communicationnotes"]').send_keys(commtext)
+    
+    transferredto = config.driver.find_element_by_css_selector("#tranferredTo_chosen > a").click()
+    transferredtoresult = config.driver.find_element_by_css_selector("#tranferredTo_chosen > div > ul > li.active-result.group-option)").click()
+    
+    phyordertext = "Please transfer patient from home health services."
+    phyorder = config.driver.find_element_by_xpath('//*[@id="physicianordernotes"]').send_keys(phyordertext)
+    
+    time.sleep(3)
+    savebtn = config.driver.find_element_by_xpath('//*[@id="tdTitleAction"]/button[3]').click()
+    
+    time.sleep(3)
+    
+    #go back to task
+    patient_dashboard.gettab("task")
+    time.sleep(3)
+    
+
+def rocorder(visitdate):
+    time.sleep(5)
+    print('recert')
+    sentdate = config.driver.find_element_by_xpath('//*[@id="sentDate"]').send_keys(visitdate)
+    receivedate = config.driver.find_element_by_xpath('//*[@id="receiveDate"]').send_keys(visitdate)
+   
+    addordertext = "Medication/s reconciled and verbally verified by Physician."
+    
+    addorder = config.driver.find_element_by_xpath('//*[@id="recertOrderForm"]/div[1]/div[2]/fieldset/div[1]/table[2]/tbody/tr[14]/td/div/textarea').send_keys(addordertext)
+    orderread = config.driver.find_element_by_xpath('//*[@id="recertOrderForm"]/div[1]/div[2]/fieldset/div[1]/table[2]/tbody/tr[15]/td/label/input').click()
+    
+    time.sleep(3)
+    savebtn = config.driver.find_element_by_xpath('//*[@id="tdTitleAction"]/button[2]').click()
+
+    time.sleep(3)
+    
+     #Scrolldown
+    scroll = config.driver.execute_script("window.scrollTo(0,0)")
+    
+    time.sleep(3)
+    #go back to task
+    patient_dashboard.gettab("task")
+    time.sleep(3)
+        
     
     
     

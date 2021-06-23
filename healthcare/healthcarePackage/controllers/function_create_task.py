@@ -19,7 +19,7 @@ def snv(task):
     #2. Convert to date string
     taskdateconvert = datetime.strptime(oasisdate, '%m/%d/%Y')
     #3. Add days to the date
-    addeddaystodate = timedelta(days=5)
+    addeddaystodate = timedelta(days=3)
     #4. add total
     datetotal = taskdateconvert + addeddaystodate
     #5. convert again to date string for final date
@@ -72,14 +72,20 @@ def oasis(task):
     time.sleep(2) 
     sortdown = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[5]/div[1]/table/thead/tr/th[5]/span/span[2]/i[2]').click()
     time.sleep(5) 
-    time.sleep(5) 
+    
+    dayinterval = int(4) # Change this for days interval for task date
+    
+    if task == "RN - OASIS D1 Resumption of Care":
+        dayinterval = int(30)
     
     #1. Get the current date of the OASIS and add days for the task date
     oasisdate = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[5]/div[1]/table/tbody/tr[2]/td[6]').text
     #2. Convert to date string
     taskdateconvert = datetime.strptime(oasisdate, '%m/%d/%Y')
     #3. Add days to the date
-    addeddaystodate = timedelta(days=57)
+    
+    
+    addeddaystodate = timedelta(days=dayinterval)
     #4. add total
     datetotal = taskdateconvert + addeddaystodate
     #5. convert again to date string for final date
@@ -115,9 +121,13 @@ def oasis(task):
             
     time.sleep(5)     
     
-    #go back to task
-    patient_dashboard.gettab("task")
-    time.sleep(3)
+
+    if task == "RN - OASIS D1 Transfer (not discharged)":
+        complete_task.oasisdcsummary(task, finaltaskdate)
+
+    elif task == "RN - OASIS D1 Resumption of Care":
+        complete_task.oasisroc(task, finaltaskdate)
+
 
 
     #Open newly created 
