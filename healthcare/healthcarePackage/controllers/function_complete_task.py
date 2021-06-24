@@ -157,7 +157,6 @@ def rnskilledassesment(oasistask, visitdate):
 
     
     
-    
 def rnjschhalvn():
     time.sleep(3)
     print('RN - Joint Supervisory (CHHA/LVN)')

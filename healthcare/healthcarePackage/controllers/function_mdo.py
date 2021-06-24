@@ -146,20 +146,21 @@ def transferorder(visitdate):
     timein = config.driver.find_element_by_xpath('//*[@id="orderTime"]').send_keys(todaytime)
     sentdate = config.driver.find_element_by_xpath('//*[@id="sentDate"]').send_keys(visitdate)
     receivedate = config.driver.find_element_by_xpath('//*[@id="receiveDate"]').send_keys(visitdate)
-    
-    # Communication type
-    finditem = config.driver.find_element_by_xpath('//*[@id="transferOrderForm"]/div[1]/fieldset/div/div/div/div/table[2]/tbody/tr[1]/td[2]/table/tbody/tr/td[1]/div/label/input')
-    finditem.click()
+
+    commtype = config.driver.find_element_by_xpath('//*[@id="transferOrderForm"]/div[1]/fieldset/div/div/div/div/table[2]/tbody/tr[1]/td[2]/table/tbody/tr/td[1]/div/label/input').click()
     
     commtext = "Patient was transferred as requested by the home health facility"  
     commnote = config.driver.find_element_by_xpath('//*[@id="communicationnotes"]').send_keys(commtext)
     
-    transferredto = config.driver.find_element_by_css_selector("#tranferredTo_chosen > a").click()
-    transferredtoresult = config.driver.find_element_by_css_selector("#tranferredTo_chosen > div > ul > li.active-result.group-option)").click()
+    transferredto = config.driver.find_element_by_xpath('//*[@id="tranferredTo_chosen"]/a').click()
+    trfres = config.driver.find_element_by_xpath('//*[@id="tranferredTo_chosen"]/div/ul/li[2]').click()
+    
     
     phyordertext = "Please transfer patient from home health services."
     phyorder = config.driver.find_element_by_xpath('//*[@id="physicianordernotes"]').send_keys(phyordertext)
     
+    md = config.driver.find_element_by_xpath(' //*[@id="transferOrderForm"]/div[1]/fieldset/div/div/div/div/table[2]/tbody/tr[8]/td/table/tbody/tr[1]/td[1]/div/label/input').click()
+   
     time.sleep(3)
     savebtn = config.driver.find_element_by_xpath('//*[@id="tdTitleAction"]/button[3]').click()
     
