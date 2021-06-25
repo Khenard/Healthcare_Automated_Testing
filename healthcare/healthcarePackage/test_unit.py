@@ -9,6 +9,7 @@ import create_task
 from selenium.webdriver.support.ui import WebDriverWait
 import admission, oasis, create_task, complete_task, create_mdo
 import ctypes  # An included library with Python install. 
+import pymsgbox
 
 
 rnskilledassesment = str("RN - Skilled Assessment")
@@ -52,30 +53,33 @@ mswass = str("MSW - Assessment")
 mswfollowup = str("MSW - Follow-up Visit")
 chhavisit = str("CHHA - HHA Visit")
 
+def test_unit(testserver):
+    
+    tasks = [rnivvisit, rnsupvisit, oasistfrnotdc, oasisroc, rnskilledassesment, rnsupvisit, rnskilledassesment] #Enter the task variable you want to create Note: skilledassessment should always the last on the array
+    rnskilledass = [rnskilledassesment_recert, rnskilledassesment_discharge] # Enter if its recertification or discharge
+    
+    if testserver == "qa":
+        servers.qaserver()
+        # Created Patient
+        config.driver.get("https://qado.medisource.com/patientcare/85183C5B-5A9B-482B-80A9-63F3670BF711/510A4E92-D238-434A-B342-9B0A6B255847/overview")
+        time.sleep(2)   
+    elif testserver == "live":
+        servers.liveserver()
+        # Created Patient
+        config.driver.get("https://app.medisource.com/patientcare/8C43F848-D288-42C3-9BB0-5BF85A41C351/F2E2BC3F-7645-45B9-BAA8-15E685A0DC5E/overview")
+        time.sleep(2)   
+    
 
-tasks = [rnivvisit, rnsupvisit, oasistfrnotdc, oasisroc, rnskilledassesment, rnsupvisit, rnskilledassesment] #Enter the task variable you want to create Note: skilledassessment should always the last on the array
-rnskilledass = [rnskilledassesment_recert, rnskilledassesment_discharge] # Enter if its recertification or discharge
-
-
-servers.qaserver()
-config.driver.get("https://qado.medisource.com/patientcare/85183C5B-5A9B-482B-80A9-63F3670BF711/510A4E92-D238-434A-B342-9B0A6B255847/overview")
-time.sleep(2)   
-
-
-
-create_task.create_task(tasks, rnskilledass)
-
-
-
-
-#currentpage = config.driver.current_url
-
-
-
-
-
-
-
-
-# END TEST
+    create_task.create_task(tasks, rnskilledass)
+    
+    
+    
+    
+    #currentpage = config.driver.current_url
+    
+    
+    
+    
+    
+    # END TEST
  

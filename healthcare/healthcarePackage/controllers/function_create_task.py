@@ -12,7 +12,9 @@ def snv(task):
     sortdown = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[5]/div[1]/table/thead/tr/th[5]/span/span[2]/i[2]').click()
     time.sleep(2) 
     sortdown = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[5]/div[1]/table/thead/tr/th[5]/span/span[2]/i[2]').click()
-    time.sleep(5) 
+    time.sleep(2) 
+    sortdown = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[5]/div[1]/table/thead/tr/th[5]/span/span[2]/i[2]').click()
+    time.sleep(2) 
     
     #1. Get the current date of the OASIS and add days for the task date
     oasisdate = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[5]/div[1]/table/tbody/tr[2]/td[6]').text
@@ -47,7 +49,9 @@ def snv(task):
     staffdd = config.driver.find_element_by_xpath('//*[@id="tooltip_err2"]/div/div/div/a').click() 
     time.sleep(3)
     staff = config.driver.find_element_by_xpath('//*[@id="tooltip_err2"]/div/div/div/div/ul/li[2]')
+    time.sleep(3)
     staff.click()    
+
 
     time.sleep(3)
    
@@ -71,7 +75,9 @@ def oasis(task):
     sortdown = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[5]/div[1]/table/thead/tr/th[5]/span/span[2]/i[2]').click()
     time.sleep(2) 
     sortdown = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[5]/div[1]/table/thead/tr/th[5]/span/span[2]/i[2]').click()
-    time.sleep(5) 
+    time.sleep(2) 
+    sortdown = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[5]/div[1]/table/thead/tr/th[5]/span/span[2]/i[2]').click()
+    time.sleep(2) 
     
     dayinterval = int(4) # Change this for days interval for task date
     
@@ -92,7 +98,7 @@ def oasis(task):
     finaltaskdate = datetime.strftime(datetotal, '%m/%d/%Y')
             
      #Test ouput date
-    print( "OASIS Date" + str(oasisdate) + " + " + str(datetotal) + " = " + str(finaltaskdate) + "")
+    print( "OASIS Date " + str(oasisdate) + " + " + str(datetotal) + " = " + str(finaltaskdate) + "")
 
 
     #Get the the add new task button 
@@ -134,7 +140,7 @@ def oasis(task):
     #current_scheduledtask = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[5]/div[1]/table/tbody/tr[2]/td[2]//a[contains(string(), "'+ task +'")]').click()
 
   
-def skilledassessment(task):
+def skilledassessment(task, rnskilledass):
     sortup = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[5]/div[1]/table/thead/tr/th[5]/span/span[2]/i[1]').click()
     #sortdown = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[5]/div[1]/table/thead/tr/th[5]/span/span[2]/i[2]').click()
     time.sleep(3) 
@@ -206,7 +212,7 @@ def skilledassessment(task):
     time.sleep(3)
 
  
-    complete_task.rnskilledassesment(task, fifthlastdate)
+    complete_task.rnskilledassesment(task, fifthlastdate, rnskilledass)
     
  
 

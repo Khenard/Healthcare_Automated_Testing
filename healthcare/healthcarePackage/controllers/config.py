@@ -10,7 +10,6 @@ import os
 import time
 from datetime import date
 
-
 #Configure web driver
 chromedriver = os.path.abspath("chromedriver.exe")
 driver = webdriver.Chrome(chromedriver)
@@ -18,13 +17,11 @@ driver = webdriver.Chrome(chromedriver)
 def timenow():
     t = time.localtime()
     current_time = time.strftime("%H:%M", t)
-    print(current_time)
     return current_time
 
 def datenow():
     today = date.today()
     todaynow = today.strftime("%m/%d/%Y")
-    print(todaynow)
     return todaynow
 
 

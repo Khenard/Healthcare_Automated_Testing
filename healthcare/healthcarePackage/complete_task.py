@@ -170,16 +170,16 @@ def oasisroc(task, visitdate):
            
            
   
-def rnskilledassesment(task, visitdate):
+def rnskilledassesment(task, visitdate, rnskilledass):
     time.sleep(5)
     
     #Open newly created 
     current_scheduledtask = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[5]/div[1]/table/tbody/tr[2]/td[2]//a[contains(string(), "'+ task +'")]').click()
     
-    discharge = "RN - OASIS D1 Discharge from Agency"
-    recert = "RN - OASIS D1 Recertification"
+    #discharge = "RN - OASIS D1 Discharge from Agency"
+    #recert = "RN - OASIS D1 Recertification"
     
-    oasistask = discharge #Change this option if you want to recert of discharge
+    oasistask = rnskilledass #Change this option if you want to recert of discharge
     
     print(oasistask)
     print(visitdate)

@@ -4,11 +4,15 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium import webdriver
 from datetime import datetime, timedelta
+from selenium.common.exceptions import NoSuchElementException
+
 
 todaytime = config.timenow()
 todaydate = config.datenow()
 plustime = (datetime.now() + timedelta(hours=5)).strftime("%H:%M")
-    
+
+
+ 
 def complete_physician_order(
         ot,
         commnote,
@@ -141,7 +145,7 @@ def recertorder(visitdate):
     
    
 def transferorder(visitdate):
-    time.sleep(5)
+    time.sleep(2)
     print('transfer')
     timein = config.driver.find_element_by_xpath('//*[@id="orderTime"]').send_keys(todaytime)
     sentdate = config.driver.find_element_by_xpath('//*[@id="sentDate"]').send_keys(visitdate)
@@ -172,8 +176,14 @@ def transferorder(visitdate):
     
 
 def rocorder(visitdate):
-    time.sleep(5)
+    time.sleep(2)
     print('recert')
+    
+
+    element = config.driver.find_element_by_xpath('/html/body/div[13]/div/div/div/div/button[1]').click()
+  
+    
+    
     sentdate = config.driver.find_element_by_xpath('//*[@id="sentDate"]').send_keys(visitdate)
     receivedate = config.driver.find_element_by_xpath('//*[@id="receiveDate"]').send_keys(visitdate)
    
