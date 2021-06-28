@@ -13,6 +13,7 @@ import pymsgbox
 
 
 
+
 chooseserver = pymsgbox.prompt('Choose server for the Automated Test, type: \n \n "1" for Live (geekers) \n "2" for QA (unitest)', 'Healthcare Automation')
 testcase = pymsgbox.prompt('Choose Test Case, type: \n \n "1": Basic Testing \n > Patient Admission \n > Complete OASIS Partly \n > Create 2 RN Tasks (IV Visit and Supervisory Visit) \n > Transfer \n > Resumption of Care \n > Recertificaition \n > Discharge \n \n "2": for test_unit.py \n > Select Task Codes', 'Healthcare Automation')
     
