@@ -64,12 +64,19 @@ def test_unit(testserver):
         # Created Patient
         config.driver.get("https://qado.medisource.com/patientcare/85183C5B-5A9B-482B-80A9-63F3670BF711/510A4E92-D238-434A-B342-9B0A6B255847/overview")
         time.sleep(2)   
+        
     elif testserver == "live":
         servers.liveserver()
         # Created Patient
         config.driver.get("https://app.medisource.com/patientcare/8C43F848-D288-42C3-9BB0-5BF85A41C351/F2E2BC3F-7645-45B9-BAA8-15E685A0DC5E/overview")
         time.sleep(2)   
+        
+    else:
+        pymsgbox.alert('Unable to run test, wrong input. Please re-run the test.', 'Warning')
+         # END TEST
+        config.driver.close()
     
+
 
     create_task.create_task(tasks, rnskilledass)
     

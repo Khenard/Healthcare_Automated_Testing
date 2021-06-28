@@ -16,8 +16,6 @@ def create_task(task, rnskilledass):
     scrolldown = config.driver.execute_script("window.scrollTo(0,0)")
            
 
-
-    
     #go back to task
     patient_dashboard.gettab("task")
     time.sleep(5)
