@@ -9,6 +9,7 @@ from selenium.webdriver.support import expected_conditions
 import os
 import time
 from datetime import date
+import platform, getpass
 
 #Configure web driver
 chromedriver = os.path.abspath("chromedriver.exe")
@@ -24,5 +25,14 @@ def datenow():
     todaynow = today.strftime("%m/%d/%Y")
     return todaynow
 
-
+def systeminfo():
+    my_system = platform.uname()
+    username = getpass.getuser()
+    
+    todaytime = timenow()
+    todaydate = datenow()
+    
+    sysinfo = str("Testing Information: \n Tester: " + username + " \n Time: " + todaytime + "\n Date: " + todaydate + " \n \n System: " + my_system.system + "\n Node Name: " + my_system.node + "\n Release: " + my_system.release + "\n Version: " + my_system.version + "\n Machine: " + my_system.machine + "\n Processor: " + my_system.processor)
+    return sysinfo
+    
 

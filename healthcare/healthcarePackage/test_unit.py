@@ -53,6 +53,7 @@ mswass = str("MSW - Assessment")
 mswfollowup = str("MSW - Follow-up Visit")
 chhavisit = str("CHHA - HHA Visit")
 
+
 def test_unit(testserver):
     
     tasks = [rnivvisit, rnsupvisit, oasistfrnotdc, oasisroc, rnskilledassesment, rnsupvisit, rnskilledassesment] #Enter the task variable you want to create Note: skilledassessment should always the last on the array
@@ -72,7 +73,7 @@ def test_unit(testserver):
 
     create_task.create_task(tasks, rnskilledass)
     
-    
+   
     
     
     #currentpage = config.driver.current_url

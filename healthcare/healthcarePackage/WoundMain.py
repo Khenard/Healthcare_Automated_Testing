@@ -5,7 +5,7 @@ import os
 import time
 import woundfunction
 import woundconfig
-import mswfunction
+#import mswfunction
 #import Upload
 
 
@@ -27,7 +27,7 @@ woundfunction.clicktabsfunction()
 
 
 #after adding ng wound proceed sa addding ng entry sa MSW
-mswfunction.clickTaskMenu()
-mswfunction.mswform('samplehse', 'sampleec', 'sampless', 'samplehs')
+#mswfunction.clickTaskMenu()
+#mswfunction.mswform('samplehse', 'sampleec', 'sampless', 'samplehs')
 
 woundconfig.driver.close()

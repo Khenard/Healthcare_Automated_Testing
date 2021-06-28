@@ -134,8 +134,6 @@ def oasis(task):
     elif task == "RN - OASIS D1 Resumption of Care":
         complete_task.oasisroc(task, finaltaskdate)
 
-
-
     #Open newly created 
     #current_scheduledtask = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[5]/div[1]/table/tbody/tr[2]/td[2]//a[contains(string(), "'+ task +'")]').click()
 

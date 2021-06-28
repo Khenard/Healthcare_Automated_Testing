@@ -11,7 +11,23 @@ todaytime = config.timenow()
 todaydate = config.datenow()
 plustime = (datetime.now() + timedelta(hours=5)).strftime("%H:%M")
 
-
+def testinfo():
+    # Function to get test information and put it as first comment box - OASIS 
+    
+    #go back to task
+    patient_dashboard.gettab("task")
+    time.sleep(3)
+    
+    sysinfo = config.systeminfo()
+    
+    commenticon = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[5]/div[1]/table/tbody/tr[2]/td[8]/div/div/div/a/i').click()
+    time.sleep(3)
+    commentbox = config.driver.find_element_by_xpath('/html/body//textarea[@placeholder="Comments here"]')
+    commentbox.click()
+    commentbox.send_keys(sysinfo)
+    time.sleep(3)
+    commentsave = config.driver.find_element_by_xpath('/html/body//button[contains(string(), "Send")]').click()
+ 
  
 def complete_physician_order(
         ot,
@@ -115,9 +131,10 @@ def dischargeorder(visitdate):
     #go back to task
     patient_dashboard.gettab("task")
     time.sleep(3)
-   
-
     
+    testinfo()
+    
+   
 def recertorder(visitdate):
     time.sleep(5)
     print('recert')
@@ -141,6 +158,8 @@ def recertorder(visitdate):
     #go back to task
     patient_dashboard.gettab("task")
     time.sleep(3)
+    
+    #testinfo()
     
     
    
@@ -174,6 +193,7 @@ def transferorder(visitdate):
     patient_dashboard.gettab("task")
     time.sleep(3)
     
+    #testinfo()
 
 def rocorder(visitdate):
     time.sleep(2)
@@ -203,7 +223,7 @@ def rocorder(visitdate):
     patient_dashboard.gettab("task")
     time.sleep(3)
         
-    
+    #testinfo()
     
     
     
