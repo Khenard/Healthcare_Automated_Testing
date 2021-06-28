@@ -180,9 +180,7 @@ def rocorder(visitdate):
     print('recert')
     
 
-    element = config.driver.find_element_by_xpath('/html/body/div[13]/div/div/div/div/button[1]').click()
-  
-    
+    #element = config.driver.find_element_by_xpath('/html/body/div[13]/div/div/div/div/button[1]').click()
     
     sentdate = config.driver.find_element_by_xpath('//*[@id="sentDate"]').send_keys(visitdate)
     receivedate = config.driver.find_element_by_xpath('//*[@id="receiveDate"]').send_keys(visitdate)
@@ -193,7 +191,7 @@ def rocorder(visitdate):
     orderread = config.driver.find_element_by_xpath('//*[@id="recertOrderForm"]/div[1]/div[2]/fieldset/div[1]/table[2]/tbody/tr[15]/td/label/input').click()
     
     time.sleep(3)
-    savebtn = config.driver.find_element_by_xpath('//*[@id="tdTitleAction"]/button[2]').click()
+    savebtn = config.driver.find_element_by_xpath('//*[@id="tdTitleAction"]/button[3]').click()
 
     time.sleep(3)
     

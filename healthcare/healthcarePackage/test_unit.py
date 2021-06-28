@@ -13,7 +13,7 @@ import pymsgbox
 
 
 rnskilledassesment = str("RN - Skilled Assessment")
-rnskilledassesment_discharge = str("RN - OASIS D1 Discharge from Agency")
+rnskilledassesment_dc = str("RN - OASIS D1 Discharge from Agency")
 rnskilledassesment_recert = str("RN - OASIS D1 Recertification")
 
 oasisdcaegency = str("RN - OASIS D1 Discharge from Agency")
@@ -56,7 +56,7 @@ chhavisit = str("CHHA - HHA Visit")
 def test_unit(testserver):
     
     tasks = [rnivvisit, rnsupvisit, oasistfrnotdc, oasisroc, rnskilledassesment, rnsupvisit, rnskilledassesment] #Enter the task variable you want to create Note: skilledassessment should always the last on the array
-    rnskilledass = [rnskilledassesment_recert, rnskilledassesment_discharge] # Enter if its recertification or discharge
+    rnskilledass = [rnskilledassesment_recert, rnskilledassesment_dc] # Enter if its recertification or discharge
     
     if testserver == "qa":
         servers.qaserver()

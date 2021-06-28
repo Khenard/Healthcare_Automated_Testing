@@ -4,7 +4,7 @@ from datetime import date
 import admission, oasis, create_task, complete_task, create_mdo
 
 rnskilledassesment = "RN - Skilled Assessment"
-rnskilledassesment_discharge = "RN - OASIS D1 Discharge from Agency"
+rnskilledassesment_dc = "RN - OASIS D1 Discharge from Agency"
 rnskilledassesment_recert = "RN - OASIS D1 Recertification"
 
 oasisdcnvisit = "RN - OASIS D1 Discharge Non-visit"
@@ -45,7 +45,7 @@ chhavisit = "CHHA - HHA Visit"
 
 
 rnskilledassesment = "RN - Skilled Assessment"
-rnskilledassesment_discharge = "RN - OASIS D1 Discharge from Agency"
+rnskilledassesment_dc = "RN - OASIS D1 Discharge from Agency"
 rnskilledassesment_recert = "RN - OASIS D1 Recertification"
 
 oasisdcaegency = "RN - OASIS D1 Discharge from Agency"
@@ -91,15 +91,13 @@ def test_main(servertest):
     
     #Enter the task variable you want to create Note: skilledassessment should always the last on the array
     tasks = [rnivvisit, rnsupvisit, oasistfrnotdc, oasisroc, rnskilledassesment, rnsupvisit, rnskilledassesment] 
-    rnskilledass = [rnskilledassesment_recert, rnskilledassesment_discharge] # Enter if its recertification or discharge
+    rnskilledass = [rnskilledassesment_recert, rnskilledassesment_dc] # Enter if its recertification or discharge
 
     admission.admission(test_server) #PATIENT ADMISSION
     oasis.oasispart() #COMPLETE OASIS SOC
     create_task.create_task(tasks, rnskilledass)
     
-    # END TEST
-    config.driver.close()
-
+   
 
 
 

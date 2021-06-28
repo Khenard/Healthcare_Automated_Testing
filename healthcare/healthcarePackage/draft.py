@@ -58,13 +58,11 @@ rnskilledass = [rnskilledassesment_recert, rnskilledassesment_discharge] # Enter
 
 
 servers.qaserver()
-config.driver.get("https://qado.medisource.com/patientcare/85183C5B-5A9B-482B-80A9-63F3670BF711/510A4E92-D238-434A-B342-9B0A6B255847/overview")
+config.driver.get("https://qado.medisource.com/patientcare/DBBB3F9A-0D1D-495E-87DC-DAB0CE6B3124/93C9DC38-3BC3-4ACE-ABAC-AA5CB5EB2564/roc-order/BE4933BC-7649-4F40-96EE-B4BA6434B4C8")
 time.sleep(2)   
 
 
-
-create_task.create_task(tasks, rnskilledass)
-
+function_complete_task.oasisroc(tasks, "06/29/2021")
 
 
 
