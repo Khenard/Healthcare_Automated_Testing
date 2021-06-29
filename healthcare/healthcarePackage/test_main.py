@@ -2,6 +2,8 @@ from controllers import config, login, function_admission, function_oasis, serve
 import random, time
 from datetime import date
 import admission, oasis, create_task, complete_task, create_mdo
+import pymsgbox
+
 
 rnskilledassesment = "RN - Skilled Assessment"
 rnskilledassesment_dc = "RN - OASIS D1 Discharge from Agency"
@@ -94,14 +96,35 @@ def test_main(servertest):
     tasks = [rnivvisit, rnsupvisit, oasistfrnotdc, oasisroc, rnskilledassesment, rnsupvisit, rnskilledassesment] 
     rnskilledass = [rnskilledassesment_recert, rnskilledassesment_dc] # Enter if its recertification or discharge
 
-    admission.admission(test_server) #PATIENT ADMISSION
+    admission.admission_medicare(test_server) #PATIENT ADMISSION
     oasis.oasispart() #COMPLETE OASIS SOC
     create_task.create_task(tasks, rnskilledass)
     
-  
+
+def preadmitpatient_medicare(servertest):
+    
+    test_server = servertest 
+    admission.preadmission_medicare(test_server) #PATIENT ADMISSION
+    
+    if servertest == "qa":
+        config.driver.get("https://qado.medisource.com/patients/pre-admitted")
+    elif servertest == "live": 
+        config.driver.get("https://app.medisource.com/patients/pre-admitted")
+    
+    print('Test success!')   
 
 
-
+def preadmitpatient_nonmedicare(servertest):
+    
+    test_server = servertest 
+    admission.preadmission_nonmedicare(test_server) #PATIENT ADMISSION
+    
+    if servertest == "qa":
+        config.driver.get("https://qado.medisource.com/patients/pre-admitted")
+    elif servertest == "live": 
+        config.driver.get("https://app.medisource.com/patients/pre-admitted")
+    
+    print('Test success!')   
 
 
 
