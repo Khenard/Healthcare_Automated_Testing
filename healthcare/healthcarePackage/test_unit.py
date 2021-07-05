@@ -72,7 +72,7 @@ def test_unit(testserver):
         time.sleep(2)   
         
     else:
-        pymsgbox.alert('Unable to run test, wrong input. Please re-run the test.', 'Warning')
+        pymsgbox.alert('Unable to run test, wrong input.. Please re-run the test.', 'Warning')
          # END TEST
         config.driver.close()
     
