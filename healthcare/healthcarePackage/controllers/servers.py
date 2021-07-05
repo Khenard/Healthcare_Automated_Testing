@@ -8,7 +8,7 @@ def qaserver():
     config.driver.maximize_window()
     config.driver.get("https://qado.medisource.com/login")
     
-    login.login("superagent@unitest", "Tester2021!")
+    login.login("superagent@unitest", "Tester2021@")
     time.sleep(5)
     
 # ------------------------------------------------------------------------------------------------

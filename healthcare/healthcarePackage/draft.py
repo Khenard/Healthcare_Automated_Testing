@@ -11,9 +11,8 @@ import admission, oasis, create_task, complete_task, create_mdo
 import ctypes
 import pyautogui, sys
 from _socket import close
-from autoit import process
 import pyautogui, sys
-
+import autoit
 
 """servers.qaserver()
 config.driver.get("https://qado.medisource.com/patientcare/E2B75EF7-0338-48A6-861A-629BADEB0008/BE8D6183-82BC-4C73-ABC2-3677C533C333/overview")
@@ -68,216 +67,104 @@ time.sleep(3)
 
 scrolldown = config.driver.execute_script("window.scrollTo(0,1000)")
 
-time.sleep(3) 
+time.sleep(3)
 
-stages = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div/div/table-column/ul/li[6]/span/table-inputs/div/div[1]/input')
-stages.click()
-time.sleep(2)  
-stages.send_keys('3 = Stage 3: Full thickness tissue loss, subcutaneous fat may be visible but bone, tendon, or muscle is not exposed ')
+# --- Click the dropdown
+# --- Get all data on dropdown
+# --- Select the option
 
-grantissue = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div/div/table-column/ul/li[7]/span/table-inputs/div/div[1]/input')
-grantissue.click()
-time.sleep(2)  
-grantissue.send_keys('3 = Pink, dull, dusky red, hypergranulation')
+# -- All values declare here
+stages = '2'
+grantissue = '3'
+nectissue = '2'
+granneccoverage = '4'
+exuamount = '4'
+exutype = 'Serous'
+edges = '2'
+periwoundtissue = 'Edematous'
+healingstatus = 'Early/partial granulation'
+woundrelatedpain = '4'
 
-necrotictissue = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div/div/table-column/ul/li[8]/span/table-inputs/div/div[1]/input')
-necrotictissue.click()
-time.sleep(2)  
-necrotictissue.send_keys('2 = Slough, thin, non-adherent (yellow, tan, gray, green or brown) non-viable tissue')
+# Stages
+stages_dd = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div/div/table-column/ul/li[6]//input').click()
+stages_items = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div/div/table-column/ul/li[6]//div[2]').text
+time.sleep(2)
+finditem = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div/div/table-column/ul/li[6]//li[contains(string(), "'+ stages +'")]').click()
 
-exuamount = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div/div/table-column/ul/li[10]/span/table-inputs/div/div[1]/input')
-exuamount.click()
-time.sleep(2)  
-exuamount.send_keys('1 = Scant, moist wound tissue, no measurable drainage')
+time.sleep(2)
+"""
+# Granulation Tissue
+grantissue_dd = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div/div/table-column/ul/li[7]//input').click()
+grantissue_items = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div/div/table-column/ul/li[7]//div[2]').text
+time.sleep(2)
+finditem = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div/div/table-column/ul/li[7]//li[contains(string(), "'+ grantissue +'")]').click()
 
-exutype = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div/div/table-column/ul/li[11]/span/table-inputs/div/div[1]/input')
-exutype.click()
-time.sleep(2)  
-exutype.send_keys('Serosanguineous')
+# Necrotic Tissue
+nectissue_dd = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div/div/table-column/ul/li[8]//input').click()
+nectissue_items = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div/div/table-column/ul/li[8]//div[2]').text
+time.sleep(2)
+finditem = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div/div/table-column/ul/li[8]//li[contains(string(), "'+ nectissue +'")]').click()
 
-edges = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div/div/table-column/ul/li[12]/span/table-inputs/div/div[1]/input')
-edges.click()
-time.sleep(2)  
-edges.send_keys('3 = Defined edge, unattached to wound base')
+# Granulation and Necrosis Coverage
+granneccoverage_dd = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div/div/table-column/ul/li[9]//input').click()
+granneccoverage_items = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div/div/table-column/ul/li[9]//div[2]').text
+time.sleep(2)
+finditem = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div/div/table-column/ul/li[9]//li[contains(string(), "'+ granneccoverage +'")]').click()
 
-pt = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div/div/table-column/ul/li[13]/table-column-periwound/div/div[2]/div[1]').click()
-time.sleep(2)  
-periwoundtissue = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div/div/table-column/ul/li[13]/table-column-periwound/div/div[2]/div[2]/ul/li[1]').click()
+# Exudate Amount
+exuamount_dd = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div/div/table-column/ul/li[10]//input').click()
+exuamount_items = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div/div/table-column/ul/li[10]//div[2]').text
+time.sleep(2)
+finditem = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div/div/table-column/ul/li[10]//li[contains(string(), "'+ exuamount +'")]').click()
 
-healingstatus = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div/div/table-column/ul/li[14]/span/table-inputs/div/div[1]/input')
-healingstatus.click()
-time.sleep(2)  
-healingstatus.send_keys('Early/partial granulation')
+# Exudate Type
+exutype_dd = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div/div/table-column/ul/li[11]//input').click()
+exutype_items = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div/div/table-column/ul/li[11]//div[2]').text
+time.sleep(2)
+finditem = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div/div/table-column/ul/li[11]//li[contains(string(), "'+ exutype +'")]').click()
 
-woundrelatedpain = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div/div/table-column/ul/li[15]/span/table-inputs/div/div[1]/input')
-woundrelatedpain.click()
-time.sleep(2)  
-woundrelatedpain.send_keys('5')
+# Edge Type
+edges_dd = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div/div/table-column/ul/li[12]//input').click()
+edges_items = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div/div/table-column/ul/li[12]//div[2]').text
+time.sleep(2)
+finditem = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div/div/table-column/ul/li[12]//li[contains(string(), "'+ edges +'")]').click()
 
-otherobservation = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div/div/table-column/ul/li[17]/div/textarea').send_keys('sample text goes here...')
+
+# Healing Status
+healingstatus_dd = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div/div/table-column/ul/li[14]//input').click()
+healingstatus_items = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div/div/table-column/ul/li[14]//div[2]').text
+time.sleep(2)
+finditem = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div/div/table-column/ul/li[14]//li[contains(string(), "'+ healingstatus +'")]').click()
+
+# Wound Related Pain 
+woundrelatedpain_dd = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div/div/table-column/ul/li[15]//input').click()
+woundrelatedpain_items = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div/div/table-column/ul/li[15]//div[2]').text
+time.sleep(2)
+finditem = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div/div/table-column/ul/li[15]//li[contains(string(), "'+ woundrelatedpain +'")]').click()
+
+
+# Periwound Tissue 
+periwoundtissue_dd = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div/div/table-column/ul/li[13]/table-column-periwound/div/div[2]/div[1]').click()
+periwoundtissue_items = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div/div/table-column/ul/li[13]//div[2]').text
+time.sleep(2)
+finditem = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div/div/table-column/ul/li[13]//li[contains(string(), "'+ periwoundtissue +'")]').click()
+"""
+scrolldown = config.driver.execute_script("window.scrollTo(0,5000)")
+
 time.sleep(2)
 
 
+# Upload Function
+# -- 1. find the wound.png file path
+# -- 2. Click upload Element
+# -- 3. use autoit function for upload -- import autoit
 
-def woundcareFunction():
-    
-    degree = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div/div/table-column/ul/li[6]/span/table-inputs/div/div[1]/input')
-    degree.click()
-    time.sleep(5)
-    selectDegree = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div/div/table-column/ul/li[6]/span/table-inputs/div/div[2]/ul/li[2]')
-    selectDegree.click()
-    time.sleep(5)
-    amount = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div/div/table-column/ul/li[7]/span/table-inputs/div/div[1]/input')
-    amount.click()
-    time.sleep(5)
-    selectAmount = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div/div/table-column/ul/li[7]/span/table-inputs/div/div[2]/ul/li[6]')
-    selectAmount.click()
-    time.sleep(5)
-    Type = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div/div/table-column/ul/li[8]/span/table-inputs/div/div[1]/input')
-    Type.click()
-    time.sleep(5)
-    selectType = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div/div/table-column/ul/li[8]/span/table-inputs/div/div[2]/ul/li[6]')
-    selectType.click()
-    time.sleep(5)
-    Status = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div/div/table-column/ul/li[9]/span/table-inputs/div/div[1]/input')
-    Status.click()
-    time.sleep(5)
-    selectStatus = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div/div/table-column/ul/li[9]/span/table-inputs/div/div[2]/ul/li[6]')
-    selectStatus.click()
-    time.sleep(5)
-    RelatedPain = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div/div/table-column/ul/li[10]/span/table-inputs/div/div[1]/input')
-    RelatedPain.click()
-    time.sleep(5)
-    selectScore = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div/div/table-column/ul/li[10]/span/table-inputs/div/div[2]/ul/li[7]')
-    selectScore.click()
-    time.sleep(5)
-    
-    
-def UploadFunction():
-    upload = config.driver.find_element(By.XPATH, '//*[@id="myImg"]').click()
-    time.sleep(5)
-    
-def mouseHover():
-    
-    screenWidth, screenHeight = pyautogui.size()
-    time.sleep(5)
-    pyautogui.click(410, 274)
-    time.sleep(5)
-    pyautogui.doubleClick(762, 368)
-    time.sleep(5)
-    pyautogui.click(540, 392)
-    time.sleep(5)
-    pyautogui.click(981, 674)
-    time.sleep(5)
+woundimage = os.getcwd()+"\wound.png"
 
- 
-
-def pressDigitalMeasurement():
-    
-    digitalclck = config.driver.find_element_by_xpath('//*[@id="onProcessFalse-0-0"]/div[3]/div[2]/div[2]/span/div/div/a')
-    digitalclck.click()
-    time.sleep(20)
-    EditDigitalclck = config.driver.find_element_by_xpath('//*[@id="onProcessFalse-0-0"]/div[3]/div[2]/div[2]/span/div/div/a')
-    EditDigitalclck.click()
-    time.sleep(5)
-    pyautogui.click(1343, 718)
-    pyautogui.click(1343, 718)
-    pyautogui.click(1343, 718)
-    pyautogui.click(1343, 718)
-    pyautogui.click(1343, 718)
-    time.sleep(5)
-    
-def WoundMeasurement():
-    
-    time.sleep(5)
-    pyautogui.click(614, 215)
-    time.sleep(5)
-    pyautogui.click(566, 223)
-    time.sleep(5)
-    pyautogui.click(504, 247)
-    time.sleep(5)
-    pyautogui.click(458, 273)
-    time.sleep(5)
-    pyautogui.click(420, 297)
-    time.sleep(5)
-    pyautogui.click(393, 334)
-    time.sleep(5)
-    pyautogui.click(385, 394)
-    time.sleep(5)
-    pyautogui.click(399, 447)
-    time.sleep(5)
-    pyautogui.click(424, 487)
-    time.sleep(5)
-    pyautogui.click(471, 510)
-    time.sleep(5)
-    pyautogui.click(506, 526)
-    time.sleep(5)
-    pyautogui.click(555, 535)
-    time.sleep(5)
-    pyautogui.click(599, 539)
-    time.sleep(5)
-    pyautogui.click(636, 538)
-    time.sleep(5)
-    pyautogui.click(680, 526)
-    time.sleep(5)
-    pyautogui.click(715, 512)
-    time.sleep(5)
-    pyautogui.click(757, 490)
-    time.sleep(5)
-    pyautogui.click(810, 452)
-    time.sleep(5)
-    pyautogui.click(845, 411)
-    time.sleep(5)
-    pyautogui.click(861, 372)
-    time.sleep(5)
-    pyautogui.click(855, 327)
-    time.sleep(5)
-    pyautogui.click(837, 290)
-    time.sleep(5)
-    pyautogui.click(811, 259)
-    time.sleep(5)
-    pyautogui.click(768, 234)
-    time.sleep(5)
-    pyautogui.click(723, 220)
-    time.sleep(5)
-    pyautogui.click(671, 214)
-    time.sleep(5)
-    pyautogui.click(614, 215)
-    time.sleep(5)
-    
-def inputGranulation():
-    
-    X2btn = config.driver.find_element_by_xpath('/html/body/div[11]/button')
-    X2btn.click()
-    time.sleep(5)
-    percenttb = config.driver.find_element_by_xpath('/html/body/div[12]/div/div/form/div/div[2]/div/div/table/tbody/tr/td[2]/table[2]/tbody/tr[2]/td[2]/table/tbody/tr/td/input[2]')
-    percenttb.send_keys("95")
-    time.sleep(5)
-    pyautogui.click(1339, 124)
-    time.sleep(5)
-    
-def SaveFunction():
-    
-    save1btn = config.driver.find_element_by_xpath('/html/body/div[12]/div/div/form/div/div[2]/div/div/table/tbody/tr/td[2]/div[3]/button[2]')
-    save1btn.click()
-    time.sleep(5)
-    config.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-    time.sleep(5)
-    timein = config.driver.find_element_by_xpath('//*[@id="ti"]')
-    timein.send_keys("23:00")
-    time.sleep(5)
-    timein = config.driver.find_element_by_xpath('//*[@id="to"]')
-    timein.send_keys("23:30")
-    time.sleep(5)
-    save2btn = config.driver.find_element_by_xpath('//*[@id="tdTitleAction"]/td[2]/button')
-    save2btn.click()
-    time.sleep(5)
-    woundtab = config.driver.find_element_by_xpath('//*[@id="profile-main-header"]/div/ul/li[8]')
-    woundtab.click()
-    time.sleep(5)
-    woundHistory = config.driver.find_element_by_xpath('//*[@id="pinid1"]/span/span[1]')
-    woundHistory.click()
-    time.sleep(5)
+upload = config.driver.find_element(By.XPATH, '//*[@id="myImg"]').click()
+time.sleep(2)
+autoit.control_set_text("Open","Edit1", woundimage)
+autoit.control_send("Open","Edit1","{ENTER}")
 
 
 
