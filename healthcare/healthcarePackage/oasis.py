@@ -182,8 +182,8 @@ def oasispart():
     # ------------------------------------------------------------------------------------------------
     
     #Open the OASIS 
-    clickoasis = config.driver.find_element_by_xpath("//*[@id='parent']/div/div[1]/div/div[5]/div[1]/table/tbody/tr[2]/td[2]/a").click()
-    time.sleep(5)
+    clickoasis = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[5]/div[1]/table/tbody/tr[2]/td[2]/a').click()
+    time.sleep(8)
     
     #click the OASIS edit button
     oasisedit = config.driver.find_element_by_xpath("//*[@id='titleNoteBar']/div[4]/div[2]/button").click()
