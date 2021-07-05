@@ -10,8 +10,6 @@ from selenium.webdriver.support.ui import WebDriverWait
 import admission, oasis, create_task, complete_task, create_mdo
 import ctypes
 import pyautogui, sys
-from _socket import close
-import pyautogui, sys
 import autoit
 
 """servers.qaserver()

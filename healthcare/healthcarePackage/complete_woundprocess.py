@@ -4,6 +4,8 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium import webdriver
 from datetime import datetime, timedelta
+import pyautogui, sys
+import autoit
 
 todaytime = config.timenow()
 todaydate = config.datenow()
