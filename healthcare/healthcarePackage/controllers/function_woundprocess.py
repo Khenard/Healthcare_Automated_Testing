@@ -255,18 +255,9 @@ def woundanalytics():
 
 def addwounddirectly(
         woundtype, 
-        woundlocation,
-        stages, 
-        grantissue, 
-        nectissue, 
-        granneccoverage, 
-        exuamount, 
-        exutype, 
-        edges, 
-        periwoundtissue, 
-        healingstatus, 
-        woundrelatedpain
+        woundlocation
         ):
+    scrolldown = config.driver.execute_script("window.scrollTo(0,5000)")
     
     time.sleep(3)
     patient_dashboard.gettab("woundmanagement")
@@ -337,7 +328,7 @@ def addwounddirectly(
     pinyes = config.driver.find_element_by_xpath('//*[@id="coorask"]/div/button[1]').click()
     
     time.sleep(3)
-
+    
     # wound location
     woundloc_dd = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div[2]/div/table-column/ul/li[3]//input').click()
     woundloc_items = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div[2]/div/table-column/ul/li[3]//div[2]').text
@@ -350,20 +341,73 @@ def addwounddirectly(
     time.sleep(2)
     finditem = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div[2]/div/table-column/ul/li[4]//li[contains(string(), "'+ woundtype +'")]').click()
     
+    """ # Stages
+    stages_dd = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div[2]/div/table-column/ul/li[6]/span/table-inputs/div/div[1]/input').click()
+    stages_items = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div[2]/div/table-column/ul/li[6]/span/table-inputs/div/div[2]').text
+    time.sleep(2)
+    finditem = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div[2]/div/table-column/ul/li[6]/span/table-inputs/div/div[2]/ul/li[contains(string(), "'+ stages +'")]').click()
+    time.sleep(2)
     
+    # Granulation Tissue
+    grantissue_dd = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div[2]/div/table-column/ul/li[7]/span/table-inputs/div/div[1]/input').click()
+    grantissue_items = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div[2]/div/table-column/ul/li[7]/span/table-inputs/div/div[2]').text
+    time.sleep(2)
+    print(grantissue_items)
+    finditem = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div[2]/div/table-column/ul/li[7]//li[contains(string(), "'+ grantissue +'")]').click()
+    
+    # Necrotic Tissue
+    nectissue_dd = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div[2]/div/div/table-column/ul/li[8]//input').click()
+    nectissue_items = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div[2]/div/div/table-column/ul/li[8]//div[2]').text
+    time.sleep(2)
+    finditem = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div[2]/div/div/table-column/ul/li[8]//li[contains(string(), "'+ nectissue +'")]').click()
+    
+    # Granulation and Necrosis Coverage
+    granneccoverage_dd = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div[2]/div/div/table-column/ul/li[9]//input').click()
+    granneccoverage_items = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div[2]/div/div/table-column/ul/li[9]//div[2]').text
+    time.sleep(2)
+    finditem = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div[2]/div/div/table-column/ul/li[9]//li[contains(string(), "'+ granneccoverage +'")]').click()
+    
+    # Exudate Amount
+    exuamount_dd = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div[2]/div/div/table-column/ul/li[10]//input').click()
+    exuamount_items = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div[2]/div/div/table-column/ul/li[10]//div[2]').text
+    time.sleep(2)
+    finditem = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div[2]/div/div/table-column/ul/li[10]//li[contains(string(), "'+ exuamount +'")]').click()
+    
+    # Exudate Type
+    exutype_dd = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div[2]/div/div/table-column/ul/li[11]//input').click()
+    exutype_items = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div[2]/div/div/table-column/ul/li[11]//div[2]').text
+    time.sleep(2)
+    finditem = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div[2]/div/div/table-column/ul/li[11]//li[contains(string(), "'+ exutype +'")]').click()
+    
+    # Edge Type
+    edges_dd = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div[2]/div/div/table-column/ul/li[12]//input').click()
+    edges_items = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div[2]/div/div/table-column/ul/li[12]//div[2]').text
+    time.sleep(2)
+    finditem = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div[2]/div/div/table-column/ul/li[12]//li[contains(string(), "'+ edges +'")]').click()
+    
+    
+    # Healing Status
+    healingstatus_dd = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div[2]/div/div/table-column/ul/li[14]//input').click()
+    healingstatus_items = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div[2]/div/div/table-column/ul/li[14]//div[2]').text
+    time.sleep(2)
+    finditem = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div[2]/div/div/table-column/ul/li[14]//li[contains(string(), "'+ healingstatus +'")]').click()
+    
+    # Wound Related Pain 
+    woundrelatedpain_dd = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div[2]/div/div/table-column/ul/li[15]//input').click()
+    woundrelatedpain_items = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div[2]/div/div/table-column/ul/li[15]//div[2]').text
+    time.sleep(2)
+    finditem = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div[2]/div/div/table-column/ul/li[15]//li[contains(string(), "'+ woundrelatedpain +'")]').click()
+    
+    
+    # Periwound Tissue 
+    periwoundtissue_dd = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div[2]/div/div/table-column/ul/li[13]/table-column-periwound/div/div[2]/div[1]').click()
+    periwoundtissue_items = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div[2]/div/div/table-column/ul/li[13]//div[2]').text
+    time.sleep(2)
+    finditem = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div[2]/div/div/table-column/ul/li[13]//li[contains(string(), "'+ periwoundtissue +'")]').click()
+    
+    scrolldown = config.driver.execute_script("window.scrollTo(0,5000)") """
+    
+    time.sleep(2)
    
-    
-    completewoundassessment(
-        stages, 
-        grantissue, 
-        nectissue, 
-        granneccoverage, 
-        exuamount, 
-        exutype, 
-        edges, 
-        periwoundtissue, 
-        healingstatus, 
-        woundrelatedpain
-        )
-    
+   
     

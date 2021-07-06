@@ -18,35 +18,21 @@ time.sleep(2)
 
 woundtype = "Pressure Ulcer"
 #woundlocation = ['Buttock (R)', 'Buttock (L)', 'Sacrum', 'Coccyx', 'Trochanter (R)', 'Trochanter (L)', 'Ischial tuberosity (R)', 'Ischial tuberosity (L)', 'Lateral ankle (R)', 'Lateral ankle (L)', 'Medial ankle (R)', 'Medial ankle (L)', 'Heel (R)', 'Heel (L)', 'Plantar', 'Toes', 'Abdomen', 'Groin']
-woundlocation = 'Sacrum'
-stages = "2"
-grantissue = "3"
-nectissue = "3"
-granneccoverage = "4"
-exuamount = "4"
-exutype = "Serous"
-edges = "2"
-periwoundtissue = "Edematous"
-healingstatus = "Early/partial granulation"
-woundrelatedpain = "4"
-
+woundlocation = 'Coccyx'
 
 function_woundprocess.addwounddirectly(
         woundtype,
-        woundlocation,
-        stages, 
-        grantissue, 
-        nectissue, 
-        granneccoverage, 
-        exuamount, 
-        exutype, 
-        edges, 
-        periwoundtissue, 
-        healingstatus, 
-        woundrelatedpain
+        woundlocation
         )
 
+woundtype = "Pressure Ulcer"
+#woundlocation = ['Buttock (R)', 'Buttock (L)', 'Sacrum', 'Coccyx', 'Trochanter (R)', 'Trochanter (L)', 'Ischial tuberosity (R)', 'Ischial tuberosity (L)', 'Lateral ankle (R)', 'Lateral ankle (L)', 'Medial ankle (R)', 'Medial ankle (L)', 'Heel (R)', 'Heel (L)', 'Plantar', 'Toes', 'Abdomen', 'Groin']
+woundlocation = 'Trochanter (R)'
 
+function_woundprocess.addwounddirectly(
+        woundtype,
+        woundlocation
+        )
 
 
 
