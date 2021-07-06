@@ -13,10 +13,46 @@ import pyautogui, sys
 import autoit
     
 servers.qaserver()
-config.driver.get("https://qado.medisource.com/patientcare/CEB7010B-2FE7-45B1-808C-3C25C0E594F0/857A6F1E-C5A3-415E-92FC-879D983FAA2F/overview")
+config.driver.get("https://qado.medisource.com/patientcare/85183C5B-5A9B-482B-80A9-63F3670BF711/510A4E92-D238-434A-B342-9B0A6B255847/overview")
 time.sleep(2)  
- 
-complete_woundprocess.complete_woundprocess()
+
+woundtype = "Pressure Ulcer"
+#woundlocation = ['Buttock (R)', 'Buttock (L)', 'Sacrum', 'Coccyx', 'Trochanter (R)', 'Trochanter (L)', 'Ischial tuberosity (R)', 'Ischial tuberosity (L)', 'Lateral ankle (R)', 'Lateral ankle (L)', 'Medial ankle (R)', 'Medial ankle (L)', 'Heel (R)', 'Heel (L)', 'Plantar', 'Toes', 'Abdomen', 'Groin']
+woundlocation = 'Sacrum'
+stages = "2"
+grantissue = "3"
+nectissue = "3"
+granneccoverage = "4"
+exuamount = "4"
+exutype = "Serous"
+edges = "2"
+periwoundtissue = "Edematous"
+healingstatus = "Early/partial granulation"
+woundrelatedpain = "4"
+
+
+function_woundprocess.addwounddirectly(
+        woundtype,
+        woundlocation,
+        stages, 
+        grantissue, 
+        nectissue, 
+        granneccoverage, 
+        exuamount, 
+        exutype, 
+        edges, 
+        periwoundtissue, 
+        healingstatus, 
+        woundrelatedpain
+        )
+
+
+
+
+
+
+
+
 
 # END TEST
  

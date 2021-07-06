@@ -1,4 +1,4 @@
-from controllers import config, login, servers, function_mdo
+from controllers import config, login, servers, function_mdo, patient_dashboard
 import time
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
@@ -7,6 +7,8 @@ from datetime import datetime, timedelta
 import pyautogui, sys
 import autoit
 import os
+from selenium.webdriver.common.action_chains import ActionChains
+
 
 todaytime = config.timenow()
 todaydate = config.datenow()
@@ -21,11 +23,12 @@ def addwoundoasis(
     integendo = config.driver.find_element_by_xpath('//*[@id="integumentary"]').click()
     
     scrolldown = config.driver.execute_script("window.scrollTo(0,500)")
-    
+ 
     time.sleep(3)
     woundyes = config.driver.find_element_by_xpath('//*[@id="integForm"]/fieldset/div[1]/table[1]/tbody/tr[6]/td/table/tbody/tr/td[4]/div/label/input').click()
     woundplus =  config.driver.find_element_by_xpath('//*[@id="integForm"]/fieldset/div[1]/table[1]/tbody/tr[6]/td/table/tbody/tr/td[4]/div/a').click()
     time.sleep(3)
+    
     
     wound_type = config.driver.find_element_by_xpath('//*[@id="integForm"]/fieldset/div[1]/table[1]/tbody/tr[7]/td/table/tbody/tr/td[3]/div/div[1]/input')
     wound_type.click()
@@ -46,6 +49,18 @@ def addwoundoasis(
     assessnow = config.driver.find_element_by_xpath('/html/body/div[5]/div[2]/button[1]').click()
     
     
+def dragpin():
+    time.sleep(3)
+    
+    source1 = config.driver.find_element_by_xpath('//*[@id="pinid1"]')
+    target1 = config.driver.find_element_by_xpath('//*[@id="dragball"]/div')
+    time.sleep(5)
+    actions2 = ActionChains(config.driver)
+    time.sleep(5)
+    actions2.drag_and_drop(source1, target1).perform()
+    time.sleep(5)
+    
+
 def completewoundassessment(
         stages, 
         grantissue, 
@@ -65,7 +80,7 @@ def completewoundassessment(
 
     scrolldown = config.driver.execute_script("window.scrollTo(0,1000)")
     
-    time.sleep(3)
+    time.sleep(6)
     
     # --- Click the dropdown
     # --- Get all data on dropdown
@@ -152,42 +167,203 @@ def completewoundassessment(
     autoit.control_set_text("Open","Edit1", woundimage)
     autoit.control_send("Open","Edit1","{ENTER}")
     
-    # Save Assessment
-    time.sleep(2)
-    savewoundbtn = config.driver.find_element_by_xpath('//*[@id="tdTitleAction"]/td[2]/button').click()
-    
+
 
 def digitalmeasurement():
-    time.sleep(3)
+    time.sleep(10)
     digitalmesbtn = config.driver.find_element_by_xpath('//*[@id="onProcessFalse-0-0"]/div[3]/div[2]/div[2]/span/div/div/a').click()
-    time.sleep(8)
+    time.sleep(10)
+    scrolldown = config.driver.execute_script("window.scrollTo(0,5000)")
     editdigitalmesbtn =  config.driver.find_element_by_xpath('//*[@id="onProcessFalse-0-0"]/div[3]/div[2]/div[2]/span/div/div/a').click()
+    time.sleep(8)
+    displaygrid = config.driver.find_element_by_xpath('/html/body/div[13]/div/div/form/div/div[2]/div/div/table/tbody/tr/td[2]/table[2]/tbody/tr[1]/td/fieldset/label/input').click()
+    time.sleep(3)
+    pyautogui.click(884, 359)
+    pyautogui.click(826, 362)
+    pyautogui.click(777, 378)
+    pyautogui.click(731, 392)
+    pyautogui.click(683, 412)
+    pyautogui.click(639, 433)
+    pyautogui.click(594, 466)
+    pyautogui.click(562, 513)
+    pyautogui.click(553, 566)
+    pyautogui.click(568, 618)
+    pyautogui.click(590, 655)
+    pyautogui.click(623, 693)
+    pyautogui.click(682, 718)
+    pyautogui.click(743, 742)
+    pyautogui.click(816, 754)
+    pyautogui.click(896, 756)
+    pyautogui.click(963, 744)
+    pyautogui.click(1027, 726)
+    pyautogui.click(1097, 694)
+    pyautogui.click(1168, 645)
+    pyautogui.click(1216, 597)
+    pyautogui.click(1238, 544)
+    pyautogui.click(1230, 481)
+    pyautogui.click(1200, 435)
+    pyautogui.click(1150, 393)
+    pyautogui.click(1080, 365)
+    pyautogui.click(1016, 356)
+    pyautogui.click(958, 356)
+    pyautogui.click(884, 359)
+    time.sleep(5)
     
-    pyautogui.click(911, 309)
-    pyautogui.click(789, 326)
-    pyautogui.click(711, 349)
-    pyautogui.click(638, 383)
-    pyautogui.click(574, 437)
-    pyautogui.click(554, 480)
-    pyautogui.click(555, 532)
-    pyautogui.click(566, 576)
-    pyautogui.click(589, 626)
-    pyautogui.click(649, 669)
-    pyautogui.click(779, 707)
-    pyautogui.click(923, 711)
-    pyautogui.click(1049, 673)
-    pyautogui.click(1175, 601)
-    pyautogui.click(1230, 528)
-    pyautogui.click(1241, 479)
-    pyautogui.click(1225, 419)
-    pyautogui.click(1180, 370)
-    pyautogui.click(1108, 327)
-    pyautogui.click(993, 305)
-    pyautogui.click(913, 307)
+    gran = config.driver.find_element_by_xpath('/html/body/div[13]/div/div/form/div/div[2]/div/div/table/tbody/tr/td[2]/table[2]/tbody/tr[2]/td[2]/table/tbody/tr/td/input[2]').send_keys('80')
+    time.sleep(3)
+    
+    savemeasurementbtn = config.driver.find_element_by_xpath('/html/body/div[13]/div/div/form/div/div[2]/div/div/table/tbody/tr/td[2]/div[3]/button[2]').click()
+    time.sleep(3)
+    
+    scrolldown = config.driver.execute_script("window.scrollTo(0,0)")
+    
+    # Save Assessment
+    time.sleep(3)
+    savewoundbtn = config.driver.find_element_by_xpath('//*[@id="tdTitleAction"]/td[2]/button').click()
+    
+def woundanalytics():
+    
+    time.sleep(5)
+    scrolldown = config.driver.execute_script("window.scrollTo(0,5000)")
+    time.sleep(3)
+    woundanalyticsbtn =  config.driver.find_element_by_xpath('//*[@id="parent"]/div/div/data/form/div/fieldset/div/div/div/div/div[2]/span').click()
+    
+    scrolldown = config.driver.execute_script("window.scrollTo(0,5000)")
+    time.sleep(3)
+    
+    previewreport = config.driver.find_element_by_xpath('//*[@id="titleNoteBar"]/tbody/tr/td[2]/div').click()
+    time.sleep(3)
+    
+    scrolldown = config.driver.execute_script("window.scrollTo(0,5000)")
+    time.sleep(5)
+    
+    scrolldown = config.driver.execute_script("window.scrollTo(0,0)")
+    time.sleep(5)
+    
+    prntreport = config.driver.find_element_by_xpath('//*[@id="createRpt"]').click()
+    
+    time.sleep(10)
+    
+    pyautogui.keyDown('ctrl') # hold ctrl key
+    pyautogui.press('s') # press s key
+    pyautogui.keyUp('ctrl') # release ctrl key
+    pyautogui.press('enter')
+    
+    time.sleep(3)
+    autoit.control_send("Save As","Edit1","{ENTER}")
+    
+
+def addwounddirectly(
+        woundtype, 
+        woundlocation,
+        stages, 
+        grantissue, 
+        nectissue, 
+        granneccoverage, 
+        exuamount, 
+        exutype, 
+        edges, 
+        periwoundtissue, 
+        healingstatus, 
+        woundrelatedpain
+        ):
+    
+    time.sleep(3)
+    patient_dashboard.gettab("woundmanagement")
+    time.sleep(3)
+    
+    #click the first wound visit and click edit button
+    firstwoundass = config.driver.find_element_by_xpath('//*[@id="table-responsive"]/table/tbody[2]/tr').click()
+    time.sleep(3)
+    editbtn = config.driver.find_element_by_xpath('//*[@id="titleNoteBar"]/tbody/tr/td[2]/button').click()
+    
+    time.sleep(3)
+    
+    # --- Mouse locator based on the selected wound location 
+    if woundlocation == "Buttock (R)":
+        buttock_r = pyautogui.click(1062, 798)
+        
+    elif woundlocation == "Buttock (L)":
+        buttock_l = pyautogui.click(1005, 788) 
+        
+    elif woundlocation == "Sacrum":
+        sacrum = pyautogui.click(1035, 783) 
+        
+    elif woundlocation == "Coccyx":
+        coccyx = pyautogui.click(1035, 801)
+        
+    elif woundlocation == "Trochanter (R)":
+        trochanter_r = pyautogui.click(851, 805)
+        
+    elif woundlocation == "Trochanter (L)":
+        trochanter_l = pyautogui.click(767, 807)
+         
+    elif woundlocation == "Ischial tuberosity (R)":
+        ischialtuberosity_r = pyautogui.click(819, 815) 
+        
+    elif woundlocation == "Ischial tuberosity (L)":
+        ischialtuberosity_l = pyautogui.click(794, 818)
+        
+    elif woundlocation == "Lateral ankle (R)":
+        lateralankle_r = pyautogui.click(1055, 1002)
+        
+    elif woundlocation == "Lateral ankle (L)":
+        lateralankle_r = pyautogui.click(1017, 999)
+        
+    elif woundlocation == "Medial ankle (R)":
+        medialankle_r = pyautogui.click(875, 1003)
+         
+    elif woundlocation == "Medial ankle (L)":
+        medialankle_r = pyautogui.click(787, 1001) 
+        
+    elif woundlocation == "Heel (R)":
+        heel_r = pyautogui.click(950, 984)
+        
+    elif woundlocation == "Heel (L)":
+        heel_l = pyautogui.click(887, 985)
+        
+    elif woundlocation == "Plantar":
+        plantar = pyautogui.click(948, 935) 
+        
+    elif woundlocation == "Toes":
+        toes = pyautogui.click(1136, 920) 
+        
+    elif woundlocation == "Abdomen":
+        abdomen = pyautogui.click(807, 753)
+        
+    elif woundlocation == "Groin":
+        groin = pyautogui.click(807, 808)   
+    
+    pinyes = config.driver.find_element_by_xpath('//*[@id="coorask"]/div/button[1]').click()
+    
+    time.sleep(3)
+
+    # wound location
+    woundloc_dd = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div[2]/div/table-column/ul/li[3]//input').click()
+    woundloc_items = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div[2]/div/table-column/ul/li[3]//div[2]').text
+    time.sleep(2)
+    finditem = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div[2]/div/table-column/ul/li[3]//li[contains(string(), "'+ woundlocation +'")]').click()
+    
+    # wound Type
+    woundtype_dd = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div[2]/div/table-column/ul/li[4]//input').click()
+    woundtype_items = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div[2]/div/table-column/ul/li[4]//div[2]').text
+    time.sleep(2)
+    finditem = config.driver.find_element_by_xpath('//*[@id="goTabSection"]/div/woundcare-table/div[2]/div[2]/div[2]/div/table-column/ul/li[4]//li[contains(string(), "'+ woundtype +'")]').click()
     
     
+   
     
-    
-    
+    completewoundassessment(
+        stages, 
+        grantissue, 
+        nectissue, 
+        granneccoverage, 
+        exuamount, 
+        exutype, 
+        edges, 
+        periwoundtissue, 
+        healingstatus, 
+        woundrelatedpain
+        )
     
     

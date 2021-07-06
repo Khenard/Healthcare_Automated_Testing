@@ -46,6 +46,9 @@ elif chooseserver == "2":
     
     elif testcase == "4": # Option for Pre-admitting a patient non-medicare
         test_main.preadmitpatient_nonmedicare(testserver)
+        
+    elif testcase == "5": # Option for Adding wound to OASIS and assess
+        test_main.wound(testserver)
 
 else:
         pymsgbox.alert('Unable to run test, wrong input. Please re-run the test.', 'Warning')

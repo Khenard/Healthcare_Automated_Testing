@@ -14,6 +14,7 @@ def admission_medicare(test_server):
         servers.qaserver()
         config.driver.get("https://qado.medisource.com/patient") #QA
         time.sleep(2)
+        
     elif test_server == "live":
         servers.liveserver()
         config.driver.get("https://app.medisource.com/patient") #LIVE

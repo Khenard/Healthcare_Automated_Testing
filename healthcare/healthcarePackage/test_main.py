@@ -1,7 +1,7 @@
 from controllers import config, login, function_admission, function_oasis, servers, patient_dashboard, function_create_task, function_complete_task
 import random, time
 from datetime import date
-import admission, oasis, create_task, complete_task, create_mdo
+import admission, oasis, create_task, complete_task, create_mdo, complete_woundprocess
 import pymsgbox
 
 
@@ -126,5 +126,20 @@ def preadmitpatient_nonmedicare(servertest):
     
     print('Test success!')   
 
-
+def wound(servertest):
+    test_server = servertest 
+    complete_woundprocess.complete_woundprocess(servertest)
+    
+    print('Test success!')   
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 

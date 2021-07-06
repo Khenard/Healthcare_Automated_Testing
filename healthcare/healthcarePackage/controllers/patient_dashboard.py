@@ -32,6 +32,9 @@ def gettab(pdtab):
     elif pdtab == "misc":
         tab = config.driver.find_element_by_xpath('//*[@id="profile-main-header"]/div/ul/li[8]/a')
         
+    elif pdtab == "woundmanagement":
+        tab = config.driver.find_element_by_xpath('//*[@id="profile-main-header"]/div/ul/li[8]/a')
+         
     elif pdtab == "vsmonitor":
         tab = config.driver.find_element_by_xpath('//*[@id="profile-main-header"]/div/ul/li[9]/a')
         
