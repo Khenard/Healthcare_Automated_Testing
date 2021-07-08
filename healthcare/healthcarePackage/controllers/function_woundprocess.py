@@ -161,9 +161,9 @@ def completewoundassessment(
     # -- 3. use autoit function for upload -- import autoit
     
     woundimage = os.getcwd()+"\wound.png"
-    
+    print(woundimage)
     upload = config.driver.find_element(By.XPATH, '//*[@id="myImg"]').click()
-    time.sleep(2)
+    time.sleep(5)
     autoit.control_set_text("Open","Edit1", woundimage)
     autoit.control_send("Open","Edit1","{ENTER}")
     

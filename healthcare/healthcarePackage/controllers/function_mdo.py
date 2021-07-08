@@ -5,7 +5,7 @@ from selenium.webdriver.common.by import By
 from selenium import webdriver
 from datetime import datetime, timedelta
 from selenium.common.exceptions import NoSuchElementException
-
+import pymsgbox
 
 todaytime = config.timenow()
 todaydate = config.datenow()
@@ -27,6 +27,12 @@ def testinfo():
     commentbox.send_keys(sysinfo)
     time.sleep(3)
     commentsave = config.driver.find_element_by_xpath('/html/body//button[contains(string(), "Send")]').click()
+    
+    print('Test success!')   
+    pymsgbox.alert('Test Success!', 'Success')
+    print('Test success!')   
+    config.driver.close()
+    
  
  
 def complete_physician_order(
@@ -132,7 +138,7 @@ def dischargeorder(visitdate):
     patient_dashboard.gettab("task")
     time.sleep(3)
     
-    testinfo()
+   
     
    
 def recertorder(visitdate):

@@ -18,7 +18,7 @@ def liveserver():
     config.driver.maximize_window()
     config.driver.get("https://app.medisource.com/login")
     
-    login.login("superagent@geekers", "Tester2021@")
+    login.login("superagent@geekers", "Tester2021!")
     time.sleep(5)
     
 def webpagetest():
@@ -35,4 +35,24 @@ def webpagetest():
     print("Back End: %s" % backendPerformance_calc)
     print("Front End: %s" % frontendPerformance_calc)    
 
+def searchpatientrecord(searchpatient):
+    time.sleep(5)
+    print(searchpatient)
+    time.sleep(2)
+    searchbar = config.driver.find_element_by_xpath('//*[@id="searchbar__wrapper"]/div/input').send_keys(searchpatient)
+    time.sleep(5)
+    searchresult = config.driver.find_element_by_xpath('//*[@id="content"]/data/div/div[2]/div/table/tbody/tr[2]').click()
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     

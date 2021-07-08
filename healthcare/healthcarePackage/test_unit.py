@@ -54,21 +54,23 @@ mswfollowup = str("MSW - Follow-up Visit")
 chhavisit = str("CHHA - HHA Visit")
 
 
-def test_unit(testserver):
+def test_unit(testserver, searchpatient):
     
-    tasks = [rnivvisit, rnsupvisit, oasistfrnotdc, oasisroc, rnskilledassesment, rnsupvisit, rnskilledassesment] #Enter the task variable you want to create Note: skilledassessment should always the last on the array
-    rnskilledass = [rnskilledassesment_recert, rnskilledassesment_dc] # Enter if its recertification or discharge
+    tasks = [rnivvisit, rnsupvisit, oasistfrnotdc, oasisroc, rnskilledassesment, rnsupvisit, rnskilledassesment, rnskilledassesment] #Enter the task variable you want to create Note: skilledassessment should always the last on the array
+    rnskilledass = [rnskilledassesment_recert, rnskilledassesment_dc, rnskilledassesment_recert] # Enter if its recertification or discharge
     
     if testserver == "qa":
         servers.qaserver()
         # Created Patient
-        config.driver.get("https://qado.medisource.com/patientcare/85183C5B-5A9B-482B-80A9-63F3670BF711/510A4E92-D238-434A-B342-9B0A6B255847/overview")
+        config.driver.get("https://qado.medisource.com/patients/admitted")
+        servers.searchpatientrecord(searchpatient)
         time.sleep(2)   
         
     elif testserver == "live":
         servers.liveserver()
         # Created Patient
-        config.driver.get("https://app.medisource.com/patientcare/8C43F848-D288-42C3-9BB0-5BF85A41C351/F2E2BC3F-7645-45B9-BAA8-15E685A0DC5E/overview")
+        config.driver.get("https://app.medisource.com/patients/admitted")
+        servers.searchpatientrecord(searchpatient)
         time.sleep(2)   
         
     else:
@@ -79,7 +81,7 @@ def test_unit(testserver):
 
 
     create_task.create_task(tasks, rnskilledass)
-    
+    function_mdo.testinfo()
    
     
     

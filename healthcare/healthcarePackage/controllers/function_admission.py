@@ -122,6 +122,7 @@ def admission(
     time.sleep(5)
     scrolldown = config.driver.execute_script("window.scrollTo(0,1000)")
     #Primary Insurance Information
+    time.sleep(5)
     primary_insurance = config.driver.find_element_by_css_selector("#primary_insurance_chosen > .chosen-single").click()
     time.sleep(2)
     pi_result = config.driver.find_element_by_css_selector("#primary_insurance_chosen .active-result:nth-child(2)").click()
@@ -508,9 +509,10 @@ def preadmission_nonmed(
     time.sleep(5)
     scrolldown = config.driver.execute_script("window.scrollTo(0,1000)")
     
-    time.sleep(2)
+    time.sleep(5)
     # Primary Insurance
     primary_insurance = config.driver.find_element_by_css_selector("#primary_insurance_chosen > .chosen-single")
+    time.sleep(5)
     primary_insurance.click()
     time.sleep(2)
     primary_insurancedd = config.driver.find_element_by_xpath('//*[@id="primary_insurance_chosen"]/div/div/input')

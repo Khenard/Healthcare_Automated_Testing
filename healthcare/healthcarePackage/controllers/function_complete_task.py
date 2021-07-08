@@ -135,8 +135,10 @@ def skillednursing(
     
 def rnskilledassesment(oasistask, visitdate):
     time.sleep(3)
-    sadd = config.driver.find_element_by_xpath('/html/body/div[12]/div/div/div/form/div/div/div[2]/div/fieldset/div/div[1]/div[2]/table/tbody/tr/td/div[2]/div/div/div/a').click()
-    skilledassesmentask = config.driver.find_element_by_xpath('/html/body/div[12]/div/div/div/form/div/div/div[2]/div/fieldset/div/div[1]/div[2]/table/tbody/tr/td/div[2]/div/div/div/div/ul//li[contains(string(), "'+ oasistask +'")]')
+    
+    sadd = config.driver.find_element_by_xpath('/html/body//div/div/div/form/div/div/div[2]/div/fieldset/div/div[1]/div[2]/table/tbody/tr/td/div[2]/div/div/div/a').click()
+    #/html/body/div[11]/div/div/div/form/div/div/div[2]/div/fieldset/div/div[1]/div[2]/table/tbody/tr/td/div[2]/div/div/div/a
+    skilledassesmentask = config.driver.find_element_by_xpath('/html/body//div/div/div/form/div/div/div[2]/div/fieldset/div/div[1]/div[2]/table/tbody/tr/td/div[2]/div/div/div/div/ul//li[contains(string(), "'+ oasistask +'")]')
     skilledassesmentask.click()
     
     time.sleep(3)

@@ -96,9 +96,14 @@ def test_main(servertest):
     tasks = [rnivvisit, rnsupvisit, oasistfrnotdc, oasisroc, rnskilledassesment, rnsupvisit, rnskilledassesment] 
     rnskilledass = [rnskilledassesment_recert, rnskilledassesment_dc] # Enter if its recertification or discharge
 
+    
     admission.admission_medicare(test_server) #PATIENT ADMISSION
     oasis.oasispart() #COMPLETE OASIS SOC
     create_task.create_task(tasks, rnskilledass)
+    
+    pymsgbox.alert('Test Success!', 'Success')
+    print('Test success!')   
+    config.driver.close()
     
 
 def preadmitpatient_medicare(servertest):
@@ -111,8 +116,9 @@ def preadmitpatient_medicare(servertest):
     elif servertest == "live": 
         config.driver.get("https://app.medisource.com/patients/pre-admitted")
     
+    pymsgbox.alert('Test Success!', 'Success')
     print('Test success!')   
-
+    config.driver.close()
 
 def preadmitpatient_nonmedicare(servertest):
     
@@ -123,15 +129,19 @@ def preadmitpatient_nonmedicare(servertest):
         config.driver.get("https://qado.medisource.com/patients/pre-admitted")
     elif servertest == "live": 
         config.driver.get("https://app.medisource.com/patients/pre-admitted")
-    
+        
+    pymsgbox.alert('Test Success!', 'Success')
     print('Test success!')   
-
+    config.driver.close()
+    
 def wound(servertest):
     test_server = servertest 
     complete_woundprocess.complete_woundprocess(servertest)
     
     print('Test success!')   
-    
+    pymsgbox.alert('Test Success!', 'Success')
+    print('Test success!')   
+    config.driver.close()
     
     
     
