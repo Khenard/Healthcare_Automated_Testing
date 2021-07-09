@@ -52,7 +52,8 @@ def addwoundoasis(
 def dragpin():
     time.sleep(3)
     
-    source1 = config.driver.find_element_by_xpath('//*[@id="pinid1"]')
+    source1 = config.driver.find_element_by_xpath('//*[contains(@id, "pinid")]')
+    #source1 = config.driver.find_element_by_xpath('//*[@id="pinid1"]')
     target1 = config.driver.find_element_by_xpath('//*[@id="dragball"]/div')
     time.sleep(5)
     actions2 = ActionChains(config.driver)
@@ -164,9 +165,11 @@ def completewoundassessment(
     print(woundimage)
     upload = config.driver.find_element(By.XPATH, '//*[@id="myImg"]').click()
     time.sleep(5)
-    autoit.control_set_text("Open","Edit1", woundimage)
-    autoit.control_send("Open","Edit1","{ENTER}")
-    
+    #autoit.control_set_text("Open","Edit1", woundimage)
+    #time.sleep(5)
+    #autoit.control_send("Open","Edit1","{ENTER}")
+    autoit.control_send("[CLASS:#32770;TITLE:Open]", "Edit1", woundimage)
+    autoit.control_click("[CLASS:#32770;TITLE:Open]", "Button1")
 
 
 def digitalmeasurement():
@@ -176,7 +179,10 @@ def digitalmeasurement():
     scrolldown = config.driver.execute_script("window.scrollTo(0,5000)")
     editdigitalmesbtn =  config.driver.find_element_by_xpath('//*[@id="onProcessFalse-0-0"]/div[3]/div[2]/div[2]/span/div/div/a').click()
     time.sleep(8)
-    displaygrid = config.driver.find_element_by_xpath('/html/body/div[13]/div/div/form/div/div[2]/div/div/table/tbody/tr/td[2]/table[2]/tbody/tr[1]/td/fieldset/label/input').click()
+    
+    #displaygrid = config.driver.find_element_by_xpath('/html/body/div[13]/div/div/form/div/div[2]/div/div/table/tbody/tr/td[2]/table[2]/tbody/tr[1]/td/fieldset/label/input').click()
+    displaygrid = config.driver.find_element_by_name('grid.show').click()
+    
     time.sleep(3)
     pyautogui.click(884, 359)
     pyautogui.click(826, 362)
@@ -209,10 +215,10 @@ def digitalmeasurement():
     pyautogui.click(884, 359)
     time.sleep(5)
     
-    gran = config.driver.find_element_by_xpath('/html/body/div[13]/div/div/form/div/div[2]/div/div/table/tbody/tr/td[2]/table[2]/tbody/tr[2]/td[2]/table/tbody/tr/td/input[2]').send_keys('80')
+    gran = config.driver.find_element_by_xpath('/html/body//div/div/form/div/div[2]/div/div/table/tbody/tr/td[2]/table[2]/tbody/tr[2]/td[2]/table/tbody/tr/td/input[2]').send_keys('80')
     time.sleep(3)
     
-    savemeasurementbtn = config.driver.find_element_by_xpath('/html/body/div[13]/div/div/form/div/div[2]/div/div/table/tbody/tr/td[2]/div[3]/button[2]').click()
+    savemeasurementbtn = config.driver.find_element_by_xpath('/html/body//div/div/form/div/div[2]/div/div/table/tbody/tr/td[2]/div[3]/button[2]').click()
     time.sleep(3)
     
     scrolldown = config.driver.execute_script("window.scrollTo(0,0)")

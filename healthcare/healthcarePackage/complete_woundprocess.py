@@ -12,21 +12,23 @@ todaytime = config.timenow()
 todaydate = config.datenow()
 plustime = (datetime.now() + timedelta(hours=5)).strftime("%H:%M")
 
-def complete_woundprocess(test_server):
+def complete_woundprocess(test_server, searchpatient):
     
     if test_server == "qa":
         servers.qaserver()
-        config.driver.get("https://qado.medisource.com/patientcare/85183C5B-5A9B-482B-80A9-63F3670BF711/510A4E92-D238-434A-B342-9B0A6B255847/overview")
+        config.driver.get("https://qado.medisource.com/patients/admitted")
+        servers.searchpatientrecord(searchpatient)
         time.sleep(2)
         
     elif test_server == "live":
         servers.liveserver()
-        config.driver.get("https://app.medisource.com/patientcare/3B46FBCD-038C-4EF4-8976-09C659819D90/DCA59BDD-F004-4CED-8F73-60F215D333A4/overview")
+        config.driver.get("https://app.medisource.com/patients/admitted")
+        servers.searchpatientrecord(searchpatient)
         time.sleep(2)
         
     
     task = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[5]/div[1]/table/tbody/tr[2]/td[2]/a')
-    
+    time.sleep(5)
     taskstatus = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[5]/div[1]/table/tbody/tr[2]/td[3]/div/span').text
     print(taskstatus)
     

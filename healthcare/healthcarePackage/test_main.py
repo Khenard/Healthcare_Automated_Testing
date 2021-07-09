@@ -96,7 +96,9 @@ def test_main(servertest):
     tasks = [rnivvisit, rnsupvisit, oasistfrnotdc, oasisroc, rnskilledassesment, rnsupvisit, rnskilledassesment] 
     rnskilledass = [rnskilledassesment_recert, rnskilledassesment_dc] # Enter if its recertification or discharge
 
-    
+    #tasks = [rnivvisit, rnsupvisit, oasistfrnotdc, oasisroc, rnskilledassesment, rnsupvisit, rnskilledassesment, rnskilledassesment] #Enter the task variable you want to create Note: skilledassessment should always the last on the array
+    #rnskilledass = [rnskilledassesment_recert, rnskilledassesment_dc, rnskilledassesment_recert] # Enter if its recertification or discharge
+   
     admission.admission_medicare(test_server) #PATIENT ADMISSION
     oasis.oasispart() #COMPLETE OASIS SOC
     create_task.create_task(tasks, rnskilledass)
@@ -134,9 +136,9 @@ def preadmitpatient_nonmedicare(servertest):
     print('Test success!')   
     config.driver.close()
     
-def wound(servertest):
+def wound(servertest, searchpatient):
     test_server = servertest 
-    complete_woundprocess.complete_woundprocess(servertest)
+    complete_woundprocess.complete_woundprocess(servertest, searchpatient)
     
     print('Test success!')   
     pymsgbox.alert('Test Success!', 'Success')

@@ -49,7 +49,8 @@ elif chooseserver == "2":
         test_main.preadmitpatient_nonmedicare(testserver)
         
     elif testcase == "5": # Option for Adding wound to OASIS and assess
-        test_main.wound(testserver)
+        searchpatient = pymsgbox.prompt('Type EXACT Patient Name: ', 'Healthcare Automation')
+        test_main.wound(testserver, searchpatient)
 
 else:
         pymsgbox.alert('Unable to run test, wrong input. Please re-run the test.', 'Warning')
