@@ -198,7 +198,9 @@ def oasispart():
     # Declare the tabs, save button, and previous next button 
     #previousbtn = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div/div/fieldset/div[2]/div/div[4]/button[1]')
     #nextbtn = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div/div/fieldset/div[2]/div/div[4]/button[2]')
-     
+    
+    savebtn = config.driver.find_element_by_css_selector("#titleNoteBar > div.col-sm-12.p-0.title__section.m-b-10.oasis_actionBtnTab > div:nth-child(2) > button.btn__success.m-l-10.waves-effect.ng-scope")
+   
     #OASIS Buttons
     democrecord = config.driver.find_element_by_xpath('//*[@id="clinical"]')
     diagnosesmedhis = config.driver.find_element_by_xpath('//*[@id="diagnosis"]')
@@ -231,8 +233,7 @@ def oasispart():
     config.driver.refresh()
     time.sleep(5)
     
-    savebtn = config.driver.find_element_by_css_selector("#titleNoteBar > div.col-sm-12.p-0.title__section.m-b-10.oasis_actionBtnTab > div:nth-child(2) > button.btn__success.m-l-10.waves-effect.ng-scope")
-
+    
     savebtn.click()
     
        

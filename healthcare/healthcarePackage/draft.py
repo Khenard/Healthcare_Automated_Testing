@@ -12,45 +12,29 @@ import ctypes
 import pyautogui, sys
 import autoit
 from selenium.common.exceptions import NoSuchElementException
+import pandas as pd
+
+# Declare as variable the data xlsx file - put it on the same folder as the project
+datafile = os.getcwd()+"\data.xlsx" 
+# Declare excel data as variable and set the first column to ID
+excel_data = pd.read_excel(datafile)
+
+print(excel_data)
+
+age = pd.DataFrame(excel_data, columns =['AGE'])
+print(age)
+
+arr = age.to_numpy()
+print(arr)
+
     
 servers.qaserver()
-config.driver.get("https://qado.medisource.com/patientcare/85183C5B-5A9B-482B-80A9-63F3670BF711/510A4E92-D238-434A-B342-9B0A6B255847/overview")
-time.sleep(2)  
-
-try:
-    l = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[5]/div[1]/table/tbody/tr[2]/td[2]')
-    s = l.text
-    
-    print('element found' + s)
-    
-except NoSuchElementException:
-    print('no element')
+config.driver.get("https://qado.medisource.com/patients/admitted")
+time.sleep(2) 
+stb = config.driver.find_element_by_xpath('//*[@id="searchbar__wrapper"]/div/input').send_keys(age)
 
 
 
-
-
-
-
-
-
-"""woundtype = "Pressure Ulcer"
-#woundlocation = ['Buttock (R)', 'Buttock (L)', 'Sacrum', 'Coccyx', 'Trochanter (R)', 'Trochanter (L)', 'Ischial tuberosity (R)', 'Ischial tuberosity (L)', 'Lateral ankle (R)', 'Lateral ankle (L)', 'Medial ankle (R)', 'Medial ankle (L)', 'Heel (R)', 'Heel (L)', 'Plantar', 'Toes', 'Abdomen', 'Groin']
-woundlocation = 'Coccyx'
-
-function_woundprocess.addwounddirectly(
-        woundtype,
-        woundlocation
-        )
-
-woundtype = "Pressure Ulcer"
-#woundlocation = ['Buttock (R)', 'Buttock (L)', 'Sacrum', 'Coccyx', 'Trochanter (R)', 'Trochanter (L)', 'Ischial tuberosity (R)', 'Ischial tuberosity (L)', 'Lateral ankle (R)', 'Lateral ankle (L)', 'Medial ankle (R)', 'Medial ankle (L)', 'Heel (R)', 'Heel (L)', 'Plantar', 'Toes', 'Abdomen', 'Groin']
-woundlocation = 'Trochanter (R)'
-
-function_woundprocess.addwounddirectly(
-        woundtype,
-        woundlocation
-        )"""
 
 
 
