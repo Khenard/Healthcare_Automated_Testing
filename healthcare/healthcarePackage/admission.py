@@ -3,10 +3,25 @@ import random, time
 from datetime import date
 from datetime import datetime, timedelta
 import oasis
+import os
+import pandas as pd
 
 todaytime = config.timenow()
 todaydate = config.datenow()
 plustime = (datetime.now() + timedelta(hours=5)).strftime("%H:%M")
+
+# Declare as variable the data xlsx file - put it on the same folder as the project
+datafile = os.getcwd()+"\data.xlsx" 
+# Declare excel data as variable and set the first column to ID
+excel_data = pd.read_excel(datafile)
+#age = pd.DataFrame(excel_data, columns =['NAME'])
+#convert column data to array list and use it to select random values
+colname = excel_data['NAME'].tolist()
+#Randomize the name 
+name_random = random.choice(colname)
+
+#Random SSN 
+ssn = random.randint(0, 9999999999)
     
 def admission_medicare(test_server):
     
@@ -23,13 +38,6 @@ def admission_medicare(test_server):
     today = date.today()
     todaynow = today.strftime("%m/%d/%Y")
     
-    #random number for patient name and SSN 
-    name_random = ["Leonel", "Juana", "Deandra", "Jazmin", "Keila", "Claudine", "Kathleen", "Sandra", "Yael", "Frieda", "Emile", "Dane", "Carmella", "Rosalva", "Denita", "Marvis", "Vilma", "Lucila", "Coral", "James", "Jerald", "Buford", "Vennie"  
-                   "Cathy", "Melody", "Siobhan", "Annmarie", "Tanna", "Liliana", "Keshia", "Irwin", "Jacqualine", "Leigh", "Sulema", "Marty", "Mike", "Shonta", "Lane", "Eldora", "Adah", "Leland", "Teresia", "Chloe", "Cordie", "Hal", "Sherryl", "Reggie", "Chery", "Columbus", "Edith"]
-    
-    pn = random.choice(name_random)
-    ssn = random.randint(0, 9999999999)
-    
     # ------------------------------------------------------------------------------------------------
     #  PATIENT ADMISSION
     # ------------------------------------------------------------------------------------------------
@@ -39,7 +47,7 @@ def admission_medicare(test_server):
         todaynow,
         todaytime,
         todaynow,
-        str(pn),
+        str(name_random),
         "Automated",
         str(pn),
         "02/07/1997",
@@ -94,13 +102,6 @@ def preadmission_medicare(test_server):
     today = date.today()
     todaynow = today.strftime("%m/%d/%Y")
     
-    #random number for patient name and SSN 
-    name_random = ["Leonel", "Juana", "Deandra", "Jazmin", "Keila", "Claudine", "Kathleen", "Sandra", "Yael", "Frieda", "Emile", "Dane", "Carmella", "Rosalva", "Denita", "Marvis", "Vilma", "Lucila", "Coral", "James", "Jerald", "Buford", "Vennie"  
-                   "Cathy", "Melody", "Siobhan", "Annmarie", "Tanna", "Liliana", "Keshia", "Irwin", "Jacqualine", "Leigh", "Sulema", "Marty", "Mike", "Shonta", "Lane", "Eldora", "Adah", "Leland", "Teresia", "Chloe", "Cordie", "Hal", "Sherryl", "Reggie", "Chery", "Columbus", "Edith"]
-    
-    pn = random.choice(name_random)
-    ssn = random.randint(0, 9999999999)
-    
     # ------------------------------------------------------------------------------------------------
     #  PATIENT ADMISSION
     # ------------------------------------------------------------------------------------------------
@@ -109,7 +110,7 @@ def preadmission_medicare(test_server):
     function_admission.preadmission_med(
         todaynow,
         todaytime,
-        str(pn),
+        str(name_random),
         "Automated",
         "M",
         "02/07/1997",
@@ -165,13 +166,6 @@ def preadmission_nonmedicare(test_server):
     today = date.today()
     todaynow = today.strftime("%m/%d/%Y")
     
-    #random number for patient name and SSN 
-    name_random = ["Leonel", "Juana", "Deandra", "Jazmin", "Keila", "Claudine", "Kathleen", "Sandra", "Yael", "Frieda", "Emile", "Dane", "Carmella", "Rosalva", "Denita", "Marvis", "Vilma", "Lucila", "Coral", "James", "Jerald", "Buford", "Vennie"  
-                   "Cathy", "Melody", "Siobhan", "Annmarie", "Tanna", "Liliana", "Keshia", "Irwin", "Jacqualine", "Leigh", "Sulema", "Marty", "Mike", "Shonta", "Lane", "Eldora", "Adah", "Leland", "Teresia", "Chloe", "Cordie", "Hal", "Sherryl", "Reggie", "Chery", "Columbus", "Edith"]
-    
-    pn = random.choice(name_random)
-    ssn = random.randint(0, 9999999999)
-    
     # ------------------------------------------------------------------------------------------------
     #  PATIENT ADMISSION
     # ------------------------------------------------------------------------------------------------
@@ -180,7 +174,7 @@ def preadmission_nonmedicare(test_server):
     function_admission.preadmission_nonmed(
         todaynow,
         todaytime,
-        str(pn),
+        str(name_random),
         "Automated",
         "NM",
         "02/07/1997",

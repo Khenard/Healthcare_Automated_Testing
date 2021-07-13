@@ -1,5 +1,5 @@
 from controllers import config, login, function_admission, function_oasis, servers, function_complete_task, function_create_task, patient_dashboard, function_mdo, function_woundprocess
-import time
+import time, random
 import os
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
@@ -18,20 +18,16 @@ import pandas as pd
 datafile = os.getcwd()+"\data.xlsx" 
 # Declare excel data as variable and set the first column to ID
 excel_data = pd.read_excel(datafile)
-
-print(excel_data)
-
-age = pd.DataFrame(excel_data, columns =['AGE'])
-print(age)
-
-arr = age.to_numpy()
-print(arr)
-
+#age = pd.DataFrame(excel_data, columns =['NAME'])
+#convert column data to array list and use it to select random values
+colname = excel_data['NAME'].tolist()
+print(colname)
+name_random = random.choice(colname)
     
 servers.qaserver()
 config.driver.get("https://qado.medisource.com/patients/admitted")
-time.sleep(2) 
-stb = config.driver.find_element_by_xpath('//*[@id="searchbar__wrapper"]/div/input').send_keys(age)
+time.sleep(5) 
+stb = config.driver.find_element_by_xpath('//*[@id="searchbar__wrapper"]/div/input').send_keys(name_random)
 
 
 
