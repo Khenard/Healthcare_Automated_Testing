@@ -16,14 +16,7 @@ import pandas as pd
 
 # Declare as variable the data xlsx file - put it on the same folder as the project
 datafile = os.getcwd()+"\data.xlsx" 
-# Declare excel data as variable and set the first column to ID
-excel_data = pd.read_excel(datafile)
-#age = pd.DataFrame(excel_data, columns =['NAME'])
-#convert column data to array list and use it to select random values
-col_name = excel_data['NAME'].tolist()
-print(col_name)
-name_random = random.choice(col_name)
-    
+
 wound_df = pd.read_excel(datafile, 'wound_assessment')
 
 # Randomize location
@@ -32,27 +25,51 @@ location = random.choice(col_location)
 
 # Randomize stages
 col_stages = wound_df['STAGES'].tolist()
-stages = int(random.choice(col_stages))
+stages = random.choice(col_stages) # convert to int
+stages = str(stages) #convert to string 
+
 
 # Randomize grantissue
 col_grantissue = wound_df['GRANTISSUE'].tolist()
 grantissue = int(random.choice(col_grantissue))
+grantissue = str(grantissue)
 
 # Randomize nectissue
 col_nectissue = wound_df['NECTISSUE'].tolist()
 nectissue = int(random.choice(col_nectissue))
+nectissue = str(nectissue)
 
 # Randomize granneccoverage
 col_granneccoverage = wound_df['GRANNECCOVERAGE'].tolist()
 granneccoverage = int(random.choice(col_granneccoverage))
+granneccoverage = str(granneccoverage)
 
 # Randomize granneccoverage
 col_exuamount = wound_df['EXUAMOUNT'].tolist()
 exuamount = int(random.choice(col_exuamount))
+exuamount = str(exuamount)
 
+# Randomize exutype
+col_exutype = wound_df['EXUTYPE'].tolist()
+exutype = random.choice(col_exutype)
 
+# Randomize edges
+col_edges = wound_df['EDGES'].tolist()
+edges = int(random.choice(col_edges))
+edges = str(edges)
 
+# Randomize periwoundtissue
+col_periwoundtissue = wound_df['PERIWOUNDTISSUE'].tolist()
+periwoundtissue = random.choice(col_periwoundtissue)
 
+# Randomize healingstatus
+col_healingstatus = wound_df['HEALINGSTATUS'].tolist()
+healingstatus = random.choice(col_healingstatus)
+
+# Randomize woundrelatedpain
+col_woundrelatedpain = wound_df['WOUNDRELATEDPAIN'].tolist()
+woundrelatedpain = int(random.choice(col_woundrelatedpain))
+woundrelatedpain = str(woundrelatedpain)
 
 print(location)
 print(stages)
@@ -70,9 +87,7 @@ print(woundrelatedpain)
 servers.qaserver()
 config.driver.get("https://qado.medisource.com/patientcare/CEB7010B-2FE7-45B1-808C-3C25C0E594F0/857A6F1E-C5A3-415E-92FC-879D983FAA2F/woundcare/update/435CC653-F0D9-4E4A-96C2-C16763973186/1")
 
-
-
-    
+time.sleep(5)
 
 function_woundprocess.completewoundassessment(
     stages, 
@@ -86,8 +101,7 @@ function_woundprocess.completewoundassessment(
     healingstatus, 
     woundrelatedpain
     )
-    
-
+function_woundprocess.digitalmeasurement()
 
 
 # END TEST
