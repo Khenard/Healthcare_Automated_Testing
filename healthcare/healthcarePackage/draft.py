@@ -14,6 +14,7 @@ import autoit
 from selenium.common.exceptions import NoSuchElementException
 import pandas as pd
 
+
 # Declare as variable the data xlsx file - put it on the same folder as the project
 datafile = os.getcwd()+"\data.xlsx" 
 

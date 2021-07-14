@@ -49,7 +49,7 @@ def admission_medicare(test_server):
         todaynow,
         str(name_random),
         "Automated",
-        str(pn),
+        str(name_random),
         "02/07/1997",
         "Male",
         "Single",
