@@ -230,11 +230,14 @@ def oasispart():
     savebtn.click()
     
     time.sleep(3)
-    config.driver.refresh()
-    time.sleep(5)
-
     savebtn.click()
     
+    scrolldown = config.driver.execute_script("window.scrollTo(0,0)")
+    
+    time.sleep(3)
+    #go back to task
+    patient_dashboard.gettab("task")
+    time.sleep(3)
        
     
     

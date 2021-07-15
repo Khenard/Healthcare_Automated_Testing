@@ -50,7 +50,7 @@ def admission(
     #Patient Information
     referral_date = config.driver.find_element_by_id("refDate").send_keys(refdate)
     time.sleep(2)
-    referral_time = config.driver.find_element_by_id('referral_time').send_keys(reftime)
+    referral_time = config.driver.find_element_by_name('referral_time').send_keys(reftime)
     mrn = config.driver.find_element_by_xpath("//*[@id='content']/data/div[2]/div/ng-form/fieldset/table/tbody/tr[2]/td[2]/table/tbody/tr/td[1]/div/label/input").click()
     preadmission_date = config.driver.find_element_by_id("pre_admission_date").send_keys(plannedsoc)
     last_name = config.driver.find_element_by_id("last_name").send_keys(lname)
@@ -123,7 +123,6 @@ def admission(
     time.sleep(5)
     scrolldown = config.driver.execute_script("window.scrollTo(0,1000)")
     #Primary Insurance Information
-    time.sleep(5)
     primary_insurance = config.driver.find_element_by_css_selector("#primary_insurance_chosen > .chosen-single").click()
     time.sleep(2)
     pi_result = config.driver.find_element_by_css_selector("#primary_insurance_chosen .active-result:nth-child(2)").click()
@@ -245,6 +244,7 @@ def preadmission_med(
     time.sleep(5)
     #Patient Information
     referral_date = config.driver.find_element_by_id("refDate").send_keys(refdate)
+    time.sleep(2)
     referral_time = config.driver.find_element_by_name('referral_time').send_keys(reftime)
     mrn = config.driver.find_element_by_xpath("//*[@id='content']/data/div[2]/div/ng-form/fieldset/table/tbody/tr[2]/td[2]/table/tbody/tr/td[1]/div/label/input").click()
     last_name = config.driver.find_element_by_id("last_name").send_keys(lname)
@@ -438,7 +438,8 @@ def preadmission_nonmed(
 
     #Patient Information
     referral_date = config.driver.find_element_by_id("refDate").send_keys(refdate)
-    referral_time = config.driver.find_element_by_id("referral_time").send_keys(reftime)
+    time.sleep(2)
+    referral_time = config.driver.find_element_by_name('referral_time').send_keys(reftime)
     mrn = config.driver.find_element_by_xpath("//*[@id='content']/data/div[2]/div/ng-form/fieldset/table/tbody/tr[2]/td[2]/table/tbody/tr/td[1]/div/label/input").click()
     last_name = config.driver.find_element_by_id("last_name").send_keys(lname)
     first_name = config.driver.find_element_by_id("first_name").send_keys(fname)
