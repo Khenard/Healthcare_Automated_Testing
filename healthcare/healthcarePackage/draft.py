@@ -19,7 +19,7 @@ servers.liveserver()
 config.driver.get("https://app.medisource.com/patientcare/AAC52220-34A4-4AFE-B558-B3B03E86AA3B/3EC4BC54-95AE-464A-B76D-9FE369404133/2020/oasis/soc/027D46A6-0B09-4255-A16B-FC2F09CC5FCE/AAC52220-34A4-4AFE-B558-B3B03E86AA3B/v3/clinical")
 time.sleep(5)
 config.take_screenshot()
-config.take_video()
+config.take_video ()
 
 # END TEST
  

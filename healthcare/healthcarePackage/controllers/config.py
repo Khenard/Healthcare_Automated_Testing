@@ -13,6 +13,7 @@ import platform, getpass
 import cv2 as cv
 import pyautogui
 import numpy as np
+import pymsgbox
 
 
 
@@ -45,6 +46,8 @@ def take_screenshot():
     return ss
 
 def take_video():
+    
+    pymsgbox.alert('Recording... press "Q" to stop record.')
     
     #(width,height)
     screen_size=pyautogui.size()
