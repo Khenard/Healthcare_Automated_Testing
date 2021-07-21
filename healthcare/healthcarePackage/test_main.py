@@ -1,4 +1,4 @@
-from controllers import config, login, function_admission, function_oasis, servers, patient_dashboard, function_create_task, function_complete_task
+from controllers import config, login, function_admission, function_oasis, servers, patient_dashboard, function_create_task, function_complete_task, function_mdo
 import random, time
 from datetime import date
 import admission, oasis, create_task, complete_task, create_mdo, complete_woundprocess
@@ -101,10 +101,8 @@ def test_main(servertest):
    
     admission.admission_medicare(test_server) #PATIENT ADMISSION
     oasis.oasispart() #COMPLETE OASIS SOC
-    create_task.create_task(tasks, rnskilledass)
-    
-    pymsgbox.alert('Test Success!', 'Success')
-    print('Test success!')   
+    create_task.create_task(tasks, rnskilledass)  
+    function_mdo.testinfo()
     config.driver.close()
     
 
@@ -142,7 +140,6 @@ def wound(servertest, searchpatient):
     
     print('Test success!')   
     pymsgbox.alert('Test Success!', 'Success')
-    print('Test success!')   
     config.driver.close()
     
     

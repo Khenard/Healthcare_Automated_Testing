@@ -1,16 +1,11 @@
 from controllers import config, login, function_admission, function_oasis, servers, function_complete_task, function_create_task, patient_dashboard, function_mdo, function_woundprocess
-import time, random
-import os
+import time, random, os, pyautogui, sys, autoit, ctypes
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium import webdriver
 from datetime import datetime, timedelta
-import create_task
 from selenium.webdriver.support.ui import WebDriverWait
 import admission, oasis, create_task, complete_task, create_mdo, complete_woundprocess
-import ctypes
-import pyautogui, sys
-import autoit
 from selenium.common.exceptions import NoSuchElementException
 import pandas as pd
 

@@ -228,9 +228,11 @@ def oasispart():
     # ------------------------------------------------------------------------------------------------
     time.sleep(5)
     savebtn.click()
+    time.sleep(5)
+    config.driver.refresh()
     
-    time.sleep(3)
-    savebtn.click()
+    #time.sleep(3)
+    #savebtn.click()
     
     scrolldown = config.driver.execute_script("window.scrollTo(0,0)")
     

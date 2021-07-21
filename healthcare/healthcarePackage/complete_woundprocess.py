@@ -8,6 +8,7 @@ import pyautogui, sys
 import autoit
 import os
 import pandas as pd
+import random
 
 todaytime = config.timenow()
 todaydate = config.datenow()

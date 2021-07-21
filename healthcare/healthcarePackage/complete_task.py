@@ -169,7 +169,6 @@ def oasisroc(task, visitdate):
     # code goes here -----------------        
            
            
-  
 def rnskilledassesment(task, visitdate, rnskilledass):
     time.sleep(5)
     

@@ -40,7 +40,7 @@ def complete_physician_order(
         commnote,
         pyorder
         ):
-    ordertime = config.driver.find_element_by_xpath('//*[@id="orderTime"]').send_keys(ot)
+    ordertime = config.driver.find_element_by_xpath('//*[@id="orderTime"]/input').send_keys(ot)
     #sentdate = config.driver.find_element_by_xpath('//*[@id="sentDate"]').send_keys(sd)
     #receivedate = config.driver.find_element_by_xpath('//*[@id="receiveDate"]').send_keys(rd)
     #receivetime = config.driver.find_element_by_xpath('//*[@id="receiveTime"]').send_keys(rt)
@@ -112,7 +112,7 @@ def new_mdo(mdo):
 def dischargeorder(visitdate):
     time.sleep(5)
     print('discharge')
-    timein = config.driver.find_element_by_xpath('//*[@id="orderTime"]').send_keys(todaytime)
+    timein = config.driver.find_element_by_xpath('//*[@id="orderTime"]/input').send_keys(todaytime)
     sentdate = config.driver.find_element_by_xpath('//*[@id="sentDate"]').send_keys(visitdate)
     receivedate = config.driver.find_element_by_xpath('//*[@id="receiveDate"]').send_keys(visitdate)
     
@@ -172,7 +172,7 @@ def recertorder(visitdate):
 def transferorder(visitdate):
     time.sleep(2)
     print('transfer')
-    timein = config.driver.find_element_by_xpath('//*[@id="orderTime"]').send_keys(todaytime)
+    timein = config.driver.find_element_by_xpath('//*[@id="orderTime"]/input').send_keys(todaytime)
     sentdate = config.driver.find_element_by_xpath('//*[@id="sentDate"]').send_keys(visitdate)
     receivedate = config.driver.find_element_by_xpath('//*[@id="receiveDate"]').send_keys(visitdate)
 

@@ -50,7 +50,7 @@ def admission(
     #Patient Information
     referral_date = config.driver.find_element_by_id("refDate").send_keys(refdate)
     time.sleep(2)
-    referral_time = config.driver.find_element_by_name('referral_time').send_keys(reftime)
+    referral_time = config.driver.find_element_by_xpath('//*[@id="referral_time"]/input').send_keys(reftime)
     mrn = config.driver.find_element_by_xpath("//*[@id='content']/data/div[2]/div/ng-form/fieldset/table/tbody/tr[2]/td[2]/table/tbody/tr/td[1]/div/label/input").click()
     preadmission_date = config.driver.find_element_by_id("pre_admission_date").send_keys(plannedsoc)
     last_name = config.driver.find_element_by_id("last_name").send_keys(lname)
@@ -122,6 +122,8 @@ def admission(
     
     time.sleep(5)
     scrolldown = config.driver.execute_script("window.scrollTo(0,1000)")
+    
+    time.sleep(4)
     #Primary Insurance Information
     primary_insurance = config.driver.find_element_by_css_selector("#primary_insurance_chosen > .chosen-single").click()
     time.sleep(2)
@@ -150,7 +152,7 @@ def admission(
     
     #Hospitalization Information
     hospital = config.driver.find_element_by_css_selector("#hospital_id_chosen > .chosen-single").click()
-    time.sleep(5)
+    time.sleep(1)
     h_result = config.driver.find_element_by_css_selector("#hospital_id_chosen .active-result:nth-child(2)").click()
     
     time.sleep(2)
@@ -245,7 +247,7 @@ def preadmission_med(
     #Patient Information
     referral_date = config.driver.find_element_by_id("refDate").send_keys(refdate)
     time.sleep(2)
-    referral_time = config.driver.find_element_by_name('referral_time').send_keys(reftime)
+    referral_time = config.driver.find_element_by_xpath('//*[@id="referral_time"]/input').send_keys(reftime)
     mrn = config.driver.find_element_by_xpath("//*[@id='content']/data/div[2]/div/ng-form/fieldset/table/tbody/tr[2]/td[2]/table/tbody/tr/td[1]/div/label/input").click()
     last_name = config.driver.find_element_by_id("last_name").send_keys(lname)
     first_name = config.driver.find_element_by_id("first_name").send_keys(fname)
@@ -439,7 +441,7 @@ def preadmission_nonmed(
     #Patient Information
     referral_date = config.driver.find_element_by_id("refDate").send_keys(refdate)
     time.sleep(2)
-    referral_time = config.driver.find_element_by_name('referral_time').send_keys(reftime)
+    referral_time = config.driver.find_element_by_xpath('//*[@id="referral_time"]/input').send_keys(reftime)
     mrn = config.driver.find_element_by_xpath("//*[@id='content']/data/div[2]/div/ng-form/fieldset/table/tbody/tr[2]/td[2]/table/tbody/tr/td[1]/div/label/input").click()
     last_name = config.driver.find_element_by_id("last_name").send_keys(lname)
     first_name = config.driver.find_element_by_id("first_name").send_keys(fname)
@@ -476,6 +478,7 @@ def preadmission_nonmed(
     
     #State Code
     config.driver.find_element(By.XPATH, "//tr[20]/td[2]/div/div/div/a").click()
+    time.sleep(2)
     config.driver.find_element(By.CSS_SELECTOR, "#main_state_chosen input").click()
     config.driver.find_element(By.CSS_SELECTOR, "#main_state_chosen input").send_keys(stateadd, Keys.ENTER)
 
