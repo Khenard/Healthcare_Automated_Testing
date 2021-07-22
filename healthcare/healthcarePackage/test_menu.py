@@ -11,8 +11,8 @@ import admission, oasis, create_task, complete_task, create_mdo
 import ctypes  # An included library with Python install. 
 import pymsgbox
 
-chooseserver = pymsgbox.prompt('Choose server for the Automated Test, type: \n \n "1" for Live (geekers) \n "2" for QA (unitest)', 'Healthcare Automation')
-testcase = pymsgbox.prompt('Choose Test Case, type: \n \n "1": Basic Testing \n > Patient Admission \n > Complete OASIS Partly \n > Create 2 RN Tasks (IV Visit and Supervisory Visit) \n > Transfer \n > ROC \n > Recert \n > DC \n \n "2": Add New Episode \n \n "3" to Pre-admit a MEDICARE patient  \n \n "4" to Pre-admit a NON-MEDICARE patient \n \n "5" for Woundcare Process \n \n "6" for Completing Authorization', 'Healthcare Automation')
+chooseserver = pymsgbox.prompt('Choose server for the Automated Test, type: \n \n 1. Live (geekers) \n 2. QA (unitest)', 'Healthcare Automation')
+testcase = pymsgbox.prompt('Choose Test Case, type: \n \n 1. Basic Testing \n > Patient Admission \n > Complete OASIS Partly \n > Create 2 RN Tasks (IV Visit and Supervisory Visit) \n > Transfer \n > ROC \n > Recert \n > DC \n \n 2. Add New Episode \n \n 3. Pre-admit a MEDICARE patient  \n \n 4. Pre-admit a NON-MEDICARE patient \n \n 5. Woundcare Process \n \n 6. Completing Authorization \n \n 7. Other Management Process', 'Healthcare Automation')
 
 
 if chooseserver == "1":
@@ -35,8 +35,13 @@ if chooseserver == "1":
         test_main.wound(testserver, searchpatient)
     
     elif testcase == "6": # Option for Adding wound to OASIS and assess
-        test_main.authorization(testserver)
-       
+        dayrange = pymsgbox.prompt('Choose Number of Days: ', 'Healthcare Automation')
+        test_main.authorization(testserver, dayrange)
+        
+    
+    elif testcase == "7": # other options for outside patient workflow
+        otherman = pymsgbox.prompt('Choose Process: \n \n 1. User Management \n \n 2. Role Template \n \n 3. Hospitals \n \n 4. Physicians \n \n 5. Referral Sources \n \n 6. Insurance Companies  \n \n 7. Healthcare Vendors \n \n 8. Emergency Services', 'Healthcare Automation')
+     
 elif chooseserver == "2":
     testserver = "qa"
     
@@ -58,8 +63,14 @@ elif chooseserver == "2":
         searchpatient = pymsgbox.prompt('Type EXACT Patient Name: ', 'Healthcare Automation')
         test_main.wound(testserver, searchpatient)
         
-    elif testcase == "6": # Option for Adding wound to OASIS and assess
-        test_main.authorization(testserver)
+    elif testcase == "6": # Option for adding authorization to pre-admitted patient
+        dayrange = pymsgbox.prompt('Choose Number of Days: ', 'Healthcare Automation')
+        test_main.authorization(testserver, dayrange)
+        
+    elif testcase == "7": # other options for outside patient workflow
+        otherman = pymsgbox.prompt('Choose Process: \n \n 1. User Management \n \n 2. Role Template \n \n 3. Hospitals \n \n 4. Physicians \n \n 5. Referral Sources \n \n 6. Insurance Companies  \n \n 7. Healthcare Vendors \n \n 8. Emergency Services', 'Healthcare Automation')
+        
+        
 else:
         pymsgbox.alert('Unable to run test, wrong input. Please re-run the test.', 'Warning')
          # END TEST

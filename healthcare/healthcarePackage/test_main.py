@@ -143,11 +143,9 @@ def wound(servertest, searchpatient):
     config.driver.close()
 
 
-def authorization(servertest):
+def authorization(servertest, dayrange):
     test_server = servertest 
-    complete_authorization.authorization(test_server)
-    
-    
+    complete_authorization.authorization(test_server, dayrange)
     
     print('Test success!')   
     pymsgbox.alert('Test Success!', 'Success')

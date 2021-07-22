@@ -10,7 +10,8 @@ from datetime import date
 from datetime import datetime, timedelta
 
 
-def authorization(test_server):
+def authorization(test_server, dayrange):
+
     time.sleep(2)
     
     if test_server == "qa":
@@ -32,8 +33,8 @@ def authorization(test_server):
     ssn = config.randomize_ssn()
     today = date.today()
     todaynow = today.strftime("%m/%d/%Y")   
-    
-    days_range = 30 # Number of days the authorization would last
+    print(dayrange)
+    days_range = int(dayrange) # Number of days the authorization would last
     # Set number of authorized visit(s)
     rn = 5
     lvn = 2
@@ -42,10 +43,6 @@ def authorization(test_server):
     ot = 2
     msw = 1
     hha = 1
-    
-    servers.qaserver()
-    config.driver.get("https://qado.medisource.com/patient")
-    time.sleep(2)
     
     # Patient Admission
     function_admission.preadmission_nonmed_auth(
