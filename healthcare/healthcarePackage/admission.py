@@ -9,19 +9,8 @@ import pandas as pd
 todaytime = config.timenow()
 todaydate = config.datenow()
 plustime = (datetime.now() + timedelta(hours=5)).strftime("%H:%M")
-
-# Declare as variable the data xlsx file - put it on the same folder as the project
-datafile = os.getcwd()+"\data.xlsx" 
-# Declare excel data as variable and set the first column to ID
-excel_data = pd.read_excel(datafile)
-#age = pd.DataFrame(excel_data, columns =['NAME'])
-#convert column data to array list and use it to select random values
-colname = excel_data['NAME'].tolist()
-#Randomize the name 
-name_random = random.choice(colname)
-
-#Random SSN 
-ssn = random.randint(0, 9999999999)
+name_random = config.randomize_name()
+ssn = config.randomize_ssn()
     
 def admission_medicare(test_server):
     

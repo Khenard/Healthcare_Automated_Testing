@@ -12,7 +12,7 @@ import ctypes  # An included library with Python install.
 import pymsgbox
 
 chooseserver = pymsgbox.prompt('Choose server for the Automated Test, type: \n \n "1" for Live (geekers) \n "2" for QA (unitest)', 'Healthcare Automation')
-testcase = pymsgbox.prompt('Choose Test Case, type: \n \n "1": Basic Testing \n > Patient Admission \n > Complete OASIS Partly \n > Create 2 RN Tasks (IV Visit and Supervisory Visit) \n > Transfer \n > ROC \n > Recert \n > DC \n \n "2": Add New Episode \n \n "3" to Pre-admit a MEDICARE patient  \n \n "4" to Pre-admit a NON-MEDICARE patient \n \n "5" for Woundcare Process', 'Healthcare Automation')
+testcase = pymsgbox.prompt('Choose Test Case, type: \n \n "1": Basic Testing \n > Patient Admission \n > Complete OASIS Partly \n > Create 2 RN Tasks (IV Visit and Supervisory Visit) \n > Transfer \n > ROC \n > Recert \n > DC \n \n "2": Add New Episode \n \n "3" to Pre-admit a MEDICARE patient  \n \n "4" to Pre-admit a NON-MEDICARE patient \n \n "5" for Woundcare Process \n \n "6" for Completing Authorization', 'Healthcare Automation')
 
 
 if chooseserver == "1":
@@ -29,7 +29,13 @@ if chooseserver == "1":
         
     elif testcase == "4": # Option for Pre-admitting a patient non-medicare
         test_main.preadmitpatient_nonmedicare(testserver)
-
+        
+    elif testcase == "5": # Option for Adding wound to OASIS and assess
+        searchpatient = pymsgbox.prompt('Type EXACT Patient Name: ', 'Healthcare Automation')
+        test_main.wound(testserver, searchpatient)
+    
+    elif testcase == "6": # Option for Adding wound to OASIS and assess
+        test_main.authorization(testserver)
        
 elif chooseserver == "2":
     testserver = "qa"
@@ -51,7 +57,9 @@ elif chooseserver == "2":
     elif testcase == "5": # Option for Adding wound to OASIS and assess
         searchpatient = pymsgbox.prompt('Type EXACT Patient Name: ', 'Healthcare Automation')
         test_main.wound(testserver, searchpatient)
-
+        
+    elif testcase == "6": # Option for Adding wound to OASIS and assess
+        test_main.authorization(testserver)
 else:
         pymsgbox.alert('Unable to run test, wrong input. Please re-run the test.', 'Warning')
          # END TEST

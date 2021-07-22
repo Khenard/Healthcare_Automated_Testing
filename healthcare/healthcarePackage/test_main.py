@@ -1,7 +1,7 @@
-from controllers import config, login, function_admission, function_oasis, servers, patient_dashboard, function_create_task, function_complete_task, function_mdo
+from controllers import config, login, function_admission, function_oasis, servers, patient_dashboard, function_create_task, function_complete_task, function_mdo,  function_authorization
 import random, time
 from datetime import date
-import admission, oasis, create_task, complete_task, create_mdo, complete_woundprocess
+import admission, oasis, create_task, complete_task, create_mdo, complete_woundprocess, complete_authorization
 import pymsgbox
 
 
@@ -141,8 +141,17 @@ def wound(servertest, searchpatient):
     print('Test success!')   
     pymsgbox.alert('Test Success!', 'Success')
     config.driver.close()
+
+
+def authorization(servertest):
+    test_server = servertest 
+    complete_authorization.authorization(test_server)
     
     
+    
+    print('Test success!')   
+    pymsgbox.alert('Test Success!', 'Success')
+    config.driver.close()    
     
     
     

@@ -14,12 +14,16 @@ import cv2 as cv
 import pyautogui
 import numpy as np
 import pymsgbox
-
+import random
+import pandas as pd
 
 
 #Configure web driver
 chromedriver = os.path.abspath("chromedriver.exe")
 driver = webdriver.Chrome(chromedriver)
+
+datafile = os.getcwd()+"\data.xlsx"  # Declare as variable the data xlsx file - put it on the same folder as the project
+excel_data = pd.read_excel(datafile) # Declare excel data as variable and set the first column to ID
 
 def timenow():
     t = time.localtime()
@@ -34,18 +38,40 @@ def datenow():
 def systeminfo():
     my_system = platform.uname()
     username = getpass.getuser()
-    
     todaytime = timenow()
     todaydate = datenow()
-    
     sysinfo = str("Testing Information: \n Tester: " + username + " \n Time: " + todaytime + "\n Date: " + todaydate + " \n \n System: " + my_system.system + "\n Node Name: " + my_system.node + "\n Release: " + my_system.release + "\n Version: " + my_system.version + "\n Machine: " + my_system.machine + "\n Processor: " + my_system.processor)
     return sysinfo
 
-def take_screenshot():
-    ss = driver.get_screenshot_as_file("./screenshots/screenshot.png") 
-    return ss
+def randomize_name():
+    colname = excel_data['NAME'].tolist() #convert column data to array list and use it to select random values
+    name_random = random.choice(colname) #Randomize the name 
+    return name_random
 
-def take_video():
+def randomize_ssn():
+    ssn = random.randint(0, 9999999999) #Random SSN 
+    return ssn
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+"""def take_screenshot():
+    ss = driver.get_screenshot_as_file("./screenshots/screenshot.png") 
+    return ss"""
+
+"""def take_video():
     
     pymsgbox.alert('Recording... press "Q" to stop record.')
     
@@ -75,6 +101,6 @@ def take_video():
             break
     
     cv.destroyAllWindows()
-    video.release()
+    video.release()"""
 
     
