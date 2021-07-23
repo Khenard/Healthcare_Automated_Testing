@@ -194,15 +194,14 @@ def gotomailinator(useremail):
     print(userpass)
     time.sleep(2)
     
-    loginbtn = config.driver.find_element_by_xpath('/html/body/table[2]/tbody/tr/td/table[2]/tbody/tr[2]/td/table[3]/tbody/tr[1]/td/a').click()
-    time.sleep(5)
+    #loginbtn = config.driver.find_element_by_xpath('/html/body/table[2]/tbody/tr/td/table[2]/tbody/tr[2]/td/table[3]/tbody/tr[1]/td/a').click()
+    #time.sleep(5)
     
     config.driver.switch_to.default_content()
     
-    usern = config.driver.find_element_by_id("loginemail").send_keys(un)
-    userpass = config.driver.find_element_by_id("loginpassword").send_keys(up)
-    
-    #login.login(username, userpass)
+    config.driver.get("https://app.medisource.com/login")
+
+    login.login(username, userpass)
     
     
    
