@@ -44,8 +44,13 @@ def searchpatientrecord(searchpatient):
     searchresult = config.driver.find_element_by_xpath('//*[@id="content"]/data/div/div[2]/div/table/tbody/tr[2]').click()
     
     
-    
-    
+def logout(): 
+    # Logout
+    time.sleep(3)
+    profileuser = config.driver.find_element_by_xpath('//*[@id="header"]/div/div/div/div/ul/li[6]/a').click()
+    signout = config.driver.find_element_by_xpath('//*[@id="header"]/div/div/div/div/ul/li[6]/div/div[2]/div/button[2]').click()
+     
+        
     
     
     

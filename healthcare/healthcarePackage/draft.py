@@ -1,4 +1,4 @@
-from controllers import config, login, function_admission, function_oasis, servers, function_complete_task, function_create_task, patient_dashboard, function_mdo, function_woundprocess, function_authorization
+from controllers import config, login, function_admission, function_oasis, servers, function_complete_task, function_create_task, patient_dashboard, function_mdo, function_woundprocess, function_human_resources
 import random, os, pyautogui, sys, autoit, ctypes
 import time
 import pymsgbox
@@ -11,8 +11,22 @@ from selenium.webdriver.support.ui import WebDriverWait
 import admission, oasis, create_task, complete_task, create_mdo, complete_woundprocess
 from selenium.common.exceptions import NoSuchElementException
 import pandas as pd
+import random
+from selenium.webdriver.common.action_chains import ActionChains
 
-# Useful variables from config.py
+
+useremail = 'Wynona@mailinator.com'
+config.driver.maximize_window()
+function_human_resources.gotomailinator(useremail)
+
+
+
+
+
+
+
+
+"""# Useful variables from config.py
 todaytime = config.timenow()
 todaydate = config.datenow()
 plustime = (datetime.now() + timedelta(hours=5)).strftime("%H:%M")
@@ -25,8 +39,8 @@ taskdateconvert = datetime.strptime(todaynow, '%m/%d/%Y') #2. Convert to date st
 addeddaystodate = timedelta(days=1000) #3. Add days to the date
 datetotal = taskdateconvert + addeddaystodate #4. add total
 finaltaskdate = datetime.strftime(datetotal, '%m/%d/%Y') #5. convert again to date string for final date  
-print(finaltaskdate)
-
+print(finaltaskdate)"""
+"""
 # Select discipline and title
 sn = 'Skilled Nurse (SN)'
 sn_rn = 'Registered Nurse (RN)'
@@ -55,6 +69,7 @@ msw_lcsw = 'Licensed Clinical Social Worker (LCSW)'
 # Choose final option
 discipline = sn
 title = sn_rn
+
 
 # ----------------------------------------------------------
 
@@ -111,10 +126,17 @@ terminationdate = config.driver.find_element_by_id('terminationdate').send_keys(
 
 for x in range(1,5):
     for y in range(2,4):
+        
+        #randomize options
+        language1 = ['English', 'Chinese', 'Filipino', 'French', 'German', 'Hebrew', 'Hungarian', 'Italian', 'Japanese', 'Korean', 'Malaysian', 'Russian', 'Spanish', 'Vietnamese', 'Unknown']
+        language = random.choice(language1) 
         langdd1 = config.driver.find_element_by_xpath('//*[@id="content"]//tbody/tr[1]/td['+ str(y) +']/div/div/div/a').click()
-        langtb1 = config.driver.find_element_by_xpath('//*[@id="content"]//tbody/tr[1]/td['+ str(y) +']/div/div/div/div/div/input').send_keys('English', Keys.ENTER)
+        langtb1 = config.driver.find_element_by_xpath('//*[@id="content"]//tbody/tr[1]/td['+ str(y) +']/div/div/div/div/div/input').send_keys(language, Keys.ENTER)
+        
+        level1 = ['Fluent', 'Intermediate', 'Elementary', 'Unable to talk']
+        level = random.choice(level1) 
         dd1 = config.driver.find_element_by_xpath('//*[@id="content"]//tbody/tr['+ str(x) +']/td['+ str(y) +']/div/div/div/a').click()
-        tb1 = config.driver.find_element_by_xpath('//*[@id="content"]//tbody/tr['+ str(x) +']/td['+ str(y) +']/div/div/div/div/div/input').send_keys('Fluent', Keys.ENTER)
+        tb1 = config.driver.find_element_by_xpath('//*[@id="content"]//tbody/tr['+ str(x) +']/td['+ str(y) +']/div/div/div/div/div/input').send_keys(level, Keys.ENTER)
         
 scrollup= config.driver.execute_script("window.scrollTo(0,0)")
 
@@ -165,7 +187,7 @@ systemuser_yes.click()
 time.sleep(5)
 discardyes = config.driver.find_element_by_xpath('/html/body/div[11]/div/div/div/div/button[1]').click()
 # ----------------------------------------------------------
-# Go back to USer list and make the user active and edit roles
+# create user system account
 # ----------------------------------------------------------
 time.sleep(5)
 
@@ -206,7 +228,7 @@ config.driver.get("https://www.mailinator.com/")
 print(useremail)
 mail = config.driver.find_element_by_xpath('//*[@id="addOverlay"]').send_keys(useremail, Keys.ENTER)
 
-
+"""
 
  
  
