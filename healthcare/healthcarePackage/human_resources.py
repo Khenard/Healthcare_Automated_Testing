@@ -52,10 +52,9 @@ level = random.choice(level1)
 userole = 'Administrator'
 
 
-servers.liveserver()
-config.driver.get("https://app.medisource.com/personnels/create")
+servers.qaserver()
+config.driver.get("https://qado.medisource.com/personnels/create")
 time.sleep(2)
-
 
 # Tabs
 personalinfo = config.driver.find_element_by_xpath('//*[@id="content"]/data/div[1]/div/div/div/div[2]/ul/li[1]/a')
@@ -77,21 +76,71 @@ function_human_resources.personalinfo(
     language,
     level
     )   
+function_human_resources.professionalcreds() # Profressional Credentials
+function_human_resources.healthcreds() # Health Credentials
+function_human_resources.systemaccount(userole) # System Account
 
-# Profressional Credentials
-function_human_resources.professionalcreds()
+#servers.logout() # Logout
 
-# Health Credentials
-function_human_resources.healthcreds() 
+p = config.driver.current_window_handle # Get the current window
+parent = config.driver.window_handles[0]
 
-# System Account
-function_human_resources.systemaccount(userole) 
+# Lets open google.com in the first tab
+config.driver.maximize_window()
+creds = function_human_resources.gotomailinator(useremail) #Get the return values of username and password from the mailinator
+username = creds[0]
+userpass = creds[1]
+    
+time.sleep(3)
 
-# Logout
-servers.logout()
+config.driver.execute_script("window.open('about:blank','secondtab');")
+config.driver.switch_to.window("secondtab")
+config.driver.get('https://qado.medisource.com/login')
+
+chld = config.driver.window_handles[1]
+time.sleep(3)
+    
+login.login(username, userpass)
+time.sleep(3)
+    
+    
+config.driver.switch_to.window(parent) # Switch to first tab
+     
+backtoinbox = config.driver.find_element_by_xpath('//*[@id="email_pane"]/div/div[1]/div[2]/a').click()
+time.sleep(3)
+
+inbox1 = config.driver.find_element_by_xpath('/html/body/div/main/div[2]/div[3]/div/div[4]/div/div/table/tbody/tr/td[2]').click()
+time.sleep(3)
+
+config.driver.switch_to.frame(config.driver.find_element_by_id('html_msg_body'))
+
+verificationcode = config.driver.find_element_by_xpath('/html/body/table[2]/tbody/tr/td/table[2]/tbody/tr[2]/td/table[2]/tbody/tr[2]/td').text
+print(verificationcode)
+time.sleep(3)
+    
+config.driver.switch_to.window(chld) # Switch back to the 2nd tab
+     
+time.sleep(3)
+verifycode = config.driver.find_element_by_xpath('//*[@id="token"]').send_keys(verificationcode)
+verifybtn = config.driver.find_element_by_xpath('/html/body/div[2]/div/div/div/section/div/div/form/div[4]/button').click()
+    
+
+  
+  
+function_human_resources.accountsecurity(
+    userpass,
+    'testtest',
+    'Tester2021!'
+    )
+
+
+
 
 # Redirects to Mailinator
-function_human_resources.gotomailinator() 
+#function_human_resources.gotomailinator() 
+
+
+
 
 
 

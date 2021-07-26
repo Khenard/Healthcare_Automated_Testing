@@ -14,13 +14,13 @@ import pandas as pd
 import random
 from selenium.webdriver.common.action_chains import ActionChains
 
-def drafts():
+def mailinator(useremail):
     p = config.driver.current_window_handle # Get the current window
     parent = config.driver.window_handles[0]
     
     
     # Lets open google.com in the first tab
-    useremail = 'Yolonda@mailinator.com'
+    #useremail = 'Maddie@mailinator.com'
     config.driver.maximize_window()
     creds = function_human_resources.gotomailinator(useremail) #Get the return values of username and password from the mailinator
     username = creds[0]
@@ -57,7 +57,7 @@ def drafts():
     
     
     function_human_resources.accountsecurity(
-        verificationcode,
+        userpass,
         'testtest',
         'Tester2021!'
         )
@@ -279,9 +279,10 @@ def adduser():
     print(useremail)
     mail = config.driver.find_element_by_xpath('//*[@id="addOverlay"]').send_keys(useremail, Keys.ENTER)
     
-    
+    mailinator(useremail)
 
+#adduser()
 adduser()
-
+#mailinator()
  
  

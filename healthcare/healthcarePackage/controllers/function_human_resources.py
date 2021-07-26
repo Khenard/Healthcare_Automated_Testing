@@ -168,12 +168,8 @@ def systemaccount(userole):
     time.sleep(2)
     saveaccountbtn = config.driver.find_element_by_xpath('//*[@id="titleNoteBar"]/tbody/tr/td/div/button[2]').click()
     
-    
     time.sleep(5)
-    config.driver.get("https://app.medisource.com/personnels")
-    time.sleep(2)
-    searchuser = config.driver.find_element_by_xpath('//*[@id="searchbar__wrapper"]/div/input').send_keys(name_random)
-   
+    
     gotomailinator(useremail)
 
 def gotomailinator(useremail):
@@ -197,7 +193,7 @@ def gotomailinator(useremail):
     return [username, userpass]
 
 def accountsecurity(
-        verificationcode,
+        userpassmail,
         defaultans,
         userpass
         ):
@@ -217,7 +213,7 @@ def accountsecurity(
     nextbtn = config.driver.find_element_by_xpath('//*[@id="securityquestions"]/form/div[5]/button').click()
     
     # Change Password
-    currentpass = config.driver.find_element_by_xpath('//*[@id="temppass"]').send_keys(verificationcode)
+    currentpass = config.driver.find_element_by_xpath('//*[@id="temppass"]').send_keys(userpassmail)
     newpass = config.driver.find_element_by_xpath('//*[@id="newpass"]').send_keys(userpass)
     confirmpass = config.driver.find_element_by_xpath('//*[@id="confirmpass"]').send_keys(userpass)
     time.sleep(2)
