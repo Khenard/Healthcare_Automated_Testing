@@ -15,9 +15,9 @@ import random
 from selenium.webdriver.common.action_chains import ActionChains
 
 
-useremail = 'Wynona@mailinator.com'
+"""useremail = 'Wynona@mailinator.com'
 config.driver.maximize_window()
-function_human_resources.gotomailinator(useremail)
+function_human_resources.gotomailinator(useremail)"""
 
 
 
@@ -26,7 +26,7 @@ function_human_resources.gotomailinator(useremail)
 
 
 
-"""# Useful variables from config.py
+# Useful variables from config.py
 todaytime = config.timenow()
 todaydate = config.datenow()
 plustime = (datetime.now() + timedelta(hours=5)).strftime("%H:%M")
@@ -39,8 +39,8 @@ taskdateconvert = datetime.strptime(todaynow, '%m/%d/%Y') #2. Convert to date st
 addeddaystodate = timedelta(days=1000) #3. Add days to the date
 datetotal = taskdateconvert + addeddaystodate #4. add total
 finaltaskdate = datetime.strftime(datetotal, '%m/%d/%Y') #5. convert again to date string for final date  
-print(finaltaskdate)"""
-"""
+print(finaltaskdate)
+
 # Select discipline and title
 sn = 'Skilled Nurse (SN)'
 sn_rn = 'Registered Nurse (RN)'
@@ -212,11 +212,11 @@ time.sleep(2)
 saveaccountbtn = config.driver.find_element_by_xpath('//*[@id="titleNoteBar"]/tbody/tr/td/div/button[2]').click()
 
 
-time.sleep(5)
+"""time.sleep(5)
 config.driver.get("https://app.medisource.com/personnels")
 time.sleep(2)
 searchuser = config.driver.find_element_by_xpath('//*[@id="searchbar__wrapper"]/div/input').send_keys(name_random)
-time.sleep(2)
+time.sleep(2)"""
 
 
 # Logout
@@ -228,7 +228,7 @@ config.driver.get("https://www.mailinator.com/")
 print(useremail)
 mail = config.driver.find_element_by_xpath('//*[@id="addOverlay"]').send_keys(useremail, Keys.ENTER)
 
-"""
+
 
  
  
