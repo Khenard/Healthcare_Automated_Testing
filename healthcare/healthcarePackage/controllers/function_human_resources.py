@@ -196,25 +196,33 @@ def gotomailinator(useremail):
     
     return [username, userpass]
 
-def accountsecurity():
+def accountsecurity(
+        verificationcode,
+        defaultans,
+        userpass
+        ):
     
-    time.sleep(5)
+    time.sleep(10)
     
     # Security Questions
     q1 = config.driver.find_element_by_xpath('//*[@id="q1"]/div/a').click()
     qa1 = config.driver.find_element_by_xpath('//*[@id="q1"]/div/div/ul/li[1]').click()
-    a1 = config.driver.find_element_by_xpath('//*[@id="answer1"]').send_keys('testtest')
+    a1 = config.driver.find_element_by_xpath('//*[@id="answer1"]').send_keys(defaultans)
     time.sleep(2)
     q2 = config.driver.find_element_by_xpath('//*[@id="q2"]/div/a').click()
     qa2 = config.driver.find_element_by_xpath('//*[@id="q2"]/div/div/ul/li[1]').click()
-    a2 = config.driver.find_element_by_xpath('//*[@id="answer2"]').send_keys('testtest')
+    a2 = config.driver.find_element_by_xpath('//*[@id="answer2"]').send_keys(defaultans)
     time.sleep(2)
     
     nextbtn = config.driver.find_element_by_xpath('//*[@id="securityquestions"]/form/div[5]/button').click()
     
     # Change Password
     currentpass = config.driver.find_element_by_xpath('//*[@id="temppass"]').send_keys(verificationcode)
-    newpass = config.driver.find_element_by_xpath('//*[@id="newpass"]').send_keys('Tester2021!')
+    newpass = config.driver.find_element_by_xpath('//*[@id="newpass"]').send_keys(userpass)
+    confirmpass = config.driver.find_element_by_xpath('//*[@id="confirmpass"]').send_keys(userpass)
+    time.sleep(2)
+    
+    finishbtn = config.driver.find_element_by_xpath('//*[@id="passwordupdate"]/form/div[4]/div[2]/button').click()
     
     
     
