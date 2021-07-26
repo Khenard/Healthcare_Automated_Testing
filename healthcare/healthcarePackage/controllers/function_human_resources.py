@@ -186,22 +186,54 @@ def gotomailinator(useremail):
     inbox1 = config.driver.find_element_by_xpath('/html/body/div/main/div[2]/div[3]/div/div[4]/div/div/table/tbody/tr/td[2]').click()
     time.sleep(5)
     
-    
+    # Get the valus of Username and auto-generated password 
     config.driver.switch_to.frame(config.driver.find_element_by_id('html_msg_body'))
     username = config.driver.find_element_by_xpath('/html/body/table[2]/tbody/tr/td/table[2]/tbody/tr[2]/td/table[2]/tbody/tr[2]/td/span[2]').text
     print(username)
     userpass =config.driver.find_element_by_xpath('/html/body/table[2]/tbody/tr/td/table[2]/tbody/tr[2]/td/table[2]/tbody/tr[2]/td/span[4]').text
     print(userpass)
+    time.sleep(5)
+    
+    return [username, userpass]
+
+def accountsecurity():
+    
+    time.sleep(5)
+    
+    # Security Questions
+    q1 = config.driver.find_element_by_xpath('//*[@id="q1"]/div/a').click()
+    qa1 = config.driver.find_element_by_xpath('//*[@id="q1"]/div/div/ul/li[1]').click()
+    a1 = config.driver.find_element_by_xpath('//*[@id="answer1"]').send_keys('testtest')
+    time.sleep(2)
+    q2 = config.driver.find_element_by_xpath('//*[@id="q2"]/div/a').click()
+    qa2 = config.driver.find_element_by_xpath('//*[@id="q2"]/div/div/ul/li[1]').click()
+    a2 = config.driver.find_element_by_xpath('//*[@id="answer2"]').send_keys('testtest')
     time.sleep(2)
     
-    #loginbtn = config.driver.find_element_by_xpath('/html/body/table[2]/tbody/tr/td/table[2]/tbody/tr[2]/td/table[3]/tbody/tr[1]/td/a').click()
-    #time.sleep(5)
+    nextbtn = config.driver.find_element_by_xpath('//*[@id="securityquestions"]/form/div[5]/button').click()
     
-    config.driver.switch_to.default_content()
+    # Change Password
+    currentpass = config.driver.find_element_by_xpath('//*[@id="temppass"]').send_keys(verificationcode)
+    newpass = config.driver.find_element_by_xpath('//*[@id="newpass"]').send_keys('Tester2021!')
     
-    config.driver.get("https://app.medisource.com/login")
-
-    login.login(username, userpass)
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
    

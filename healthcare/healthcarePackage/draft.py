@@ -14,19 +14,56 @@ import pandas as pd
 import random
 from selenium.webdriver.common.action_chains import ActionChains
 
+p = config.driver.current_window_handle # Get the current window
+parent = config.driver.window_handles[0]
 
-"""useremail = 'Wynona@mailinator.com'
+
+# Lets open google.com in the first tab
+useremail = 'Yolonda@mailinator.com'
 config.driver.maximize_window()
-function_human_resources.gotomailinator(useremail)"""
+creds = function_human_resources.gotomailinator(useremail) #Get the return values of username and password from the mailinator
+username = creds[0]
+userpass = creds[1]
+
+time.sleep(3)
+# Lets open https://www.bing.com/ in the second tab
+config.driver.execute_script("window.open('about:blank','secondtab');")
+config.driver.switch_to.window("secondtab")
+config.driver.get('https://qado.medisource.com/login')
+chld = config.driver.window_handles[1]
+time.sleep(3)
+
+login.login(username, userpass)
+time.sleep(3)
+
+
+config.driver.switch_to.window(parent) # Switch to first tab
+ 
+backtoinbox = config.driver.find_element_by_xpath('//*[@id="email_pane"]/div/div[1]/div[2]/a').click()
+time.sleep(3)
+inbox1 = config.driver.find_element_by_xpath('/html/body/div/main/div[2]/div[3]/div/div[4]/div/div/table/tbody/tr/td[2]').click()
+time.sleep(3)
+config.driver.switch_to.frame(config.driver.find_element_by_id('html_msg_body'))
+verificationcode = config.driver.find_element_by_xpath('/html/body/table[2]/tbody/tr/td/table[2]/tbody/tr[2]/td/table[2]/tbody/tr[2]/td').text
+print(verificationcode)
+time.sleep(3)
+
+config.driver.switch_to.window(chld) # Switch back to the 2nd tab
+ 
+time.sleep(3)
+verifycode = config.driver.find_element_by_xpath('//*[@id="token"]').send_keys(verificationcode)
+verifybtn = config.driver.find_element_by_xpath('/html/body/div[2]/div/div/div/section/div/div/form/div[4]/button').click()
 
 
 
+"""useremail = 'Patience@mailinator.com'
+config.driver.maximize_window()
+function_human_resources.gotomailinator(useremail)
 
+verifycode = config.driver.find_element_by_xpath('//*[@id="token"]').send_keys('')
+verifybtn = config.driver.find_element_by_xpath('/html/body/div[2]/div/div/div/section/div/div/form/div[4]/button').click()"""
 
-
-
-
-# Useful variables from config.py
+"""# Useful variables from config.py
 todaytime = config.timenow()
 todaydate = config.datenow()
 plustime = (datetime.now() + timedelta(hours=5)).strftime("%H:%M")
@@ -73,8 +110,8 @@ title = sn_rn
 
 # ----------------------------------------------------------
 
-servers.liveserver()
-config.driver.get("https://app.medisource.com/personnels/create")
+servers.qaserver()
+config.driver.get("https://qado.medisource.com/personnels/create")
 time.sleep(2)
 
 
@@ -211,22 +248,26 @@ commenttb = config.driver.find_element_by_name('remarks').send_keys('This is ent
 time.sleep(2)
 saveaccountbtn = config.driver.find_element_by_xpath('//*[@id="titleNoteBar"]/tbody/tr/td/div/button[2]').click()
 
+time.sleep(5)
+config.driver.get("https://qado.medisource.com/personnels")
 
-"""time.sleep(5)
-config.driver.get("https://app.medisource.com/personnels")
-time.sleep(2)
-searchuser = config.driver.find_element_by_xpath('//*[@id="searchbar__wrapper"]/div/input').send_keys(name_random)
-time.sleep(2)"""
+
+# time.sleep(2)
+# searchuser = config.driver.find_element_by_xpath('//*[@id="searchbar__wrapper"]/div/input').send_keys(name_random)
+# time.sleep(2)
+
 
 
 # Logout
 profileuser = config.driver.find_element_by_xpath('//*[@id="header"]/div/div/div/div/ul/li[6]/a').click()
 signout = config.driver.find_element_by_xpath('//*[@id="header"]/div/div/div/div/ul/li[6]/div/div[2]/div/button[2]').click()
 
+time.sleep(5)
+
 # Go to mailinator.com
 config.driver.get("https://www.mailinator.com/")
 print(useremail)
-mail = config.driver.find_element_by_xpath('//*[@id="addOverlay"]').send_keys(useremail, Keys.ENTER)
+mail = config.driver.find_element_by_xpath('//*[@id="addOverlay"]').send_keys(useremail, Keys.ENTER)"""
 
 
 

@@ -22,7 +22,8 @@ if chooseserver == "1":
         test_main.test_main(testserver)
         
     elif testcase == "2": # Option for exisiting patient
-        test_unit.test_unit(testserver)
+        searchpatient = pymsgbox.prompt('Type EXACT Patient Name: ', 'Healthcare Automation')
+        test_unit.test_unit(testserver, searchpatient)
     
     elif testcase == "3": # Option for Pre-admitting a patient medicare
         test_main.preadmitpatient_medicare(testserver)

@@ -110,12 +110,18 @@ def oasis(task):
     taskdate.send_keys(finaltaskdate)
             
     taskdd = config.driver.find_element_by_xpath('//*[@id="tooltip_err7"]/div/div/div/a').click() 
-        
+     
     time.sleep(3)
     createtask = config.driver.find_element_by_xpath('//*[@id="tooltip_err7"]/div/div/div/div//li[contains(string(), "'+ task +'")]')
-    createtask.click()   
+    createtask.click()
+       
+    time.sleep(3)
+     
+    staffdd = config.driver.find_element_by_xpath('//*[@id="tooltip_err2"]/div/div/div/a').click()
+    stafflist = config.driver.find_element_by_xpath('//*[@id="tooltip_err2"]/div/div/div/div/ul/li[2]').click()
     
-
+    
+    
     time.sleep(3)
     
     visitdate = config.driver.find_element_by_xpath('//*[@id="visitdate"]').send_keys(finaltaskdate)
@@ -186,7 +192,11 @@ def skilledassessment(task, rnskilledass):
     time.sleep(3)
     createtask = config.driver.find_element_by_xpath('//*[@id="tooltip_err7"]/div/div/div/div//li[contains(string(), "'+ task +'")]')
     createtask.click() 
-      
+    
+    staffdd = config.driver.find_element_by_xpath('//*[@id="tooltip_err2"]/div/div/div/a').click()
+    stafflist = config.driver.find_element_by_xpath('//*[@id="tooltip_err2"]/div/div/div/div/ul/li[2]').click()
+    
+    
     time.sleep(3) 
     
     uncheck_mdo = config.driver.find_element_by_xpath('/html/body//label[contains(string(), "Create an MD Order for this task?")]').click()
