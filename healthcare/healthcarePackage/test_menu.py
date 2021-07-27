@@ -32,17 +32,40 @@ if chooseserver == "1":
         test_main.preadmitpatient_nonmedicare(testserver)
         
     elif testcase == "5": # Option for Adding wound to OASIS and assess
-        searchpatient = pymsgbox.prompt('Type EXACT Patient Name: ', 'Healthcare Automation')
+        searchpatient = pymsgbox.prompt('Type EXACT Patient Name: Please make sure that the OASIS has no wound yet.', 'Healthcare Automation')
         test_main.wound(testserver, searchpatient)
     
     elif testcase == "6": # Option for Adding wound to OASIS and assess
         dayrange = pymsgbox.prompt('Choose Number of Days: ', 'Healthcare Automation')
         test_main.authorization(testserver, dayrange)
         
-    
     elif testcase == "7": # other options for outside patient workflow
         otherman = pymsgbox.prompt('Choose Process: \n \n 1. User Management \n \n 2. Role Template \n \n 3. Hospitals \n \n 4. Physicians \n \n 5. Referral Sources \n \n 6. Insurance Companies  \n \n 7. Healthcare Vendors \n \n 8. Emergency Services', 'Healthcare Automation')
-     
+        
+        if otherman == "1":
+            test_main.usermanagement(testserver)
+            
+        elif otherman == "2":
+            test_main.roletemplate(testserver)
+            
+        elif otherman == "3":
+            test_main.hospital(testserver)  
+                
+        elif otherman == "4":
+            test_main.physicians(testserver)      
+        
+        elif otherman == "5":
+            test_main.referralsources(testserver)      
+                    
+        elif otherman == "6":
+            test_main.insurancecompanies(testserver)    
+              
+        elif otherman == "7":
+            test_main.healthcarevendors(testserver) 
+               
+        elif otherman == "8":
+            test_main.emergencyservices(testserver)    
+    
 elif chooseserver == "2":
     testserver = "qa"
     
@@ -70,6 +93,30 @@ elif chooseserver == "2":
         
     elif testcase == "7": # other options for outside patient workflow
         otherman = pymsgbox.prompt('Choose Process: \n \n 1. User Management \n \n 2. Role Template \n \n 3. Hospitals \n \n 4. Physicians \n \n 5. Referral Sources \n \n 6. Insurance Companies  \n \n 7. Healthcare Vendors \n \n 8. Emergency Services', 'Healthcare Automation')
+        
+        if otherman == "1":
+            test_main.usermanagement(testserver)
+            
+        elif otherman == "2":
+            test_main.roletemplate(testserver)
+            
+        elif otherman == "3":
+            test_main.hospital(testserver)  
+                
+        elif otherman == "4":
+            test_main.physicians(testserver)      
+        
+        elif otherman == "5":
+            test_main.referralsources(testserver)      
+                    
+        elif otherman == "6":
+            test_main.insurancecompanies(testserver)    
+              
+        elif otherman == "7":
+            test_main.healthcarevendors(testserver) 
+               
+        elif otherman == "8":
+            test_main.emergencyservices(testserver)    
         
         
 else:
