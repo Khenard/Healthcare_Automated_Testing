@@ -69,6 +69,35 @@ def create_mdo(mdotask):
      
     time.sleep(5)   
     newmdo.click()
+    
+def newNotes(noteType):
+    time.sleep(5)
+    new1 = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[2]/button')
+    new1.click()
+    time.sleep(5)
+    
+    if noteType == "Communication Notes":
+        newnote = config.driver.find_element_by_xpath('/html/body/section/section/data/section/div[2]/div/div/div/div/div/div[1]/div/div[2]/div/ul[1]/li[1]')
+         
+    elif noteType == "HHA Care Plan": 
+        newnote = config.driver.find_element_by_xpath('/html/body/section/section/data/section/div[2]/div/div/div/div/div/div[1]/div/div[2]/div/ul[1]/li[2]')
+       
+    elif noteType == "Transfer Summary": 
+        newnote = config.driver.find_element_by_xpath('/html/body/section/section/data/section/div[2]/div/div/div/div/div/div[1]/div/div[2]/div/ul[2]/li[2]')
+          
+    elif noteType == "Discharge Summary": 
+        newnote = config.driver.find_element_by_xpath('/html/body/section/section/data/section/div[2]/div/div/div/div/div/div[1]/div/div[2]/div/ul[2]/li[3]')
+         
+    elif noteType == "Discharge Instruction": 
+        newnote = config.driver.find_element_by_xpath('/html/body/section/section/data/section/div[2]/div/div/div/div/div/div[1]/div/div[2]/div/ul[2]/li[4]')
+     
+    elif noteType == "Case Conference": 
+        newnote = config.driver.find_element_by_xpath('/html/body/section/section/data/section/div[2]/div/div/div/div/div/div[1]/div/div[2]/div/ul[2]/li[5]')   
+        
+     
+    time.sleep(5)   
+    newnote.click()
+
         
        
 

@@ -15,20 +15,8 @@ todaydate = config.datenow()
 plustime = (datetime.now() + timedelta(hours=5)).strftime("%H:%M")
 
 
-
-def CommunicationTab():
-    
-    time.sleep(5)
-    CommTab = config.driver.find_element_by_xpath('//*[@id="profile-main-header"]/div/ul/li[4]/a')
-    CommTab.click() 
-    time.sleep(3)
-    
-def newNotes():
-    time.sleep(3)
-    new1 = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[2]/button')
-    new1.click()
-    time.sleep(3)    
-    
+ 
+     
 def ThirtyDaySummary():
     
     time.sleep(3)
@@ -99,11 +87,11 @@ def ThirtyDaySummary():
     #upload file here
     time.sleep(3)
 
-def CommunicationNotes():
+#def CommunicationNotes():
     
-    note = config.driver.find_element_by_xpath('/html/body/section/section/data/section/div[2]/div/div/div/div/div/div[1]/div/div[2]/div/ul[1]/li[1]')
-    config.driver.execute_script("arguments[0].click();", note)
-    time.sleep(3)
+    #note = config.driver.find_element_by_xpath('/html/body/section/section/data/section/div[2]/div/div/div/div/div/div[1]/div/div[2]/div/ul[1]/li[1]')
+    #config.driver.execute_script("arguments[0].click();", note)
+    #time.sleep(3)
     
 def CommunicationNotesInput():
     CCNdate = config.driver.find_element_by_id("date")
@@ -141,11 +129,11 @@ def CommunicationNotesInput():
     
     
 
-def HHAplan():
+#def HHAplan():
     
-    HHA = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[2]/div/ul[1]/li[2]')
-    config.driver.execute_script("arguments[0].click();", HHA)
-    time.sleep(3)
+   # HHA = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[2]/div/ul[1]/li[2]')
+    #config.driver.execute_script("arguments[0].click();", HHA)
+    #time.sleep(3)
 def HHAplanInput():
     
     HHAdate = config.driver.find_element_by_id("visitDate")
@@ -195,10 +183,11 @@ def HHAplanInput():
     save.click()
     time.sleep(3)
 
-def transferSummary():
-    transfer = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[2]/div/ul[2]/li[2]')
-    config.driver.execute_script("arguments[0].click();", transfer)
-    time.sleep(3)
+#def transferSummary():
+    #transfer = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[2]/div/ul[2]/li[2]')
+    #config.driver.execute_script("arguments[0].click();", transfer)
+    #time.sleep(3)
+    
 def transferSummaryInput():
     
     transferdate = config.driver.find_element_by_xpath('//*[@id="transfer_date"]')
@@ -275,10 +264,11 @@ def transferSummaryInput():
     saveTransfersum.click()
     time.sleep(3)
     
-def dischargeSummary():    
-    discharge = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[2]/div/ul[2]/li[3]')
-    config.driver.execute_script("arguments[0].click();", discharge)
-    time.sleep(3)
+#def dischargeSummary():    
+    #discharge = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[2]/div/ul[2]/li[3]')
+    #config.driver.execute_script("arguments[0].click();", discharge)
+    #time.sleep(3)
+    
 def dischargeSummaryInput():
     
     dischargedate = config.driver.find_element_by_xpath('//*[@id="dischargeDate"]')
@@ -352,10 +342,11 @@ def dischargeSummaryInput():
     
       
         
-def DischargeInstructions():
-    dischargeIns = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[2]/div/ul[2]/li[4]')
-    config.driver.execute_script("arguments[0].click();", dischargeIns)
-    time.sleep(3)
+#def DischargeInstructions():
+    #dischargeIns = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[2]/div/ul[2]/li[4]')
+    #config.driver.execute_script("arguments[0].click();", dischargeIns)
+    #time.sleep(3)
+    
 def DischargeInstructionsInput():
     
     dischargedate = config.driver.find_element_by_xpath('//*[@id="dischargeDate"]')
@@ -402,10 +393,11 @@ def DischargeInstructionsInput():
     save.click()
     time.sleep(15)
     
-def CaseConference():
-    CaseConference = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[2]/div/ul[2]/li[5]')
-    config.driver.execute_script("arguments[0].click();", CaseConference)
-    time.sleep(3)
+#def CaseConference():
+    #CaseConference = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[2]/div/ul[2]/li[5]')
+    #config.driver.execute_script("arguments[0].click();", CaseConference)
+    #time.sleep(3)
+    
 def CaseConferenceInput():
     
     caseDate = config.driver.find_element_by_id("order_date")
