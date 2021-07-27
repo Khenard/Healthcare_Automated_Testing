@@ -14,7 +14,7 @@ import pandas as pd
 import random
 
 def userprocess(test_server):
-    
+ 
     if test_server == "qa":
         servers.qaserver()
         config.driver.get("https://qado.medisource.com/personnels/create")
@@ -84,7 +84,8 @@ def userprocess(test_server):
     
     function_human_resources.verificationprocess(userole, test_server) # System Account
 
-
+def medres_hospitals(test_server):
+    time.sleep(3)
 
 
 

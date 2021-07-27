@@ -40,13 +40,13 @@ if chooseserver == "1":
         test_main.authorization(testserver, dayrange)
         
     elif testcase == "7": # other options for outside patient workflow
-        otherman = pymsgbox.prompt('Choose Process: \n \n 1. User Management \n \n 2. Role Template \n \n 3. Hospitals \n \n 4. Physicians \n \n 5. Referral Sources \n \n 6. Insurance Companies  \n \n 7. Healthcare Vendors \n \n 8. Emergency Services', 'Healthcare Automation')
+        otherman = pymsgbox.prompt('Choose Process: \n \n 1. User Management \n \n 2. Emergency Services  \n \n 3. Hospitals \n \n 4. Physicians \n \n 5. Referral Sources \n \n 6. Insurance Companies  \n \n 7. Healthcare Vendors', 'Healthcare Automation')
         
         if otherman == "1":
             test_main.usermanagement(testserver)
             
         elif otherman == "2":
-            test_main.roletemplate(testserver)
+            test_main.emergencyservices(testserver)    
             
         elif otherman == "3":
             test_main.hospital(testserver)  
@@ -63,8 +63,7 @@ if chooseserver == "1":
         elif otherman == "7":
             test_main.healthcarevendors(testserver) 
                
-        elif otherman == "8":
-            test_main.emergencyservices(testserver)    
+            
     
 elif chooseserver == "2":
     testserver = "qa"
@@ -92,13 +91,13 @@ elif chooseserver == "2":
         test_main.authorization(testserver, dayrange)
         
     elif testcase == "7": # other options for outside patient workflow
-        otherman = pymsgbox.prompt('Choose Process: \n \n 1. User Management \n \n 2. Role Template \n \n 3. Hospitals \n \n 4. Physicians \n \n 5. Referral Sources \n \n 6. Insurance Companies  \n \n 7. Healthcare Vendors \n \n 8. Emergency Services', 'Healthcare Automation')
+        otherman = pymsgbox.prompt('Choose Process: \n \n 1. User Management \n \n 2. Emergency Services  \n \n 3. Hospitals \n \n 4. Physicians \n \n 5. Referral Sources \n \n 6. Insurance Companies  \n \n 7. Healthcare Vendors', 'Healthcare Automation')
         
         if otherman == "1":
             test_main.usermanagement(testserver)
             
         elif otherman == "2":
-            test_main.roletemplate(testserver)
+            test_main.emergencyservices(testserver)    
             
         elif otherman == "3":
             test_main.hospital(testserver)  
@@ -113,10 +112,7 @@ elif chooseserver == "2":
             test_main.insurancecompanies(testserver)    
               
         elif otherman == "7":
-            test_main.healthcarevendors(testserver) 
-               
-        elif otherman == "8":
-            test_main.emergencyservices(testserver)    
+            test_main.healthcarevendors(testserver)  
         
         
 else:

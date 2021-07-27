@@ -1,7 +1,7 @@
 from controllers import config, login, function_admission, function_oasis, servers, patient_dashboard, function_create_task, function_complete_task, function_mdo,  function_authorization
 import random, time
 from datetime import date
-import admission, oasis, create_task, complete_task, create_mdo, complete_woundprocess, complete_authorization, human_resources
+import admission, oasis, create_task, complete_task, create_mdo, complete_woundprocess, complete_authorization, other_process
 import pymsgbox
 
 
@@ -153,18 +153,14 @@ def authorization(servertest, dayrange):
     
 def usermanagement(servertest):
     test_server = servertest 
-    human_resources.userprocess(test_server)
+    other_process.userprocess(test_server)
     
     print('Test success!')   
     pymsgbox.alert('Test Success!', 'Success')
     config.driver.close()        
     
-    
-def roletemplate(servertest):
-    test_server = servertest 
-    print('Role Template')
-    
-    
+
+
 def hospital(servertest):
     test_server = servertest 
     print('Hospital') 
@@ -195,6 +191,7 @@ def emergencyservices(servertest):
     print('emergency services')    
      
   
+    
    
   
   
