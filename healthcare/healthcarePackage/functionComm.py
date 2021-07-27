@@ -15,8 +15,6 @@ todaydate = config.datenow()
 plustime = (datetime.now() + timedelta(hours=5)).strftime("%H:%M")
 
 
- 
-     
 def ThirtyDaySummary():
     
     time.sleep(3)
@@ -87,11 +85,6 @@ def ThirtyDaySummary():
     #upload file here
     time.sleep(3)
 
-#def CommunicationNotes():
-    
-    #note = config.driver.find_element_by_xpath('/html/body/section/section/data/section/div[2]/div/div/div/div/div/div[1]/div/div[2]/div/ul[1]/li[1]')
-    #config.driver.execute_script("arguments[0].click();", note)
-    #time.sleep(3)
     
 def CommunicationNotesInput():
     CCNdate = config.driver.find_element_by_id("date")
@@ -127,13 +120,6 @@ def CommunicationNotesInput():
     time.sleep(3)
     
     
-    
-
-#def HHAplan():
-    
-   # HHA = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[2]/div/ul[1]/li[2]')
-    #config.driver.execute_script("arguments[0].click();", HHA)
-    #time.sleep(3)
 def HHAplanInput():
     
     HHAdate = config.driver.find_element_by_id("visitDate")
@@ -183,11 +169,7 @@ def HHAplanInput():
     save.click()
     time.sleep(3)
 
-#def transferSummary():
-    #transfer = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[2]/div/ul[2]/li[2]')
-    #config.driver.execute_script("arguments[0].click();", transfer)
-    #time.sleep(3)
-    
+
 def transferSummaryInput():
     
     transferdate = config.driver.find_element_by_xpath('//*[@id="transfer_date"]')
@@ -264,10 +246,6 @@ def transferSummaryInput():
     saveTransfersum.click()
     time.sleep(3)
     
-#def dischargeSummary():    
-    #discharge = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[2]/div/ul[2]/li[3]')
-    #config.driver.execute_script("arguments[0].click();", discharge)
-    #time.sleep(3)
     
 def dischargeSummaryInput():
     
@@ -338,15 +316,8 @@ def dischargeSummaryInput():
     
     #refresh the page, kasi may times na lumalabas yung DISCARD button parin kahit wala naman ng entry
     #config.driver.refresh();
-    #time.sleep(10)
-    
-      
-        
-#def DischargeInstructions():
-    #dischargeIns = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[2]/div/ul[2]/li[4]')
-    #config.driver.execute_script("arguments[0].click();", dischargeIns)
-    #time.sleep(3)
-    
+    #time.sleep(10)     
+
 def DischargeInstructionsInput():
     
     dischargedate = config.driver.find_element_by_xpath('//*[@id="dischargeDate"]')
@@ -393,10 +364,9 @@ def DischargeInstructionsInput():
     save.click()
     time.sleep(15)
     
-#def CaseConference():
-    #CaseConference = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[2]/div/ul[2]/li[5]')
-    #config.driver.execute_script("arguments[0].click();", CaseConference)
-    #time.sleep(3)
+    
+    
+    
     
 def CaseConferenceInput():
     
@@ -448,42 +418,8 @@ def CaseConferenceInput():
     inputComment = config.driver.find_element_by_xpath('//*[@id="parent"]/div/form/div/div[1]/fieldset[2]/table/tbody/tr/td/table/tbody/tr[3]/td/fieldset/table/tbody/tr/td[3]/div/textarea')
     inputComment.send_keys("Maligo araw-araw, ugalihin gumamit ng sabon.")
     time.sleep(3)
-    saveCase = config.driver.find_element_by_xpath('//*[@id="tdTitleAction"]/button[2]')
-    saveCase.click()
-    time.sleep(3)
-    #add participants
-    addParticipants = config.driver.find_element_by_xpath('//*[@id="parent"]/div/form/div/div[1]/fieldset[2]/table/tbody/tr/td/table/tbody/tr[2]/td/button')
-    addParticipants.click()
-    time.sleep(3)
-    chooseAgent = config.driver.find_element_by_xpath('//*[@id="care_staff_id_chosen"]/a')
-    chooseAgent.click()
-    time.sleep(3)
-    selectAgent = config.driver.find_element_by_xpath('//*[@id="care_staff_id_chosen"]/div/ul/li[5]')
-    selectAgent.click()
-    time.sleep(3)
-    inputComment2 = config.driver.find_element_by_xpath('//*[@id="parent"]/div/form/div/div[1]/fieldset[2]/table/tbody/tr/td/table/tbody/tr[4]/td/fieldset/table/tbody/tr/td[3]/div/textarea')
-    inputComment2.send_keys("Magpakulo ng mainit na tubig, at ibuhos sa tsismosang kapitbahay.")
-    time.sleep(3)
-    sign = config.driver.find_element_by_xpath('//*[@id="parent"]/div/form/div/div[1]/fieldset[2]/table/tbody/tr/td/table/tbody/tr[3]/td/fieldset/table/tbody/tr/td[2]/div[2]/div/input')
-    sign.send_keys("12345678")
-    time.sleep(3)
-    signed = config.driver.find_element_by_xpath('//*[@id="parent"]/div/form/div/div[1]/fieldset[2]/table/tbody/tr/td/table/tbody/tr[3]/td/fieldset/table/tbody/tr/td[2]/div[2]/button')
-    signed.click()
-    time.sleep(3)
-    #second participant
-    sign = config.driver.find_element_by_xpath('//*[@id="parent"]/div/form/div/div[1]/fieldset[2]/table/tbody/tr/td/table/tbody/tr[4]/td/fieldset/table/tbody/tr/td[2]/div/div[2]/div/div/input')
-    sign.send_keys("12345678")
-    time.sleep(3)
-    signed = config.driver.find_element_by_xpath('//*[@id="parent"]/div/form/div/div[1]/fieldset[2]/table/tbody/tr/td/table/tbody/tr[4]/td/fieldset/table/tbody/tr/td[2]/div/div[2]/div/button')
-    signed.click()
-    time.sleep(3)
-    uploadFile = config.driver.find_element_by_xpath('//*[@id="parent"]/div/form/div/div[1]/fieldset[2]/table/tbody/tr/td/div/div[2]/div/div/div/div[1]/a')
-    uploadFile.click()
-    time.sleep(3)
-    pyautogui.click(87, 171)
-    time.sleep(3)
-    pyautogui.doubleClick(655, 437)
-    time.sleep(3)
+       
+   # save the case con
     saveCase2 = config.driver.find_element_by_xpath('//*[@id="tdTitleAction"]/button[2]')
     saveCase2.click()
     time.sleep(3)
