@@ -5,7 +5,7 @@ from selenium.webdriver.common.by import By
 from selenium import webdriver
 from datetime import datetime, timedelta
 import pyautogui, sys
-import autoit
+#import autoit
 import os
 from selenium.webdriver.common.action_chains import ActionChains
 

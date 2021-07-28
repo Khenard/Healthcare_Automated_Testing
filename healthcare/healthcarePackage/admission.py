@@ -69,11 +69,11 @@ def admission_medicare(test_server):
     
     #This function is to get the current browser url to get the link of the current patient dashboard
     #getlastpatient = config.driver.get(config.driver.current_url)
-    getlastpatient = config.driver.current_url
+    #getlastpatient = config.driver.current_url
     
     #oasis.getpatientlink(getlastpatient)
      
-    time.sleep(5)
+    #time.sleep(5)
    
    
 
