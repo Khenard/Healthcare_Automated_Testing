@@ -66,6 +66,17 @@ def randomphysician_specialty():
     
     return specialty
 
+def randomphysician_npi():
+    
+    physiciannpi = pd.read_excel(datafile, 'physician')
+    
+    col_npi = physiciannpi['NPI'].tolist()
+    npi = random.choice(col_npi)
+    npi = str(npi)
+    
+    return npi
+
+
 
 
 

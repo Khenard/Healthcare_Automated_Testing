@@ -26,8 +26,8 @@ num = int(num)
 # Specify the numbers of hospital to be added
 for x in range(num):"""
 
-function_medical_resources.addphysician()
-
+function_medical_resources.addphysician_manual()
+#function_medical_resources.addphysician_npi()
 
 
 
