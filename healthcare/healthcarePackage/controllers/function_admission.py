@@ -114,7 +114,7 @@ def admission(
 # ------------------------------------------------------------------------------------------------
 #  beyond this part, the automation will automatically select the first entry of each dropdown
 # ------------------------------------------------------------------------------------------------
-    time.sleep(2)
+    time.sleep(5)
     
     #Physician Information
     attending_physician = config.driver.find_element_by_css_selector("#physician_attending_chosen > .chosen-single").click()
