@@ -1,7 +1,7 @@
 from controllers import config, login, function_admission, function_oasis, servers, patient_dashboard, function_create_task, function_complete_task, function_mdo,  function_authorization
 import random, time
 from datetime import date
-import admission, oasis, create_task, complete_task, create_mdo, complete_authorization
+import admission, oasis, create_task, complete_task, create_mdo, complete_authorization, other_process, commMain
 import pymsgbox
 
 
@@ -133,6 +133,22 @@ def preadmitpatient_nonmedicare(servertest):
     pymsgbox.alert('Test Success!', 'Success')
     print('Test success!')   
     config.driver.close()
+ 
+def communiMain(servertest):
+    
+    test_server = servertest 
+    
+    
+    if servertest == "qa":
+        config.driver.get("https://qado.medisource.com/patients/pre-admitted")
+    elif servertest == "live": 
+        config.driver.get("https://app.medisource.com/patients/pre-admitted")
+    
+    admission.preadmission_medicare(test_server) #PATIENT ADMISSION
+        
+    commMain.communicationmain()
+
+ 
     
 def wound(servertest, searchpatient):
     test_server = servertest 
@@ -159,8 +175,7 @@ def usermanagement(servertest):
     pymsgbox.alert('Test Success!', 'Success')
     config.driver.close()        
     
-
-
+    
 def hospital(servertest):
     test_server = servertest 
     other_process.medres_hospitals(test_server)
@@ -171,9 +186,15 @@ def hospital(servertest):
 
        
        
-def physicians(servertest):
+def physicians(servertest, addtype):
     test_server = servertest 
+    add_type = addtype
     print('Physician')    
+    other_process.medres_physicians(test_server, add_type)
+    
+    print('Test success!')   
+    pymsgbox.alert('Test Success!', 'Success')
+    config.driver.close()   
      
            
 def referralsources(servertest):

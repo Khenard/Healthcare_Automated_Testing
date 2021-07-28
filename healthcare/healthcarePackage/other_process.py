@@ -104,7 +104,25 @@ def medres_hospitals(test_server):
         
     time.sleep(3)
 
-
+def medres_physicians(test_server, addtype):
+    
+    if test_server == "qa":
+        servers.qaserver()
+        config.driver.get("https://qado.medisource.com/physicians")
+        time.sleep(2)
+        
+    elif test_server == "live":
+        servers.liveserver()
+        config.driver.get("https://app.medisource.com/physicians")
+        time.sleep(2)
+    
+    if addtype == "1":
+        function_medical_resources.addphysician_manual()
+        
+    elif addtype == "2":
+        function_medical_resources.addphysician_npi()
+        
+    time.sleep(3)
 
 
 

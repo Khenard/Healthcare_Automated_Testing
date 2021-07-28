@@ -21,13 +21,13 @@ servers.qaserver()
 config.driver.get("https://qado.medisource.com/physicians")
 time.sleep(3)
 
-"""num = pymsgbox.prompt('How many records to add?', 'Healthcare Automation')
+num = pymsgbox.prompt('How many records to add?', 'Healthcare Automation')
 num = int(num)       
 # Specify the numbers of hospital to be added
-for x in range(num):"""
+for x in range(num):
 
-function_medical_resources.addphysician_manual()
-#function_medical_resources.addphysician_npi()
+    #function_medical_resources.addphysician_manual()
+    function_medical_resources.addphysician_npi()
 
 
 
