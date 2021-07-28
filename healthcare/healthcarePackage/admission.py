@@ -129,16 +129,10 @@ def preadmission_medicare(test_server):
         "Peanut",
         "RN"
         )
-    
-    #This function is to get the current browser url to get the link of the current patient dashboard
-    #getlastpatient = config.driver.get(config.driver.current_url)
-    getlastpatient = config.driver.current_url
-    
-    #oasis.getpatientlink(getlastpatient)
+
     
     time.sleep(5)
     
-
 
 
 def preadmission_nonmedicare(test_server):
@@ -193,12 +187,6 @@ def preadmission_nonmedicare(test_server):
         "Peanut",
         "RN"
         )
-    
-    #This function is to get the current browser url to get the link of the current patient dashboard
-    #getlastpatient = config.driver.get(config.driver.current_url)
-    getlastpatient = config.driver.current_url
-    
-    #oasis.getpatientlink(getlastpatient)
     
     time.sleep(5)
      

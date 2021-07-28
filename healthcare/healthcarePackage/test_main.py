@@ -1,7 +1,7 @@
 from controllers import config, login, function_admission, function_oasis, servers, patient_dashboard, function_create_task, function_complete_task, function_mdo,  function_authorization
 import random, time
 from datetime import date
-import admission, oasis, create_task, complete_task, create_mdo, complete_woundprocess, complete_authorization
+import admission, oasis, create_task, complete_task, create_mdo, complete_authorization
 import pymsgbox
 
 
@@ -151,11 +151,60 @@ def authorization(servertest, dayrange):
     pymsgbox.alert('Test Success!', 'Success')
     config.driver.close()    
     
+def usermanagement(servertest):
+    test_server = servertest 
+    other_process.userprocess(test_server)
     
+    print('Test success!')   
+    pymsgbox.alert('Test Success!', 'Success')
+    config.driver.close()        
     
+
+
+def hospital(servertest):
+    test_server = servertest 
+    other_process.medres_hospitals(test_server)
     
+    print('Test success!')   
+    pymsgbox.alert('Test Success!', 'Success')
+    config.driver.close()        
+
+       
+       
+def physicians(servertest):
+    test_server = servertest 
+    print('Physician')    
+     
+           
+def referralsources(servertest):
+    test_server = servertest 
+    print('referral sources')    
+     
+            
+def insurancecompanies(servertest):
+    test_server = servertest 
+    print('insurance companies')    
+     
+             
+def healthcarevendors(servertest):
+    test_server = servertest 
+    print('healthcare vendors')    
+     
+                 
+def emergencyservices(servertest):
+    test_server = servertest 
+    print('emergency services')    
+     
+  
     
-    
-    
+   
+  
+  
+  
+  
+  
+  
+  
+  
     
 

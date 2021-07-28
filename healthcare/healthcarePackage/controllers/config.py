@@ -52,10 +52,19 @@ def randomize_ssn():
     ssn = random.randint(0, 9999999999) #Random SSN 
     return ssn
 
+def randomnum():
+    rn = random.randint(0, 999) #Random number 
+    return rn
 
-
-
-
+def randomphysician_specialty():
+    
+    physicianspec = pd.read_excel(datafile, 'physician')
+    
+    col_specialty = physicianspec['SPECIALTY'].tolist()
+    specialty = random.choice(col_specialty)
+    specialty = str(specialty)
+    
+    return specialty
 
 
 

@@ -73,7 +73,7 @@ def personalinfo(
     address = config.driver.find_element_by_name('address1').send_keys(addr)
     
     scrolldown = config.driver.execute_script("window.scrollTo(0,5000)")
-    time.sleep(2)
+    time.sleep(3)
     phone = config.driver.find_element_by_name('phone').send_keys(ssn)
     emailtb = config.driver.find_element_by_name('email').send_keys(name_random + '@mailinator.com')
     hireddate = config.driver.find_element_by_id('hireddate').send_keys(todaynow)
@@ -141,11 +141,16 @@ def healthcreds():
     time.sleep(5)
     discardyes = config.driver.find_element_by_xpath('/html/body/div[11]/div/div/div/div/button[1]').click()
     
-def systemaccount(userole):
+    
+def verificationprocess(userole, test_server):
+    
+    p = config.driver.current_window_handle # Get the current window
+    parent = config.driver.window_handles[0]
+
     time.sleep(2)
 
     # ----------------------------------------------------------
-    # create user system account
+    # create user system account and mailinator
     # ----------------------------------------------------------
     time.sleep(5)
     
@@ -163,16 +168,15 @@ def systemaccount(userole):
     time.sleep(2)     
     scroll= config.driver.execute_script("window.scrollTo(0,5000)")
     
-    commenttb = config.driver.find_element_by_name('remarks').send_keys('This is entered using automated testing')
+    commenttb = config.driver.find_element_by_name('remarks').send_keys('This user is added through automated testing')
     
     time.sleep(2)
     saveaccountbtn = config.driver.find_element_by_xpath('//*[@id="titleNoteBar"]/tbody/tr/td/div/button[2]').click()
     
     time.sleep(5)
     
-    gotomailinator(useremail)
-
-def gotomailinator(useremail):
+    servers.logout() # Logout
+    
     time.sleep(5)
     # Go to mailinator.com
     config.driver.get("https://www.mailinator.com/")
@@ -190,15 +194,52 @@ def gotomailinator(useremail):
     print(userpass)
     time.sleep(5)
     
-    return [username, userpass]
-
-def accountsecurity(
-        userpassmail,
-        defaultans,
-        userpass
-        ):
+    config.driver.execute_script("window.open('about:blank','secondtab');")
+    config.driver.switch_to.window("secondtab")
     
-    time.sleep(10)
+    if test_server == "qa":
+        config.driver.get("https://qado.medisource.com/login")
+        time.sleep(2)
+        
+    elif test_server == "live": 
+        config.driver.get("https://app.medisource.com/login")
+        time.sleep(2)
+        
+    
+    chld = config.driver.window_handles[1]
+    time.sleep(3)
+        
+    login.login(username, userpass)
+    time.sleep(3)
+    
+    
+    config.driver.switch_to.window(parent) # Switch to first tab
+         
+    backtoinbox = config.driver.find_element_by_xpath('//*[@id="email_pane"]/div/div[1]/div[2]/a').click()
+    time.sleep(3)
+    
+    inbox1 = config.driver.find_element_by_xpath('/html/body/div/main/div[2]/div[3]/div/div[4]/div/div/table/tbody/tr/td[2]').click()
+    time.sleep(3)
+    
+    config.driver.switch_to.frame(config.driver.find_element_by_id('html_msg_body'))
+    
+    verificationcode = config.driver.find_element_by_xpath('/html/body/table[2]/tbody/tr/td/table[2]/tbody/tr[2]/td/table[2]/tbody/tr[2]/td').text
+    print(verificationcode)
+    time.sleep(3)
+        
+    config.driver.switch_to.window(chld) # Switch back to the 2nd tab
+         
+    time.sleep(3)
+    verifycode = config.driver.find_element_by_xpath('//*[@id="token"]').send_keys(verificationcode)
+    verifybtn = config.driver.find_element_by_xpath('/html/body/div[2]/div/div/div/section/div/div/form/div[4]/button').click()
+        
+
+    defaultans = 'testtest',
+    newuserpass = 'Tester2021!'
+    
+    userpassmail = userpass
+    
+    time.sleep(20)
     
     # Security Questions
     q1 = config.driver.find_element_by_xpath('//*[@id="q1"]/div/a').click()
@@ -214,13 +255,17 @@ def accountsecurity(
     
     # Change Password
     currentpass = config.driver.find_element_by_xpath('//*[@id="temppass"]').send_keys(userpassmail)
-    newpass = config.driver.find_element_by_xpath('//*[@id="newpass"]').send_keys(userpass)
-    confirmpass = config.driver.find_element_by_xpath('//*[@id="confirmpass"]').send_keys(userpass)
+    newpass = config.driver.find_element_by_xpath('//*[@id="newpass"]').send_keys(newuserpass)
+    confirmpass = config.driver.find_element_by_xpath('//*[@id="confirmpass"]').send_keys(newuserpass)
     time.sleep(2)
     
     finishbtn = config.driver.find_element_by_xpath('//*[@id="passwordupdate"]/form/div[4]/div[2]/button').click()
     
+    time.sleep(3)
     
+    okbtn = config.driver.find_element_by_xpath('/html/body/div[5]/div[2]/button[1]').click()
+    
+
     
     
     
