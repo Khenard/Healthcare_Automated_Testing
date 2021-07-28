@@ -1,4 +1,4 @@
-from controllers import config, login, function_admission, function_oasis, servers, patient_dashboard, function_human_resources
+from controllers import config, login, function_admission, function_oasis, servers, patient_dashboard, function_human_resources, function_medical_resources
 import random, os, pyautogui, sys, autoit, ctypes
 import time
 import pymsgbox
@@ -85,6 +85,23 @@ def userprocess(test_server):
     function_human_resources.verificationprocess(userole, test_server) # System Account
 
 def medres_hospitals(test_server):
+    
+    if test_server == "qa":
+        servers.qaserver()
+        config.driver.get("https://qado.medisource.com/hospital")
+        time.sleep(2)
+        
+    elif test_server == "live":
+        servers.liveserver()
+        config.driver.get("https://app.medisource.com/hospital")
+        time.sleep(2)
+    
+    num = pymsgbox.prompt('How many records you want to add?', 'Healthcare Automation')
+    num = int(num) 
+    # Specify the numbers of hospital to be added
+    for x in range(num):
+        function_medical_resources.addhospital()
+        
     time.sleep(3)
 
 

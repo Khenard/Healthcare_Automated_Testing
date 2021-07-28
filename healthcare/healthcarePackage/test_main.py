@@ -163,7 +163,12 @@ def usermanagement(servertest):
 
 def hospital(servertest):
     test_server = servertest 
-    print('Hospital') 
+    other_process.medres_hospitals(test_server)
+    
+    print('Test success!')   
+    pymsgbox.alert('Test Success!', 'Success')
+    config.driver.close()        
+
        
        
 def physicians(servertest):

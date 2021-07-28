@@ -15,22 +15,26 @@ import random
 from selenium.webdriver.common.action_chains import ActionChains
 
 
-name_random = config.randomize_name()
-ssn = config.randomize_ssn()
-
-randomtype = str(name_random) + " " + str(ssn)
 
 # Hospital
 servers.qaserver()
-config.driver.get("https://qado.medisource.com/hospital")
+config.driver.get("https://qado.medisource.com/physicians")
 time.sleep(3)
-newhospitalbtn =  config.driver.find_element_by_xpath('//*[@id="content"]/data/div/div[1]/div/div[1]/a').click()
 
-time.sleep(2)
+"""num = pymsgbox.prompt('How many records to add?', 'Healthcare Automation')
+num = int(num)       
+# Specify the numbers of hospital to be added
+for x in range(num):"""
 
-addtype = config.driver.find_element_by_xpath('//*[@id="content"]/data/div[2]/div/form/fieldset/div/table/tbody/tr[2]/td[2]/div/button').click()
+function_medical_resources.addphysician()
 
-time.sleep(3)
-typetitle = config.driver.find_element_by_xpath('//*[@id="title"]').send_keys(randomtype)
-time.sleep(3)
-savetypebtn = config.driver.find_element_by_xpath('/html/body/div[10]/div/div/div/form/div/div[3]/div/button[2]').click()
+
+
+
+
+
+
+
+
+
+
