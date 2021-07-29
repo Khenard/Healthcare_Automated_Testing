@@ -54,7 +54,7 @@ if chooseserver == "1":
             test_main.hospital(testserver)  
                 
         elif otherman == "4":
-            addtype = pymsgbox.prompt('1. Manual Add \n \n 2. Using NPI', 'Healthcare Automation')
+            addtype = pymsgbox.prompt('1. Manual Add \n \n \n 2. Using NPI', 'Healthcare Automation')
             test_main.physicians(testserver, addtype) 
                  
         elif otherman == "5":
