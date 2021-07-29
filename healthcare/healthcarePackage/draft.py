@@ -1,5 +1,5 @@
-from controllers import config, login, function_admission, function_oasis, servers, function_complete_task, function_create_task, patient_dashboard, function_mdo, function_woundprocess, function_human_resources, function_medical_resources
-import random, os, pyautogui, sys, autoit, ctypes
+from controllers import config, login, function_admission, function_oasis, servers, function_complete_task, function_create_task, patient_dashboard, function_mdo, function_human_resources, function_medical_resources
+import random, os, pyautogui, sys, ctypes
 import time
 import pymsgbox
 from datetime import date
@@ -26,8 +26,8 @@ num = int(num)
 # Specify the numbers of hospital to be added
 for x in range(num):"""
 
-function_medical_resources.addphysician_manual()
-#function_medical_resources.addphysician_npi()
+#function_medical_resources.addphysician_manual()
+function_medical_resources.addphysician_npi()
 
 
 
