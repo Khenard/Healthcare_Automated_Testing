@@ -122,10 +122,7 @@ def addphysician_npi():
     time.sleep(5)
     continuebtn = config.driver.find_element_by_xpath('//*[@id="content"]/data/div[2]/div/form/fieldset/div/div/div[1]/button[2]').click()
     time.sleep(3)
-    #ln = config.driver.find_element_by_name('lastName').send_keys(' Automated')
-    addEmail = config.driver.find_element_by_name('addEmail').send_keys('physician@mailinator.com')
-    accessportal_yes = config.driver.find_element_by_xpath('//*[@id="content"]/data/div[2]/div/form/fieldset/div[2]/table/tbody/tr[3]/td/table/tbody/tr[18]/td[2]/div/label/input').click()
-       
+      
     savebtn = config.driver.find_element_by_xpath('//*[@id="titleNoteBar"]/div/div/div/div/div/button[2]').click()
        
     time.sleep(3)

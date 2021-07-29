@@ -12,7 +12,7 @@ import ctypes  # An included library with Python install.
 import pymsgbox
 
 chooseserver = pymsgbox.prompt('Choose server for the Automated Test, type: \n \n 1. Live (geekers) \n 2. QA (unitest)', 'Healthcare Automation')
-testcase = pymsgbox.prompt('Choose Test Case, type: \n \n 1. Basic Testing \n > Patient Admission \n > Complete OASIS Partly \n > Create 2 RN Tasks (IV Visit and Supervisory Visit) \n > Transfer \n > ROC \n > Recert \n > DC \n \n 2. Add New Episode \n \n 3. Pre-admit a MEDICARE patient  \n \n 4. Pre-admit a NON-MEDICARE patient \n \n 5. Woundcare Process \n \n 6. Completing Authorization \n \n 7. Other Management Process', 'Healthcare Automation')
+testcase = pymsgbox.prompt('Choose Test Case, type: \n \n 1. Basic Testing \n > Patient Admission \n > Complete OASIS Partly \n > Create 2 RN Tasks (IV Visit and Supervisory Visit) \n > Transfer \n > ROC \n > Recert \n > DC \n \n 2. Add New Episode \n \n 3. Pre-admit a MEDICARE patient  \n \n 4. Pre-admit a NON-MEDICARE patient \n \n 5. Woundcare Process \n \n 6. Completing Authorization \n \n 7. Admit a Patient and Add Communication Notes \n \n 8. Other Management Process', 'Healthcare Automation')
 
 ####JACCKKK TEST
 if chooseserver == "1":
@@ -38,10 +38,12 @@ if chooseserver == "1":
     elif testcase == "6": # Option for Adding wound to OASIS and assess
         dayrange = pymsgbox.prompt('Choose Number of Days: ', 'Healthcare Automation')
         test_main.authorization(testserver, dayrange)
+    
+    elif testcase == "7": # Option for Pre-admitting a patient and complete communication note
+        test_main.communiMain(testserver)
         
-    elif testcase == "7": # other options for outside patient workflow
+    elif testcase == "8": # other options for outside patient workflow
         otherman = pymsgbox.prompt('Choose Process: \n \n 1. User Management \n \n 2. Emergency Services  \n \n 3. Hospitals \n \n 4. Physicians \n \n 5. Referral Sources \n \n 6. Insurance Companies  \n \n 7. Healthcare Vendors', 'Healthcare Automation')
-        
         if otherman == "1":
             test_main.usermanagement(testserver)
             
@@ -52,8 +54,9 @@ if chooseserver == "1":
             test_main.hospital(testserver)  
                 
         elif otherman == "4":
-            test_main.physicians(testserver)      
-        
+            addtype = pymsgbox.prompt('1. Manual Add \n \n 2. Using NPI', 'Healthcare Automation')
+            test_main.physicians(testserver, addtype) 
+                 
         elif otherman == "5":
             test_main.referralsources(testserver)      
                     
@@ -62,10 +65,10 @@ if chooseserver == "1":
               
         elif otherman == "7":
             test_main.healthcarevendors(testserver) 
-               
+              
             
-    
 elif chooseserver == "2":
+    
     testserver = "qa"
     
     if testcase == "1": # Option for Basic Testing
@@ -89,8 +92,11 @@ elif chooseserver == "2":
     elif testcase == "6": # Option for adding authorization to pre-admitted patient
         dayrange = pymsgbox.prompt('Choose Number of Days: ', 'Healthcare Automation')
         test_main.authorization(testserver, dayrange)
+    
+    elif testcase == "7": # Option for Pre-admitting a patient and complete communication note
+        test_main.communiMain(testserver)
         
-    elif testcase == "7": # other options for outside patient workflow
+    elif testcase == "8": # other options for outside patient workflow
         otherman = pymsgbox.prompt('Choose Process: \n \n 1. User Management \n \n 2. Emergency Services  \n \n 3. Hospitals \n \n 4. Physicians \n \n 5. Referral Sources \n \n 6. Insurance Companies  \n \n 7. Healthcare Vendors', 'Healthcare Automation')
         
         if otherman == "1":
@@ -103,8 +109,9 @@ elif chooseserver == "2":
             test_main.hospital(testserver)  
                 
         elif otherman == "4":
-            test_main.physicians(testserver)      
-        
+            addtype = pymsgbox.prompt('1. Manual Add \n \n 2. Using NPI', 'Healthcare Automation')
+            test_main.physicians(testserver, addtype) 
+            
         elif otherman == "5":
             test_main.referralsources(testserver)      
                     
