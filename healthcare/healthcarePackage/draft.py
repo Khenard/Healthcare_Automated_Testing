@@ -1,5 +1,5 @@
-from controllers import config, login, function_admission, function_oasis, servers, function_complete_task, function_create_task, patient_dashboard, function_mdo, function_woundprocess, function_human_resources, function_medical_resources
-import random, os, pyautogui, sys, autoit, ctypes
+from controllers import config, login, function_admission, function_oasis, servers, function_complete_task, function_create_task, patient_dashboard, function_mdo, function_human_resources, function_medical_resources
+import random, os, pyautogui, sys, ctypes
 import time
 import pymsgbox
 from datetime import date
@@ -17,22 +17,22 @@ from selenium.webdriver.common.action_chains import ActionChains
 
 
 # Hospital
-servers.qaserver()
-config.driver.get("https://qado.medisource.com/physicians")
+servers.liveserver()
+config.driver.get("https://app.medisource.com/hospital")
 time.sleep(3)
 
-num = pymsgbox.prompt('How many records to add?', 'Healthcare Automation')
-num = int(num)       
-# Specify the numbers of hospital to be added
+config.driver.find_element_by_xpath('/html/body/section/section/data/div/div[1]/div/div[3]/div[1]/div/div/div/div/input').send_keys('automated')
+time.sleep(3)
+
+        
+def deleteh():
+    config.driver.find_element_by_xpath('//*[@id="content"]/data/div/div[2]/div/table/tbody/tr[2]/td[1]/div[1]/div[2]').click()
+    config.driver.find_element_by_xpath('//*[@id="Delete"]/li/button/i[2]').click()
+    config.driver.find_element_by_xpath('/html/body/div[5]/div[2]/button[1]').click()
+
+num = 5
 for x in range(num):
-
-    #function_medical_resources.addphysician_manual()
-    function_medical_resources.addphysician_npi()
-
-
-
-
-
+        deleteh()
 
 
 

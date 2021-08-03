@@ -193,6 +193,7 @@ def skilledassessment(task, rnskilledass):
     createtask = config.driver.find_element_by_xpath('//*[@id="tooltip_err7"]/div/div/div/div//li[contains(string(), "'+ task +'")]')
     createtask.click() 
     
+    time.sleep(3)
     staffdd = config.driver.find_element_by_xpath('//*[@id="tooltip_err2"]/div/div/div/a').click()
     stafflist = config.driver.find_element_by_xpath('//*[@id="tooltip_err2"]/div/div/div/div/ul/li[2]').click()
     
@@ -206,7 +207,7 @@ def skilledassessment(task, rnskilledass):
     #Create button
     createbtn = config.driver.find_element_by_xpath('/html/body//button[contains(string(), "Create")]').click()
             
-    time.sleep(5)     
+    time.sleep(3)     
     
     #go back to task
     #patient_dashboard.gettab("task")

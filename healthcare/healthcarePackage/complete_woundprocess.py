@@ -5,7 +5,7 @@ from selenium.webdriver.common.by import By
 from selenium import webdriver
 from datetime import datetime, timedelta
 import pyautogui, sys
-#import autoit
+import autoit
 import os
 import pandas as pd
 import random
@@ -28,7 +28,7 @@ def complete_woundprocess(test_server, searchpatient):
         servers.searchpatientrecord(searchpatient)
         time.sleep(2)
         
-    
+    time.sleep(5)
     task = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[5]/div[1]/table/tbody/tr[2]/td[2]/a')
     time.sleep(5)
     taskstatus = config.driver.find_element_by_xpath('//*[@id="parent"]/div/div[1]/div/div[5]/div[1]/table/tbody/tr[2]/td[3]/div/span').text

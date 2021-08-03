@@ -114,16 +114,16 @@ def admission(
 # ------------------------------------------------------------------------------------------------
 #  beyond this part, the automation will automatically select the first entry of each dropdown
 # ------------------------------------------------------------------------------------------------
-    time.sleep(5)
+    time.sleep(3)
     
     #Physician Information
     attending_physician = config.driver.find_element_by_css_selector("#physician_attending_chosen > .chosen-single").click()
     at_result = config.driver.find_element_by_css_selector(".active-result:nth-child(2)").click()
     
-    time.sleep(5)
+    time.sleep(3)
     scrolldown = config.driver.execute_script("window.scrollTo(0,1000)")
     
-    time.sleep(4)
+    time.sleep(2)
     #Primary Insurance Information
     primary_insurance = config.driver.find_element_by_css_selector("#primary_insurance_chosen > .chosen-single").click()
     time.sleep(2)

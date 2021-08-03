@@ -86,7 +86,7 @@ elif chooseserver == "2":
         test_main.preadmitpatient_nonmedicare(testserver)
         
     elif testcase == "5": # Option for Adding wound to OASIS and assess
-        searchpatient = pymsgbox.prompt('Type EXACT Patient Name: ', 'Healthcare Automation')
+        searchpatient = pymsgbox.prompt('Type EXACT Patient Name: Please make sure that the OASIS has no wound yet.', 'Healthcare Automation')
         test_main.wound(testserver, searchpatient)
         
     elif testcase == "6": # Option for adding authorization to pre-admitted patient

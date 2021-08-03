@@ -5,7 +5,7 @@ from selenium.webdriver.common.by import By
 from selenium import webdriver
 from datetime import datetime, timedelta
 import pyautogui, sys
-#import autoit
+import autoit
 import os
 from selenium.webdriver.common.action_chains import ActionChains
 
@@ -44,7 +44,7 @@ def addwoundoasis(
     time.sleep(2)
     
     savebtn = config.driver.find_element_by_xpath('//*[@id="titleNoteBar"]/div[4]/div[2]/button[3]').click()
-    time.sleep(2)
+    time.sleep(5)
     
     assessnow = config.driver.find_element_by_xpath('/html/body/div[5]/div[2]/button[1]').click()
     
@@ -174,7 +174,7 @@ def completewoundassessment(
 def digitalmeasurement():
     time.sleep(10)
     digitalmesbtn = config.driver.find_element_by_xpath('//*[@id="onProcessFalse-0-0"]/div[3]/div[2]/div[2]/span/div/div/a').click()
-    time.sleep(10)
+    time.sleep(15)
     scrolldown = config.driver.execute_script("window.scrollTo(0,5000)")
     editdigitalmesbtn =  config.driver.find_element_by_xpath('//*[@id="onProcessFalse-0-0"]/div[3]/div[2]/div[2]/span/div/div/a').click()
     time.sleep(8)
